@@ -1,0 +1,20 @@
+// Place all the styles related to the inquiry controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.inquiry-wrap {
+  h1 { margin-bottom: 20px; }
+  .table {
+      padding-bottom: 15px;
+      margin: 0 auto;
+      color: #FFFFFF;
+      text-align: left;
+  }
+  .alert {
+    width: 300px;
+    margin: 0 auto;
+    text-align: center;
+    color: #FF0000;
+    .error-list { text-align: left; }
+  }
+}

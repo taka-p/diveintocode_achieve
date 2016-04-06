@@ -1,0 +1,33 @@
+<div class="inquiry-wrap">
+  <h1>お問い合わせ</h1>
+
+  <% # 検証失敗の場合はエラーを表示 %>
+  <% if @inquiry.errors.any? %>
+    <div class="alert alert-danger" role="alert">
+      <strong>入力内容にエラーがあります</strong>
+      <ul class="error-list">
+        <% @inquiry.errors.each do |attr, msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form_for @inquiry, :url => inquiry_confirm_path do |f|  %>
+    <table class="table">
+      <tr>
+        <th>名前<span class="text-danger">（必須）</span></th>
+        <td><%= f.text_field :name %></td>
+      </tr>
+      <tr>
+        <th>メールアドレス<span class="text-danger">（必須）</span></th>
+        <td><%= f.text_field :email %></td>
+      </tr>
+      <tr>
+        <th>お問い合わせ内容</th>
+        <td><%= f.text_area :message %></td>
+      </tr>
+    </table>
+    <%= f.submit '確認', class: 'btn btn-primary' %>
+  <% end %>
+</div>
