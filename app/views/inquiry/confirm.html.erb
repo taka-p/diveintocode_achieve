@@ -28,5 +28,10 @@
     <%= f.submit '送信', :class => 'btn btn-primary' %>
   <% end %>
 
-  <%= link_to 'TOPに戻る', root_path, class: 'btn' %>
+  <%= form_for @inquiry, :url => inquiry_index_path do |f| %>
+    <%= f.hidden_field :name %>
+    <%= f.hidden_field :email %>
+    <%= f.hidden_field :message %>
+    <%= f.submit '戻る', { name: 'back', class: 'btn btn-primary' }  %>
+  <% end %>
 </div>

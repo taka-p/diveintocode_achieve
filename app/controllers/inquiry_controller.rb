@@ -1,6 +1,10 @@
 class InquiryController < ApplicationController
   def index
-    @inquiry = Inquiry.new
+    if params['back']
+     @inquiry = Inquiry.new(inquiry_params)
+    else
+      @inquiry = Inquiry.new
+    end
   end
 
   def confirm
