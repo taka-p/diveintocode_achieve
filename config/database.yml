@@ -81,5 +81,7 @@ test:
 #
 production:
   <<: *default
-  database: archive2_production
-  password: <%= ENV['ARCHIVE2_DATABASE_PASSWORD'] %>
+  database: <%= ENV['DATABESE'] %>
+  port: <%= ENV['PORT'] %>
+  username: <%= ENV['USERNAME'] %>
+  password: <%= ENV['PASSWORD'] %>
