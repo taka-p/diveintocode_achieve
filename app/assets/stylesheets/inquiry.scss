@@ -3,12 +3,21 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .inquiry-wrap {
-  h1 { margin-bottom: 20px; }
+  color: #555555;
+  h1 {
+    color: #777777;
+    margin-bottom: 20px;
+  }
+  p {
+    color: #555555;
+    font-size: 20px;
+    margin-bottom: 35px;
+  }
   .table {
       padding-bottom: 15px;
       margin: 0 auto;
-      color: #FFFFFF;
       text-align: left;
+      td { padding-left: 10px; }
   }
   .alert {
     width: 300px;
@@ -16,5 +25,14 @@
     text-align: center;
     color: #FF0000;
     .error-list { text-align: left; }
+  }
+  input[type=text],
+  textarea {
+    min-width: 220px;
+    min-height: 20px;
+    border-radius: 5px;
+  }
+  .btn {
+    font-size: 15px;
   }
 }

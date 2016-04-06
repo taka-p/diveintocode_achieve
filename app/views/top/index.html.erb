@@ -10,7 +10,7 @@
       <nav class="menu">
         <ul>
           <li><%= link_to "Top", root_path %></li>
-          <li><a href="#">お問い合わせ</a></li>
+          <li><%= link_to 'お問い合わせ', inquiry_index_path %></li>
         </ul>
       </nav>
     </div>
@@ -56,6 +56,5 @@
     </div>
   </div>
 
-  <%= link_to 'DIVE NOW', company_show_path, class: 'btn' %>
-  <%= link_to 'INQUIRY', inquiry_index_path, class: 'btn' %>
+  <% link_to 'DIVE NOW', company_show_path, class: 'btn' %>
 </div>
