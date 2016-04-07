@@ -218,8 +218,10 @@ ja:
   login: ログイン
   logout: ログアウト
   signup: アカウント作成
-  forget_your_password: パスワードを忘れましたか？
-  didnt_receive_confirmation_instructions: アカウント認証用のメールが届きませんでしたか？
+  forget_your_password: パスワードを忘れた
+  reset_password: パスワードをリセットする
+  didnt_receive_confirmation_instructions: アカウント認証メールの再送信
+  resend_confirmation: 認証メールの再送信する
   characters_minimum: 文字以上
 
   # メール用
