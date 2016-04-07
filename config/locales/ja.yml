@@ -219,6 +219,7 @@ ja:
   signup: アカウント作成
   forget_your_password: パスワードを忘れましたか？
   didnt_receive_confirmation_instructions: アカウント認証用のメールが届きませんでしたか？
+  characters_minimum: 文字以上
 
   # メール用
   welcome: ようこそ
