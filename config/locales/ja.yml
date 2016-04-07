@@ -210,6 +210,8 @@ ja:
 
   # 独自定義
   username: お名前
+  current_password: 現在のパスワード
+  back: 戻る
   inquiry: お問い合わせ
   login: ログイン
   logout: ログアウト
