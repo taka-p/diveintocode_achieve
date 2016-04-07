@@ -1,6 +1,6 @@
 class InquiryController < ApplicationController
   # ログイン判定
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
 
   def index
     if params['back']
