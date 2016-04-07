@@ -208,6 +208,8 @@ ja:
       short: "%y/%m/%d %H:%M"
     pm: 午後
 
+  # 独自定義
+  username: お名前
   inquiry: お問い合わせ
   login: ログイン
   logout: ログアウト
@@ -215,6 +217,7 @@ ja:
   forget_your_password: パスワードを忘れましたか？
   didnt_receive_confirmation_instructions: アカウント認証用のメールが届きませんでしたか？
 
+  # メール用
   welcome: ようこそ
   confirm_through_link: 下記のリンクをクリックして、アカウントを有効にしてください。
   confirm_account: アカウントを認証する
