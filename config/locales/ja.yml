@@ -231,3 +231,11 @@ ja:
   confirm_account: アカウントを認証する
   edit: アカウント情報の変更
   remember_me: メールアドレスを記憶する
+  hello: こんにちは
+  requested_change_password: パスワードを変更する要求が出されました。下記のリンクから変更可能です。
+  change_password: パスワードを変更する
+  please_ignore_email: 身に覚えが無い場合は、このメールを無視して下さい。
+  change_until_access: パスワードは上記リンクにアクセスするまで、変更されません。
+  account_locked_unsuccessful: ログイン試行が複数回失敗したため、アカウントはロックされました。
+  click_link_unlock: ロックを解除するためには、下記のリンクをクリックして下さい。
+  do_unlock_acount: ロックを解除する
