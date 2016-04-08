@@ -1,4 +1,6 @@
 class BlogsController < ApplicationController
+  # ログイン判定
+  before_action :authenticate_user!
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
 
   # GET /blogs

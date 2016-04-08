@@ -1,7 +1,4 @@
 class InquiryController < ApplicationController
-  # ログイン判定
-  # before_action :authenticate_user!
-
   def index
     if params['back']
      @inquiry = Inquiry.new(inquiry_params)
