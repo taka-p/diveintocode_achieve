@@ -1,0 +1,49 @@
+/**
+ * helperクラスを定義
+ * prefixとして"h-"を付与
+**/
+
+/* margin、paddingのヘルパーを5px毎に作成 */
+@for $i from 5 through 50 {
+  @if $i % 5 == 0 {
+    .h-m#{$i} { margin: #{$i}px; }
+    .h-mt#{$i} { margin-top: #{$i}px; }
+    .h-mr#{$i} { margin-right: #{$i}px; }
+    .h-mb#{$i} { margin-bottom: #{$i}px; }
+    .h-ml#{$i} { margin-left: #{$i}px; }
+
+    .h-p#{$i} { padding: #{$i}px; }
+    .h-pt#{$i} { padding-top: #{$i}px; }
+    .h-pr#{$i} { padding-right: #{$i}px; }
+    .h-pb#{$i} { padding-bottom: #{$i}px; }
+    .h-pl#{$i} { padding-left: #{$i}px; }
+  }
+}
+
+.h-db { display: block; }
+.h-dib { display: inline-block; }
+.h-di { display: inline; }
+.h-dt { display: table; }
+.h-dtc { display: table-cell; }
+
+.h-tac { text-align: center; }
+.h-tar { text-align: right; }
+.h-tal { text-align: left; }
+
+.h-vat { vertical-align: top; }
+.h-vam { vertical-align: middle; }
+.h-vab { vertical-align: bottom; }
+.h-vabl { vertical-align: baseline; }
+
+.h-fl { float: left; }
+.h-fr { float: right; }
+
+.h-clearfix {
+  background: #f00;
+  *zoom: 1;
+}
+.h-clearfix:after {
+  content: '';
+  display: table;
+  clear: both;
+}

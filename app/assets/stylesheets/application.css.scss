@@ -2,9 +2,22 @@
  * importの基点ファイル
 **/
 
-/*  bootstrap用 */
+/* 基盤系 */
+@import  "reset.css";
+@import  "base.scss";
+
+/* 共用パーツ */
+@import  "helper.scss";
+
+/*  ライブラリ用 */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "animate.css";
+
+/* ライブラリ上書き */
+@import "bootstrap_custum.scss";
+
+/* コントローラ */
 @import "top.scss";
-@import "top.scss";
+@import "devise.scss";
 @import "blogs.scss";

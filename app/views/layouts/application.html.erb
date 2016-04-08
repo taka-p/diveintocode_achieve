@@ -11,9 +11,6 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-
   <nav class="navbar navbar-default">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
@@ -49,6 +46,13 @@
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
+
+  <% if notice %>
+    <div class="js_alert alert alert-info" role="alert"><%= notice %></div>
+  <% end %>
+  <% if alert %>
+    <div class="js_alert alert alert-danger" role="alert"><%= alert %></div>
+  <% end %>
 
   <%= yield %>
 </body>

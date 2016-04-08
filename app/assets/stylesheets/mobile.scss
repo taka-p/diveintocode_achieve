@@ -1,0 +1,9 @@
+/**
+ * Mobile.scss
+ * スマホ、タブレット端末固有の定義
+**/
+
+// bootstrapでの閾値を採用（iPad miniが768）
+@media screen and (max-width: 767px) {
+
+}
