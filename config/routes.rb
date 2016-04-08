@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :blogs
+
   devise_for :users
   root 'top#index'
   get 'company/show' => 'company#show'
