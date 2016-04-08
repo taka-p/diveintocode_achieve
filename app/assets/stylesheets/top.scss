@@ -11,28 +11,85 @@
     background-image: image-url('top_back.jpg');
     background-size: cover;
     background-position: center center;
+    margin-bottom: 0;
     h1, p {
       color: #FFFFFF;
       text-align: center;
       margin-top: 20px;
     }
   }
+
+  .boxA {
+    padding-top: 20px;
+    padding-bottom: 10px;
+    background-color: black
+  }
+  .boxA:after {
+    content: "";
+    display: block;
+    clear: both
+  }
+
+  .box1 {
+    float: left;
+    width: auto
+  }
+  .box2 {
+    float: right;
+    width: auto
+  }
+  .box4 {
+    display: table;
+    width: 100%;
+    background-color: #e8e8c4;
+    padding: 15px;
+  }
+  .box4:after {
+    content: "";
+    display: block;
+    clear: both
+  }
+  .box4-1 {
+    padding-right: 2%
+  }
+  .box4-2 {
+    padding-right: 2%
+  }
+  .box4-3 {
+  }
+  .box4-1,
+  .box4-2,
+  .box4-3 {
+    display: table-cell;
+  }
+  .box5 {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #dddddd
+  }
+
+  /* 左右に隙間を入れる */
+  .boxA, .box4, .box5 {
+    padding-left: 15px;
+    padding-right: 15px
+  }
+
   .merit h1 {
+    padding: 5px 0;
     margin-top: 0;
     margin-bottom: 0;
-    font-size: 24px
+    font-size: 20px;
   }
   .merit p {
     margin-top: 0;
     margin-bottom: 0;
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding: 15px 5px;
     background-color: #524e3c;
     font-size: 12px
   }
   .merit a {
     display: block;
-    backgroung-color: #222222;
+    background-color: #222222;
     color: #ffffff;
     text-align: center;
     text-decoration: none
