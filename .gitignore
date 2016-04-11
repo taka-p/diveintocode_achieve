@@ -13,3 +13,6 @@
 /tmp
 
 /public/assets/*
+
+# idea
+.idea/
