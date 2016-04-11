@@ -9,9 +9,40 @@
   .fm-edit,
   .fm-forget,
   .fm-resend { padding: 10px; }
+
+  .fm-signup,
   .fm-login {
     input[type=checkbox] {
       bottom: -6px;
+    }
+    .fa {
+      height: 34px;
+      line-height: 1.4em;
+      padding-top: 7px !important;
+      font-weight: bold;
+      &::before {
+        vertical-align: middle;
+        font-size: 1.4em;
+        margin-right: 10px;
+      }
+    }
+    .fa-facebook {
+      border-color: $color-facebook;
+      background: $color-facebook;
+      color: #FFFFFF;
+      &:hover {
+        background: #FFFFFF;
+        color: $color-facebook;
+      }
+    }
+    .fa-twitter {
+      border-color: $color-twitter;
+      background: $color-twitter;
+      color: #FFFFFF;
+      &:hover {
+        background: #FFFFFF;
+        color: $color-twitter;
+      }
     }
   }
 }
