@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :blogs
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :omniauthable
 
@@ -25,6 +27,4 @@ class User < ActiveRecord::Base
   def self.create_unique_string
     SecureRandom.uuid
   end
-
-  has_many :blogs
 end

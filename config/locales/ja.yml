@@ -227,7 +227,7 @@ ja:
   devise:
     omniauth_callbacks:
       user:
-        success: '既にログイン済みです'
+        success: 'ログインに成功しました'
 
   # メール用
   welcome: ようこそ
