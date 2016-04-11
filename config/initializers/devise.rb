@@ -261,8 +261,8 @@ Devise.setup do |config|
   # config.omniauth_path_prefix = '/my_engine/users/auth'
 
   if Rails.env.production?
-    config.omniauth :facebook, "1692370664321197", "7d82c6f914f86d1a1a9f8312f2663dc5", :scope => 'email', :display => 'popup', :info_fields => 'name, email'
-    config.omniauth :twitter, "i5eote7n4evOWxNzw6htJHbd1", "vlGyPH8mK4ffjGSlfyh60HiVlTxBUuzsLyHPFS2dMa2TC1eIWX"
+    config.omniauth :facebook, ENV['FACEBOOK_ID'], ENV['FACEBOOK_SECRET'], :scope => 'email', :display => 'popup', :info_fields => 'name, email'
+    config.omniauth :twitter, ENV['TWITTER_KEY'], ENV['TWITTER_SECRET']
   else
     config.omniauth :facebook, "1692372740987656", "4698f5718fc2dc9632286690a780ff5c", :scope => 'email', :display => 'popup', :info_fields => 'name, email'
     config.omniauth :twitter, "pZeFVb8ooUrcZSTAONXrsdGyQ", "aYB7xxNhuAnJXDWAiJ4kyW6YCf31GpbzYnANpfKn0ohajGGcEW"
