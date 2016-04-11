@@ -39,7 +39,9 @@
 
   <%- resource_class.omniauth_providers.each do |provider| %>
     <div class="form-group">
-      <%= link_to "#{provider.to_s.titleize}#{link_name}", omniauth_authorize_path(resource_name, provider), class: "btn btn-default fa fa-#{provider}" %>
+      <%= link_to omniauth_authorize_path(resource_name, provider), class: "btn btn-social btn-#{provider}" do %>
+          <i class="<%= p "fa fa-#{provider}"%>"></i> <%= p "#{provider.to_s.titleize}#{link_name}" %>
+      <% end %>
     </div>
   <% end -%>
 <% end -%>
