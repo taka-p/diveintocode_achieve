@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 20160411045710) do
     t.string   "unconfirmed_email"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.string   "username"
+    t.string   "name"
     t.text     "profile"
     t.string   "uid",                    default: "", null: false
     t.string   "provider",               default: "", null: false
