@@ -224,6 +224,10 @@ ja:
   didnt_receive_confirmation_instructions: アカウント認証メールの再送信
   resend_confirmation: 認証メールの再送信する
   characters_minimum: 文字以上
+  devise:
+    omniauth_callbacks:
+      user:
+        success: '既にログイン済みです'
 
   # メール用
   welcome: ようこそ

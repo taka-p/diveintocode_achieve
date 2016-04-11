@@ -79,7 +79,7 @@ ja:
     failure:
       unauthenticated: 'ログインしてください。'
 #      unauthenticated: 'You need to sign in or sign up before continuing.'
-      unconfirmed: '本登録を行ってください。'
+      unconfirmed: '送られたメールからアカウント確認リンクをクリックしてください。'
 #      unconfirmed: 'You have to confirm your account before continuing.'
       locked: 'あなたのアカウントは凍結されています。'
 #      locked: 'Your account is locked.'
@@ -91,7 +91,7 @@ ja:
 #      timeout: 'Your session expired, please sign in again to continue.'
       inactive: 'アカウントがアクティベートされていません。'
 #      inactive: 'Your account was not activated yet.'
-      already_authenticated: 既にログインしています。
+      already_authenticated: '既にログインしています。'
 
       user:
         already_authenticated: "既にログインしています。"
@@ -102,7 +102,7 @@ ja:
         not_found_in_database: "メールアドレスまたはパスワードが無効です。"
         timeout: "一定時間が経過したため、再度ログインが必要です"
         unauthenticated: "ログインまたは登録が必要です。"
-        unconfirmed: "本登録を行ってください。"
+        unconfirmed: "送られたメールのリンクからアカウントを有効化して下さい。"
     sessions:
       signed_in: 'ログインしました。'
 #      signed_in: 'Signed in successfully.'
@@ -125,7 +125,7 @@ ja:
       destroyed: 'アカウントを削除しました。またのご利用をお待ちしております。'
 #      destroyed: 'Bye! Your account was successfully cancelled. We hope to see you again soon.'
       user:
-        signed_up_but_unconfirmed: アカウント認証用のメールを送信しました。認証を完了するためにはメール内のリンクをクリックして下さい。
+        signed_up_but_unconfirmed: '送られたメールのリンクからアカウントを有効化して下さい'
     unlocks:
       send_instructions: 'アカウントの凍結解除方法を数分以内にメールでご連絡します。'
 #      send_instructions: 'You will receive an email with instructions about how to unlock your account in a few minutes.'
