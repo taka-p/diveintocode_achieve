@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   mount_uploader :image, ImageUploader
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :omniauthable
+         :recoverable, :rememberable, :trackable, :validatable, :confirmable, :omniauthable
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(provider: auth.provider, uid: auth.uid).first
