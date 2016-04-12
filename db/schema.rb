@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20160412043610) do
     t.text     "profile"
     t.string   "uid",                    default: "", null: false
     t.string   "provider",               default: "", null: false
+    t.string   "provider_name"
     t.string   "image_url"
     t.string   "image"
   end

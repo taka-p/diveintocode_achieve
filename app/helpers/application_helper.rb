@@ -5,7 +5,7 @@ module ApplicationHelper
     elsif user.provider == 'facebook'
       img_url = "https://graph.facebook.com/#{user.uid}/picture?width=320&height=320"
     elsif user.provider == 'twitter'
-      img_url = "http://furyu.nazo.cc/twicon/#{user.uid}"
+      img_url = "http://www.paper-glasses.com/api/twipi/#{user.provider_name}/bigger"
     else
       # TODO: gravatarは登録判定がとれるまでコメントアウト
       # gravatar_id = Digest::MD5::hexdigest(user.email.downcase)
