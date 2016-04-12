@@ -4,8 +4,15 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-#  column: value
+<% 10.times do |n| %>
+<% n += 1 %>
+user_<%= n %>:
+  id:         <%= n %>
+  name:       <%= "user#{n}" %>
+  email:      <%= "user#{n}@gmail.com" %>
+  profile:    <%= "user#{n}です" %>
+  image_url:  <%= "/images/_dummy/user/#{n}.jpg" %>
+  image:      <%= "/images/_dummy/user/#{n}.jpg" %>
+  created_at: <%= Time.now %>
+  updated_at: <%= Time.now %>
+<% end %>
