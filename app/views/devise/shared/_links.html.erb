@@ -18,7 +18,7 @@
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
   <div class="form-group">
-    <%= link_to t('didnt_receive_confirmation_instructions'), new_user_confirmation_path(resource_name), class: 'btn btn-default' %>
+    <%= link_to t('didnt_receive_confirmation_instructions'), new_user_confirmation_path, class: 'btn btn-default' %>
   </div>
 <% end -%>
 
