@@ -6,12 +6,12 @@
       <%= devise_error_messages! %>
 
       <div class="field form-group">
-        <%= f.label :name, t('name') %><br />
+        <%= f.label :name, t('name') %>
         <%= f.text_field :name, autofocus: true, class: 'form-control', placeholder: 'お名前を入力して下さい' %>
       </div>
 
       <div class="field form-group">
-        <%= f.label :email %><br />
+        <%= f.label :email %>
         <%= f.email_field :email, class: 'form-control', placeholder: 'example@gmail.com' %>
       </div>
 
@@ -20,8 +20,13 @@
       <% end %>
 
       <div class="field form-group">
-        <%= f.label :current_password, t('current_password') %><br />
+        <%= f.label :current_password, t('current_password') %>
         <%= f.password_field :current_password, autocomplete: "off", class: 'form-control', placeholder: '現在のパスワードを入力して下さい' %>
+      </div>
+
+      <div class="field form-group">
+        <%= f.label :profile, '自己紹介' %>
+        <%= f.text_area :profile, class: 'form-control', placeholder: '自己紹介を入力して下さい' %>
       </div>
 
       <div class="field form-group">

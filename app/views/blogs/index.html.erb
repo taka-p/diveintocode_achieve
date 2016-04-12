@@ -22,8 +22,10 @@
             <div class="text h-mb15">
               <%= blog.content %>
             </div>
-            <em><%= blog.created_at %></em>
-            <p><em>投稿者:<%= blog.user.name %></em></p>
+            <div class="h-tal">
+              <div><%= blog.created_at %></div>
+              <div>投稿者:<%= blog.user.name %></div>
+            </div>
             <% if blog.user_id == current_user.id %>
               <div class="h-tar">
                 <%= link_to "編集する", edit_blog_path(blog) %>
