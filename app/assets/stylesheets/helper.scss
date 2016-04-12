@@ -6,37 +6,37 @@
 /* margin、paddingのヘルパーを5px毎に作成 */
 @for $i from 5 through 50 {
   @if $i % 5 == 0 {
-    .h-m#{$i} { margin: #{$i}px; }
-    .h-mt#{$i} { margin-top: #{$i}px; }
-    .h-mr#{$i} { margin-right: #{$i}px; }
-    .h-mb#{$i} { margin-bottom: #{$i}px; }
-    .h-ml#{$i} { margin-left: #{$i}px; }
+    .h-m#{$i} { margin: #{$i}px !important; }
+    .h-mt#{$i} { margin-top: #{$i}px !important; }
+    .h-mr#{$i} { margin-right: #{$i}px !important; }
+    .h-mb#{$i} { margin-bottom: #{$i}px !important; }
+    .h-ml#{$i} { margin-left: #{$i}px !important; }
 
-    .h-p#{$i} { padding: #{$i}px; }
-    .h-pt#{$i} { padding-top: #{$i}px; }
-    .h-pr#{$i} { padding-right: #{$i}px; }
-    .h-pb#{$i} { padding-bottom: #{$i}px; }
-    .h-pl#{$i} { padding-left: #{$i}px; }
+    .h-p#{$i} { padding: #{$i}px !important; }
+    .h-pt#{$i} { padding-top: #{$i}px !important; }
+    .h-pr#{$i} { padding-right: #{$i}px !important; }
+    .h-pb#{$i} { padding-bottom: #{$i}px !important; }
+    .h-pl#{$i} { padding-left: #{$i}px !important; }
   }
 }
 
-.h-db { display: block; }
-.h-dib { display: inline-block; }
-.h-di { display: inline; }
-.h-dt { display: table; }
-.h-dtc { display: table-cell; }
+.h-db { display: block !important; }
+.h-dib { display: inline-block !important; }
+.h-di { display: inline !important; }
+.h-dt { display: table !important; }
+.h-dtc { display: table-cell !important; }
 
-.h-tac { text-align: center; }
-.h-tar { text-align: right; }
-.h-tal { text-align: left; }
+.h-tac { text-align: center !important; }
+.h-tar { text-align: right !important; }
+.h-tal { text-align: left !important; }
 
-.h-vat { vertical-align: top; }
-.h-vam { vertical-align: middle; }
-.h-vab { vertical-align: bottom; }
-.h-vabl { vertical-align: baseline; }
+.h-vat { vertical-align: top !important; }
+.h-vam { vertical-align: middle !important; }
+.h-vab { vertical-align: bottom !important; }
+.h-vabl { vertical-align: baseline !important; }
 
-.h-fl { float: left; }
-.h-fr { float: right; }
+.h-fl { float: left !important; }
+.h-fr { float: right !important; }
 
 .h-clearfix {
   background: #f00;

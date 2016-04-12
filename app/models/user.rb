@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
   has_many :blogs, dependent: :destroy
 
+  # currierwave用
+  mount_uploader :image, ImageUploader
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
@@ -35,4 +38,10 @@ class User < ActiveRecord::Base
   def self.create_unique_string
     SecureRandom.uuid
   end
+
+  private
+    # currierwave用
+    def user_params
+      params.require(:user).permit(:name, :description, :image)
+    end
 end

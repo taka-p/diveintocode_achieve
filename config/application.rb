@@ -25,5 +25,7 @@ module Achieve
 
     # devise用
     config.assets.initialize_on_precompile = false
+    # carriewave用
+    config.autoload_paths += Dir[Rails.root.join('app', 'uploaders')]
   end
 end

@@ -18,6 +18,11 @@
     .fa-facebook { border-color: $color-facebook; }
     .fa-twitter  { border-color: $color-twitter; }
   }
+  .fm-edit {
+    .img-thumbnail {
+      width: 150px;
+    }
+  }
 }
 
 // deviseが吐き出すエラーのトップレベル要素

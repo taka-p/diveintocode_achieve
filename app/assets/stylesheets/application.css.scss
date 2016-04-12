@@ -7,17 +7,17 @@
 @import  "base.scss";
 @import "setting.scss";
 
-/* 共用パーツ */
-@import  "helper.scss";
-
 /*  ライブラリ用 */
 @import "bootstrap-sprockets";
-@import "bootstrap";
+@import "bootstrap.scss";
 @import "bootstrap-social";
 @import "animate.css";
 
 /* ライブラリ上書き */
 @import "bootstrap_custum.scss";
+
+/* 共用パーツ */
+@import  "helper.scss";
 
 /* コントローラ */
 @import "top.scss";

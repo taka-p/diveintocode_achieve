@@ -25,6 +25,21 @@
       </div>
 
       <div class="field form-group">
+        <div class="h-mb10">
+          <%= f.label :image, 'プロフィール画像' %>
+        </div>
+        <div class="h-mb10" id="js_upload_replace">
+          <% if @user.image? %>
+            <%= image_tag @user.image.thumb.url, class: 'img-thumbnail' %>
+          <% else %>
+            <%= profile_img(@user, { class: 'img-thumbnail' }) %>
+          <% end %>
+        </div>
+        <%= f.file_field :image, id: 'js_upload_file' %>
+        <%= f.hidden_field :image_cache %>
+      </div>
+
+      <div class="field form-group">
         <%= f.submit t('update'), class: 'btn btn-primary' %>
       </div>
     <% end %>
