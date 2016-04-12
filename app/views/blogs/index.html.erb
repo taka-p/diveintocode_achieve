@@ -13,14 +13,24 @@
             <%= link_to blog.title, blog_path(blog) %>
           </h3>
         </div>
-        <div class="panel-body">
-            <%= blog.content %><br />
+        <div class="panel-body h-dt">
+          <div class="profile-img h-dtc">
+            <%= profile_img(blog.user, { class: 'img-thumbnail' }) %>
+          </div>
+
+          <div class="post-text h-dtc h-vat h-pl10">
+            <div class="text h-mb15">
+              <%= blog.content %>
+            </div>
             <em><%= blog.created_at %></em>
             <p><em>投稿者:<%= blog.user.name %></em></p>
             <% if blog.user_id == current_user.id %>
-              <%= link_to "編集する", edit_blog_path(blog) %>
-              <%= link_to "削除する", blog_path(blog), method: :delete %>
+              <div class="h-tar">
+                <%= link_to "編集する", edit_blog_path(blog) %>
+                <%= link_to "削除する", blog_path(blog), method: :delete %>
+              </div>
             <% end %>
+          </div>
         </div>
       </div>
     <% end %>
