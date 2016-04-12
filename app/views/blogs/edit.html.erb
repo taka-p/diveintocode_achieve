@@ -1,6 +1,10 @@
-<h1>Editing Blog</h1>
+<div class="blogs-wrap">
+  <h1>投稿編集</h1>
 
-<%= render 'form' %>
+  <div class="edit-content">
+    <%= render 'form' %>
 
-<%= link_to 'Show', @blog %> |
-<%= link_to 'Back', blogs_path %>
+    <%= link_to '投稿詳細', @blog %> |
+    <%= link_to '一覧に戻る', blogs_path %>
+  </div>
+</div>

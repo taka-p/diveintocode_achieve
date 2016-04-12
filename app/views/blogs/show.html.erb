@@ -1,14 +1,18 @@
-<p id="notice"><%= notice %></p>
+<div class="blogs-wrap">
+  <h2 class="page-header"><%= @blog.title %></h2>
 
-<p>
-  <strong>Title:</strong>
-  <%= @blog.title %>
-</p>
+  <div class="show-content">
+    <%= @blog.content %>
+  </div>
 
-<p>
-  <strong>Content:</strong>
-  <%= @blog.content %>
-</p>
-
-<%= link_to 'Edit', edit_blog_path(@blog) %> |
-<%= link_to 'Back', blogs_path %>
+  <div class="h-tar">
+    <div>
+      <strong>投稿者:</strong>
+      <%= @blog.user.name %>
+    </div>
+    <% if @blog.user.id == current_user.id %>
+      <%= link_to '編集する', edit_blog_path(@blog) %> |
+    <% end %>
+    <%= link_to '一覧に戻る', blogs_path %>
+    </div>
+</div>

@@ -28,9 +28,14 @@ class BlogsController < ApplicationController
   def create
     @blog = Blog.new(blog_params)
 
+    if @blog.user_id != current_user.id
+      redirect_to @blog, alert: '不正な操作が行われました'
+      return
+    end
+
     respond_to do |format|
       if @blog.save
-        format.html { redirect_to @blog, notice: 'Blog was successfully created.' }
+        format.html { redirect_to @blog, notice: '記事を投稿しました' }
         format.json { render :show, status: :created, location: @blog }
       else
         format.html { render :new }
@@ -58,7 +63,7 @@ class BlogsController < ApplicationController
   def destroy
     @blog.destroy
     respond_to do |format|
-      format.html { redirect_to blogs_url, notice: 'Blog was successfully destroyed.' }
+      format.html { redirect_to blogs_url, notice: '投稿を削除しました' }
       format.json { head :no_content }
     end
   end
@@ -71,6 +76,6 @@ class BlogsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def blog_params
-      params.require(:blog).permit(:title, :content)
+      params.require(:blog).permit(:title, :content, :user_id)
     end
 end

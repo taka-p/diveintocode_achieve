@@ -1,16 +1,28 @@
-<p id="notice"><%= notice %></p>
+<div class="blogs-wrap">
+  <h2 class="page-header">投稿一覧</h2>
 
-<%= link_to 'New Blog', new_blog_path %>
+  <div class="index-content">
+    <div class="h-mb15">
+      <%= link_to 'New Blog', new_blog_path, class: 'btn btn-primary h-mb10' %>
+    </div>
 
-<% @blogs.each do |blog| %>
-  <div class="panel panel-primary">
-    <div class="panel-heading">
-      <h3 class="panel-title"><%= blog.title %></h3>
-    </div>
-    <div class="panel-body">
-        <%= blog.content %><br />
-        <em><%= blog.created_at %></em>
-        <p><em>投稿者:<%= blog.user.name %></em></p>
-    </div>
+    <% @blogs.each do |blog| %>
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            <%= link_to blog.title, blog_path(blog) %>
+          </h3>
+        </div>
+        <div class="panel-body">
+            <%= blog.content %><br />
+            <em><%= blog.created_at %></em>
+            <p><em>投稿者:<%= blog.user.name %></em></p>
+            <% if blog.user_id == current_user.id %>
+              <%= link_to "編集する", edit_blog_path(blog) %>
+              <%= link_to "削除する", blog_path(blog), method: :delete %>
+            <% end %>
+        </div>
+      </div>
+    <% end %>
   </div>
-<% end %>
+</div>
