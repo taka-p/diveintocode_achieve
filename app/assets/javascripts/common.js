@@ -28,4 +28,7 @@ $(function () {
 });
 
 /* loadイベント */
-window.onload = function () {};
+$(window).load(function () {
+    // $("#js_loading").fadeOut();
+    // $("#js_loading_container").fadeIn();
+});

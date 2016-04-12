@@ -20,22 +20,6 @@ p {
   text-align: center;
 }
 
-.btn {
-  background: white;
-  border: 1px solid #DDD;
-  border-radius: 20px;
-  -moz-border-radius: 20px;
-  -webkit-border-radius: 20px;
-  width: 200px;
-  padding: 10px 0;
-  text-align: center;
-  margin: auto auto 15px;
-  text-decoration: none;
-  display: block;
-  font-weight: bold;
-  font-size: 20px;
-}
-
 /* サイト名 */
 .site h1 a {
   color: #FFFFFF;
@@ -79,3 +63,12 @@ p {
   font-size: 14px
 }
 
+//.app-container { display: none; }
+//
+//.loading {
+//  position: absolute;
+//  top:  50%;
+//  left: 50%;
+//  margin-top:  -50px;
+//  margin-left: -50px;
+//}

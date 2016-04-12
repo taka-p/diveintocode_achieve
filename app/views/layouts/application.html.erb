@@ -11,7 +11,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <nav class="navbar navbar-default">
+  <nav class="navbar navbar-default h-mb0">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
@@ -54,6 +54,17 @@
     <div class="js_alert alert alert-danger" role="alert"><%= alert %></div>
   <% end %>
 
-  <%= yield %>
+<%
+=begin
+%>
+  <div id="js_loading" class="loading">
+    <%= image_tag "loading.gif" %>
+  </div>
+<%
+=end
+%>
+  <div id="js_loading_container" class="app-container">
+    <%= yield %>
+  </div>
 </body>
 </html>
