@@ -1,20 +1,24 @@
 <div class="users-wrap">
-  <% @users.each do |user| %>
-    <div class="row">
-      <div class="col-sm-6 col-md-4">
-        <div class="thumbnail h-dt">
-          <div class="profile-img h-dtc h-vam">
-            <%= profile_img(user, { class: 'img-thumbnail' }) %>
-          </div>
-          <div class="caption h-dtc h-vam h-pl15">
-            <h3><%= user.name %></h3>
-            <% if user.profile %>
-              <p class="h-tal h-mb15"><%= user.profile %></p>
-            <% end %>
-            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+  <h2 class="page-header">ユーザー一覧</h2>
+
+  <div class="users-content">
+    <% @users.each do |user| %>
+      <div class="row">
+        <div class="col-sm-6 col-md-4">
+          <div class="thumbnail h-dt">
+            <div class="profile-img h-dtc h-vam">
+              <%= profile_img(user, { class: 'img-thumbnail' }) %>
+            </div>
+            <div class="caption h-dtc h-vam h-pl15">
+              <h3><%= user.name %></h3>
+              <% if user.profile %>
+                <p class="h-tal h-mb15"><%= user.profile %></p>
+              <% end %>
+              <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
