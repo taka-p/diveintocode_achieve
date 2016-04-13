@@ -3,29 +3,29 @@
 **/
 
 /* 基盤系 */
-@import "reset.css";
-@import "base.scss";
-@import "setting.scss";
+@import "reset";
+@import "base";
+@import "setting";
 
 /*  ライブラリ用 */
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "bootstrap-social";
-@import "animate.css";
+@import "animate";
 
 /* ライブラリ上書き */
-@import "bootstrap_custum.scss";
+@import "bootstrap_custum";
 
 /* 共用パーツ */
-@import  "helper.scss";
-@import  "common.scss";
+@import  "helper";
+@import  "common";
 
 /* コントローラ */
-@import "top.scss";
-@import "devise.scss";
-@import "users.scss";
-@import "blogs.scss";
+@import "top";
+@import "devise";
+@import "users";
+@import "blogs";
 
 /* レスポンシブ */
-@import "pc.scss";
-@import "mobile.scss";
+@import "pc";
+@import "mobile";

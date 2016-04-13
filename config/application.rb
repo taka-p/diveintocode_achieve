@@ -27,5 +27,7 @@ module Achieve
     config.assets.initialize_on_precompile = false
     # carriewave用
     config.autoload_paths += Dir[Rails.root.join('app', 'uploaders')]
+    # precompile設定
+    Rails.application.config.assets.precompile += %w( *.eot *.woff *.ttf *.svg *.otf *.png *.jpg *.jpeg *.gif vendor.css vendor.js )
   end
 end
