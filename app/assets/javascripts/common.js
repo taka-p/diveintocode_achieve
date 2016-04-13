@@ -12,7 +12,7 @@ var consts = {
 };
 
 /* readyイベント */
-$(function () {
+$(document).on("page:change", function(){
     var util = new Util;
 
     // alertを1500掛けて消す
@@ -28,7 +28,7 @@ $(function () {
 });
 
 /* loadイベント */
-$(window).load(function () {
+$(document).on("ready page:load", function(){
     // $("#js_loading").fadeOut();
     // $("#js_loading_container").fadeIn();
 });
