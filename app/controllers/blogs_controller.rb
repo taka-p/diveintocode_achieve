@@ -28,6 +28,7 @@ class BlogsController < ApplicationController
   def create
     @blog = Blog.new(blog_params)
 
+    # TODO: フィルタを作成
     if @blog.user_id != current_user.id
       redirect_to @blog, alert: '不正な操作が行われました'
       return
@@ -47,6 +48,11 @@ class BlogsController < ApplicationController
   # PATCH/PUT /blogs/1
   # PATCH/PUT /blogs/1.json
   def update
+    if @blog.user_id != current_user.id
+      redirect_to blogs_path, alert: '不正な操作が行われました'
+      return
+    end
+
     respond_to do |format|
       if @blog.update(blog_params)
         format.html { redirect_to @blog, notice: 'Blog was successfully updated.' }
@@ -61,6 +67,11 @@ class BlogsController < ApplicationController
   # DELETE /blogs/1
   # DELETE /blogs/1.json
   def destroy
+    if @blog.user_id != current_user.id
+      redirect_to blogs_path, alert: '不正な操作が行われました'
+      return
+    end
+
     @blog.destroy
     respond_to do |format|
       format.html { redirect_to blogs_url, notice: '投稿を削除しました' }
