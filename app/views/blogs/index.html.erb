@@ -19,8 +19,8 @@
           </div>
 
           <div class="post-text h-dtc h-vat h-pl15">
-            <div class="text h-mb15">
-              <%= blog.content %>
+            <div class="text simple-text-l h-mb15">
+              <%= simple_format(h(blog.content)) %>
             </div>
             <div class="h-tal">
               <div><%= blog.created_at %></div>

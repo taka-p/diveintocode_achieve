@@ -1,8 +1,8 @@
 <div class="blogs-wrap">
   <h2 class="page-header"><%= @blog.title %></h2>
 
-  <div class="show-content">
-    <%= @blog.content %>
+  <div class="show-content simple-text-l">
+    <%= simple_format(h(@blog.content)) %>
   </div>
 
   <div class="h-tar">

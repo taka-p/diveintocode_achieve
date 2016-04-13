@@ -12,7 +12,7 @@
             <div class="caption h-dtc h-vam h-pl15">
               <h3><%= user.name %></h3>
               <% if user.profile %>
-                <p class="h-tal h-mb15"><%= user.profile %></p>
+                <div class="simple-text-l h-mb15"><%= simple_format(h(user.profile)) %></div>
               <% end %>
               <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
             </div>
