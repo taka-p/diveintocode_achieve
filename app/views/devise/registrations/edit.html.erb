@@ -10,19 +10,28 @@
         <%= f.text_field :name, autofocus: true, class: 'form-control', placeholder: 'お名前を入力して下さい' %>
       </div>
 
-      <div class="field form-group">
-        <%= f.label :email %>
-        <%= f.email_field :email, class: 'form-control', placeholder: 'example@gmail.com' %>
-      </div>
-
-      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% if @user.provider.empty? %>
+        <div class="field form-group">
+          <%= f.label :email %>
+          <%= f.email_field :email, class: 'form-control', placeholder: 'example@gmail.com' %>
+        </div>
       <% end %>
 
-      <div class="field form-group">
-        <%= f.label :current_password, t('current_password') %>
-        <%= f.password_field :current_password, autocomplete: "off", class: 'form-control', placeholder: '現在のパスワードを入力して下さい' %>
-      </div>
+<%
+=begin
+パスワードは非表示
+%>
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+        <% end %>
+
+        <div class="field form-group">
+          <%= f.label :current_password, t('current_password') %>
+          <%= f.password_field :current_password, autocomplete: "off", class: 'form-control', placeholder: '現在のパスワードを入力して下さい' %>
+        </div>
+<%
+=end
+%>
 
       <div class="field form-group">
         <%= f.label :profile, '自己紹介' %>
