@@ -227,7 +227,8 @@ ja:
   devise:
     omniauth_callbacks:
       user:
-        success: 'ログインに成功しました'
+        success: '%{kind} アカウントによる認証に成功しました'
+        failure: "%{kind} アカウントによる認証に失敗しました"
 
   # メール用
   welcome: ようこそ

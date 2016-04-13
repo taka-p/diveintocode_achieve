@@ -3,9 +3,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     @user = User.find_for_facebook_oauth(request.env["omniauth.auth"], current_user)
 
     # Hack - omniauthを利用する場合のみ、無理矢理confirmableを回避
-    # skip_confirmation_notification - これでもっとスマート?
-    @user.skip_confirmation!
-    @user.save!
+    @user.skip_confirmation_notification!
 
     if @user.persisted?
       set_flash_message(:notice, :success, kind: "Facebook") if is_navigational_format?
@@ -20,9 +18,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     @user = User.find_for_twitter_oauth(request.env["omniauth.auth"], current_user)
 
     # Hack - omniauthを利用する場合のみ、無理矢理confirmableを回避
-    # skip_confirmation_notification - これでもっとスマート?
-    @user.skip_confirmation!
-    @user.save!
+    @user.skip_confirmation_notification!
 
     if @user.persisted?
       set_flash_message(:notice, :success, kind: "Twitter") if is_navigational_format?
