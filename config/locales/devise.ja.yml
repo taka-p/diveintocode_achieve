@@ -102,7 +102,7 @@ ja:
         not_found_in_database: "メールアドレスまたはパスワードが無効です。"
         timeout: "一定時間が経過したため、再度ログインが必要です"
         unauthenticated: "ログインまたは登録が必要です。"
-        unconfirmed: "送られたメールのリンクからアカウントを有効化して下さい。"
+        unconfirmed: "アカウントによる認証に失敗しました。"
     sessions:
       signed_in: 'ログインしました。'
 #      signed_in: 'Signed in successfully.'

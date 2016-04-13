@@ -10,12 +10,16 @@ class User < ActiveRecord::Base
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(provider: auth.provider, uid: auth.uid).first
     unless user
+      # 認証時、emailの提供を拒否された場合はランダムなemailを作成
+      auth.info.email = User.create_unique_email if auth.info.email.nil?
+
       user = User.create(name: auth.extra.raw_info.name,
                          provider_name: auth.extra.raw_info.name,
                          provider: auth.provider,
                          uid: auth.uid,
                          email: auth.info.email,
                          password: Devise.friendly_token[0, 20])
+
     end
     user
   end
