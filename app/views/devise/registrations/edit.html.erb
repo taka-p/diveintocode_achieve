@@ -58,6 +58,10 @@
       </div>
     <% end %>
 
+    <div class="h-mb10">
+      <%= link_to 'アカウント削除', user_registration_path(@user), { method: :delete, data: { confirm: '本当にアカウントを削除しますか？' }, class: 'btn btn-danger' } %>
+    </div>
+
     <%= link_to t('戻る'), :back, class: 'btn btn-default' %>
   </div>
 </div>
