@@ -38,7 +38,7 @@ Util.prototype.uploadThumb = function (inputElm, replaceArea) {
             // クリア
             $(this).val('');
             replaceImg.hide();
-            replaceArea.append('<p class="text-danger">不正なファイル形式です</p>');
+            replaceArea.append('<p class="text-danger h-tal h-fwb"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> 不正なファイル形式です</p>');
             return;
         }
 
