@@ -21,7 +21,4 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show]
 
   root 'top#index'
-
-  # 404を捕捉
-  match "*path" => "application#handle_404", via: :all
 end

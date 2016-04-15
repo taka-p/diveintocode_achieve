@@ -163,6 +163,10 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (11.1.2)
+    rambulance (0.3.1)
+      actionpack
+      activesupport
+      railties
     rdoc (4.2.2)
       json (~> 1.4)
     ref (2.0.0)
@@ -246,6 +250,7 @@ DEPENDENCIES
   omniauth-twitter
   pg
   rails (= 4.2.0)
+  rambulance
   rmagick
   rspec-rails
   sass-rails (~> 5.0)
