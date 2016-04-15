@@ -10,11 +10,13 @@ Rails.application.routes.draw do
       omniauth_callbacks: "users/omniauth_callbacks"
   }
 
-  get 'company/show' => 'company#show'
-  get 'inquiry/index' => 'inquiry#index'
-  post 'inquiry/index' => 'inquiry#index'
+  get 'company/show'     => 'company#show'
+  get 'about'            => 'about#company_overview'
+  get 'inquiry/index'    => 'inquiry#index'
+  post 'inquiry/index'   => 'inquiry#index'
   post 'inquiry/confirm' => 'inquiry#confirm'
-  post 'inquiry/thanks' => 'inquiry#thanks'
+  post 'inquiry/thanks'  => 'inquiry#thanks'
+
   resources :blogs
   resources :users, only: [:index, :show]
 
