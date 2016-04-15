@@ -41,4 +41,6 @@ Rails.application.configure do
 
   # devise用の指定
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  BetterErrors::Middleware.allow_ip! '127.0.0.1'
 end
