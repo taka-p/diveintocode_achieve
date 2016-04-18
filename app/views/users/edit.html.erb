@@ -1,0 +1,11 @@
+<div class="users-wrap">
+  <h2 class="page-header">プロフィール編集</h2>
+
+  <div class="users-content">
+    <%= form_for current_user do |f| %>
+      <%= f.text_field :name %>
+      <%= f.text_field :profile %>
+      <%= f.submit %>
+    <% end %>
+  </div>
+</div>

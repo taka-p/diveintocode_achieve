@@ -63,7 +63,7 @@ Rails.application.routes.draw do
   post 'inquiry/thanks'  => 'inquiry#thanks'
 
   resources :blogs
-  resources :users, only: [:index, :show]
+  resources :users, only: [:index, :show, :edit, :update]
 
   root 'top#index'
 end

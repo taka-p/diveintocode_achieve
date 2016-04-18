@@ -79,4 +79,15 @@ Rails.application.configure do
 
   # devise用
   config.action_mailer.default_url_options = { host: 'achieve235711.herokuapp.com' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings =
+  {
+      :user_name => ENV['RAILS_ACHIEVE_MAILER_USER_ID'],
+      :password => ENV['RAILS_ACHIEVE_MAILER_PASSWORD'],
+      :domain => "smtp.gmail.com",
+      :address => "smtp.gmail.com",
+      :port => 587,
+      :authentication => 'login',
+      :enable_starttls_auto => true
+  }
 end

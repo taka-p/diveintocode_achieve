@@ -1,2 +1,21 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="users-wrap">
+  <h2 class="page-header"><%= @user.name %></h2>
+
+  <div class="users-content">
+    <div class="h-mb20">
+      <h4>プロフィール画像</h4>
+      <%= profile_img(@user, { class: 'img-thumbnail' }) %>
+    </div>
+
+    <% if @user.profile %>
+      <div class="h-mb15">
+        <h4>自己紹介</h4>
+        <%= @user.profile %>
+      </div>
+    <% end %>
+
+    <% if current_user && current_user.id === @user.id %>
+     <%= link_to '編集', edit_user_registration_path(current_user.id) %>
+    <% end %>
+  </div>
+</div>
