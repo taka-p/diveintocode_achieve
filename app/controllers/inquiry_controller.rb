@@ -17,8 +17,9 @@ class InquiryController < ApplicationController
   end
 
   def thanks
-    @inquiry = Inquiry.create(inquiry_params)
-    # DAY3ではメーラーの実装無し
+    @inquiry = Inquiry.new(inquiry_params)
+    InquiryMailer.send_email(@inquiry).deliver
+
     render :action => 'thanks'
   end
 

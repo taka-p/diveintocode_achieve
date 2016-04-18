@@ -1,5 +1,5 @@
 <div class="inquiry-wrap">
-  <h1>お問い合わせ</h1>
+  <h2 class="page-header">お問い合わせ</h2>
 
   <% # 検証失敗の場合はエラーを表示 %>
   <% if @inquiry.errors.any? %>
@@ -13,25 +13,47 @@
     </div>
   <% end %>
 
-  <%= form_for @inquiry, :url => inquiry_confirm_path do |f|  %>
-    <table class="table">
-      <tr>
-        <th>名前<span class="text-danger">（必須）</span></th>
-        <td>
-            <%= f.text_field :name, { placeholder: '田中 太郎', value: @inquiry.name } %>
-        </td>
-      </tr>
-      <tr>
-        <th>メールアドレス<span class="text-danger">（必須）</span></th>
-        <td><%= f.text_field :email, { placeholder: 'example.tanaka@gmail.com', value: @inquiry.email } %></td>
-      </tr>
-      <tr>
-        <th>お問い合わせ内容</th>
-        <td><%= f.text_area :message, { placeholder: 'お問い合わせ内容を入力してください', value: @inquiry.message } %></td>
-      </tr>
-    </table>
-    <%= f.submit '確認', class: 'btn btn-primary' %>
-  <% end %>
+  <div class="inquiry-content">
+    <%
+      if @inquiry.name
+        value_name = @inquiry.name
+      elsif current_user.name
+        value_name = current_user.name
+      else
+        value_name = ''
+      end
 
-  <%= link_to 'TOPに戻る', root_path, class: 'btn' %>
+      if @inquiry.email
+        value_email = @inquiry.email
+      elsif current_user.provider.empty?
+        value_email = current_user.email
+      else
+        value_email = ''
+      end
+    %>
+    <%= form_for @inquiry, :url => inquiry_confirm_path do |f|  %>
+        <div class="field form-group">
+          <%= f.label :name do %>
+            お名前<span class="text-danger">（必須）</span>
+          <% end %>
+          <%= f.text_field :name, { class: 'form-control', placeholder: '田中 太郎', value: value_name } %>
+        </div>
+        <div class="field form-group">
+          <%= f.label :email do %>
+              メールアドレス<span class="text-danger">（必須）</span>
+          <% end %>
+          <%= f.text_field :email, { class: 'form-control', placeholder: 'example.tanaka@gmail.com', value: value_email } %>
+        </div>
+        <div class="field form-group">
+          <%= f.label :message do  %>
+              お問い合わせ内容<span class="text-danger">（必須）</span>
+          <% end %>
+          <%= f.text_area :message, { class: 'form-control', placeholder: 'お問い合わせ内容を入力してください', value: @inquiry.message } %>
+        </div>
+        <div class="field form-group">
+          <%= f.submit '確認', class: 'btn btn-primary' %>
+        </div>
+    <% end %>
+    <%= link_to 'TOPに戻る', root_path, class: 'btn btn-default' %>
+  </div>
 </div>

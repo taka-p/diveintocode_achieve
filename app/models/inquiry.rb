@@ -17,4 +17,5 @@ class Inquiry < ActiveRecord::Base
   validates :email,
    presence: { message: 'メールアドレスを入力して下さい' },
    format: { with: VALID_EMAIL_REGEXP, message: 'メールアドレスが不正です' }
+  validates :message,  presence: { message: 'お問い合わせ内容を入力して下さい' }
 end

@@ -1,37 +1,31 @@
 <div class="inquiry-wrap">
-  <h1>お問い合わせ内容確認</h1>
+  <h2 class="page-header">お問い合わせ内容確認</h2>
 
   <%= form_for @inquiry, :url => inquiry_thanks_path do |f| %>
-    <table class="table">
-      <tr>
-        <th>名前</th>
-        <td>
-          <%= f.hidden_field :name %>
-          <%= @inquiry.name %>
-        </td>
-      </tr>
-      <tr>
-        <th>メールアドレス</th>
-        <td>
-          <%= f.hidden_field :email %>
-          <%= @inquiry.email %>
-        </td>
-      </tr>
-      <tr>
-        <th>お問い合わせ内容</th>
-        <td>
-          <%= f.hidden_field :message %>
-          <%= @inquiry.message %>
-        </td>
-      </tr>
-    </table>
-    <%= f.submit '送信', :class => 'btn btn-primary' %>
+    <div class="field form-group">
+      <div class="h-fwb">お名前</div>
+      <%= f.hidden_field :name %>
+      <%= @inquiry.name %>
+    </div>
+    <div class="field form-group">
+      <div class="h-fwb">メールアドレス</div>
+      <%= f.hidden_field :email %>
+      <%= @inquiry.email %>
+    </div>
+    <div class="field form-group message">
+      <div class="h-fwb">お問い合わせ内容</div>
+      <%= f.hidden_field :message %>
+      <%= simple_format(h(@inquiry.message)) %>
+    </div>
+    <div class="field form-group">
+      <%= f.submit '送信', :class => 'btn btn-primary' %>
+    </div>
   <% end %>
 
   <%= form_for @inquiry, :url => inquiry_index_path do |f| %>
     <%= f.hidden_field :name %>
     <%= f.hidden_field :email %>
     <%= f.hidden_field :message %>
-    <%= f.submit '戻る', { name: 'back', class: 'btn btn-primary' }  %>
+    <%= f.submit '戻る', { name: 'back', class: 'btn btn-default' }  %>
   <% end %>
 </div>
