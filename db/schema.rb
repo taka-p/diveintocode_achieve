@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160412043610) do
+ActiveRecord::Schema.define(version: 20160418052633) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "attachments", force: :cascade do |t|
+    t.integer  "page_id"
+    t.binary   "file"
+    t.string   "filename"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "blogs", force: :cascade do |t|
     t.string   "title"
@@ -24,10 +33,27 @@ ActiveRecord::Schema.define(version: 20160412043610) do
     t.integer  "user_id"
   end
 
+  create_table "emails", force: :cascade do |t|
+    t.integer  "page_id"
+    t.string   "subject"
+    t.datetime "receivedate"
+    t.string   "messageid"
+    t.text     "header"
+    t.text     "body"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "inquiries", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
     t.string   "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "pages", force: :cascade do |t|
+    t.string   "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

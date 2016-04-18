@@ -1,0 +1,14 @@
+<h2 class="page-headr">受信メール</h2>
+
+<div class="box">
+  <%= link_to "受信箱", :action => "list" %>
+</div>
+<br>
+
+<% @page = Page.find(@email.page_id) %>
+<table width="60%">
+  <tr><th>subject</th><td><%=h @email.subject %></td></tr>
+  <tr><th>address</th><td><%=h @page.address %></td></tr>
+  <tr><th>receivedate</th><td><%=h @email.receivedate %></td></tr>
+  <tr><th>body</th><td><%= simple_format(@email.body) %></td></tr>
+</table>

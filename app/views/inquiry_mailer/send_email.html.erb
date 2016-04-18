@@ -1,10 +1,1 @@
-下記の内容でお問い合わせを承りました。
-
-<div>
-  --------------------------
-  <div><b>お名前:</b> <%= @inquiry.name %></div>
-  <div><b>メールアドレス:</b> <%= @inquiry.email %></div>
-  <div><b>お問い合わせ内容:</b> </div>
-  <%= simple_format(h(@inquiry.message)) %>
-  --------------------------
-</div>
+<div><span class="h-fwb">名前:</span> <%= @inquiry.name %></div><div><span class="h-fwb">メールアドレス:</span> <%= @inquiry.email %></div><div><span class="h-fwb">内容:</span> </div><div><%= simple_format(h(@inquiry.message)) %></div>

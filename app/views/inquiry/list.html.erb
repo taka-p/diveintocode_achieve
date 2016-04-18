@@ -1,0 +1,21 @@
+<div class="inquiry-wrap">
+  <h2 class="page-header">問い合わせ一覧</h2>
+  <%= link_to "問い合わせ情報を更新", inquiry_receive_email_path, class: 'btn btn-primary h-mb20' %>
+
+  <div class="inquiry-content">
+    <% @emails.each_with_index do |e, i| %>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">問い合わせ<%= i+1 %></h3>
+        </div>
+        <div class="panel-body message">
+          <div>
+            <span class="h-fwb">問い合わせ日時:</span>
+            <%=h e.receivedate %>
+          </div>
+          <%= simple_format(e.body) %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
