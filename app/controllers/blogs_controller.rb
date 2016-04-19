@@ -38,9 +38,7 @@ class BlogsController < ApplicationController
   # POST /blogs
   # POST /blogs.json
   def create
-    # day12のためコメントアウト @blog = Blog.new(blog_params)
-    not_strong_params = params.require(:blog).permit!
-    @blog = Blog.new(not_strong_params)
+    @blog = Blog.new(blog_params)
 
     # 投稿を操作するユーザがログイン中のユーザか判定
     if @blog.user_id != current_user.id
