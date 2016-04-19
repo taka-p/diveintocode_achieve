@@ -26,7 +26,7 @@ class InquiryController < ApplicationController
 
   # 受信箱一覧
   def list
-    if params[:from].blank?
+    if params[:received].blank?
       InquiryMailer.receive_trigger.deliver
     end
     @emails = Email.where(subject: 'Achieve').reverse_order
