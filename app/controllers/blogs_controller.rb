@@ -39,11 +39,12 @@ class BlogsController < ApplicationController
   # POST /blogs.json
   def create
     @blog = Blog.new(blog_params)
+
     # 投稿を操作するユーザがログイン中のユーザか判定
-    if @blog.user_id != current_user.id
-      redirect_to blogs_path, alert: '不正な操作が行われました'
-      return
-    end
+    # if @blog.user_id != current_user.id
+    #   redirect_to blogs_path, alert: '不正な操作が行われました'
+    #   return
+    # end
 
     respond_to do |format|
       if @blog.save
