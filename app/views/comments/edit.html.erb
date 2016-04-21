@@ -3,4 +3,4 @@
 <%= render partial: 'comments/form', locals: { comment: @comment } %>
 
 <%= link_to 'Show', blog_comment_path(@comment.blog_id, @comment) %> |
-<%= link_to 'Back', comments_path %>
+<%= link_to 'Back', blog_path(@comment.blog_id) %>
