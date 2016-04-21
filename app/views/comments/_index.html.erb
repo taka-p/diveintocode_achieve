@@ -5,7 +5,11 @@
           <%= comment.user %>
           <%= comment.content %>
           <%= link_to 'Edit', edit_blog_comment_path(@blog.id, comment) %>
-          <%= link_to 'Destroy', blog_comment_path(@blog.id, comment), method: :delete, remote: true, data: { confirm: '本当にコメントを削除しますか？' } %>
+          <%= link_to 'Destroy', blog_comment_path(@blog.id, comment), method: :delete, remote: true, data: {
+              confirm: '本当にコメントを削除しますか？',
+              commit: '削除',
+              cancel: 'やめる'
+          }, title: 'コメント削除確認' %>
         </li>
       <% end %>
   <% end %>

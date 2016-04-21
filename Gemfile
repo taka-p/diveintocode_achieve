@@ -33,6 +33,7 @@ gem 'therubyracer', platforms: :ruby
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
 gem 'bootstrap-social-rails'
+gem 'data-confirm-modal', github: 'ifad/data-confirm-modal'
 
 gem 'carrierwave'
 gem 'rmagick'
