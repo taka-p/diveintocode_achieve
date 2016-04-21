@@ -32,7 +32,7 @@ class CommentsController < ApplicationController
         format.json { render :show, status: :created, location: @comment }
         # Ajax用
         @blog = @comment.blog
-        format.js
+        format.js { render :index, notice: 'コメントを投稿しました' }
       else
         format.html { render :new }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
@@ -61,6 +61,9 @@ class CommentsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to blog_path(@comment.blog_id), notice: 'Comment was successfully destroyed.' }
       format.json { head :no_content }
+      # Ajax用
+      @blog = @comment.blog
+      format.js { render :index, notice: 'コメントを削除しました' }
     end
   end
 
