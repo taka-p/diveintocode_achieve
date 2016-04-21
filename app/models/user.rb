@@ -30,6 +30,7 @@
 
 class User < ActiveRecord::Base
   has_many :blogs, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   # currierwave用
   mount_uploader :image, ImageUploader
