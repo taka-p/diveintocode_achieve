@@ -1,0 +1,8 @@
+var render_str = '<%= escape_javascript(render partial: "comments/index", locals: { comments: @blog.comments }) %>'
+
+replace(render_str);
+
+function replace(str) {
+  $('#js_comments_area').html(str);
+  $('input[type=text]').val('');
+}
