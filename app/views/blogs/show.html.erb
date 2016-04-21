@@ -5,6 +5,8 @@
     <%= simple_format(h(@blog.content)) %>
   </div>
 
+  <%= render partial: 'comments/form', locals: { comment: @comment } %>
+
   <div class="h-tar">
     <div>
       <strong>投稿者:</strong>
