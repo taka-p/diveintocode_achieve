@@ -1,6 +1,6 @@
 <h1>Editing Comment</h1>
 
-<%= render 'form' %>
+<%= render partial: 'comments/form', locals: { comment: @comment } %>
 
-<%= link_to 'Show', @comment %> |
+<%= link_to 'Show', blog_comment_path(@comment.blog_id, @comment) %> |
 <%= link_to 'Back', comments_path %>

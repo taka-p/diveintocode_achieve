@@ -4,8 +4,8 @@
         <li>
           <%= comment.user %>
           <%= comment.content %>
-          <%= link_to 'Show', comment %>
-          <%= link_to 'Edit', edit_comment_path(comment) %>
+          <%= link_to 'Show', blog_comment_path(@blog, comment) %>
+          <%= link_to 'Edit', edit_blog_comment_path(@blog, comment) %>
           <%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %>
         </li>
       <% end %>
