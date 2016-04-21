@@ -1,11 +1,13 @@
 <ul>
   <% comments.each do |comment| %>
       <% unless comment.id.nil? %>
-        <%= comment.user %>
-        <%= comment.content %>
-        <%= link_to 'Show', comment %>
-        <%= link_to 'Edit', edit_comment_path(comment) %>
-        <%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <li>
+          <%= comment.user %>
+          <%= comment.content %>
+          <%= link_to 'Show', comment %>
+          <%= link_to 'Edit', edit_comment_path(comment) %>
+          <%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </li>
       <% end %>
   <% end %>
 </ul>
