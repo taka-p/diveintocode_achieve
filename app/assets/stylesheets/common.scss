@@ -75,11 +75,13 @@ $footer-height: 50px;
     color: #666666;
     font-size: 14px
   }
-
-  .simple-text-l p {
-    text-align: left;
-  }
 }
+
+.simple-text-l p {
+  text-align: left;
+  margin: 0;
+}
+
 
 //.l-app-container { display: none; }
 //
