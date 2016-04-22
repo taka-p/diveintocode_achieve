@@ -3,6 +3,8 @@
  * prefixとして"h-"を付与
 **/
 
+.h-w100p { width: 100%; }
+
 /* margin、paddingのヘルパーを5px毎に作成 */
 @for $i from 0 through 50 {
   @if $i % 5 == 0 or $i == 0 {

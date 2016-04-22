@@ -1,0 +1,8 @@
+<div class="questions-wrap">
+  <h2 class="page-header">回答編集</h2>
+  <div class="answers-edit h-mb20">
+    <%= render partial: 'answers/form', locals: { answer: @answer, local: 'edit' } %>
+  </div>
+
+  <%= link_to '質問詳細に戻る', @question, class: 'btn btn-default' %>
+</div>

@@ -1,0 +1,22 @@
+var render_str = '<%= escape_javascript(render partial: "answers/show", locals: { answers: @question.answers }) %>'
+
+<% if @answer.user_id != current_user.id %>
+  var alert_elm = '<div class="js_alert alert alert-danger animated fadeIn" role="alert">' +
+          '不正な操作が行われました' +
+          '</div>',
+      alert_target = $('#js_alert_target');
+
+  $('html, body').animate({ scrollTop: 0 }, 'fast');
+  alert_target.html(alert_elm);
+  alert_target.fadeIn();
+
+  util = new Util;
+  util.elmVanising(alert_target, 1500);
+<% else %>
+  replace(render_str);
+<% end %>
+
+function replace(str) {
+  $('#js_answers_area').html(str);
+  $('textarea').val('');
+}

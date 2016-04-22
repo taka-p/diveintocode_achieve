@@ -1,0 +1,35 @@
+<%
+  if local === 'show'
+    submit_str = '回答する'
+    ajax_flg = true
+  else
+    submit_str = '回答を編集する'
+    ajax_flg = false
+  end
+%>
+
+<%= form_for(answer, remote: ajax_flg) do |f| %>
+  <% if answer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(answer.errors.count, "error") %> prohibited this answer from being saved:</h2>
+
+      <ul>
+      <% answer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="fm-answer h-dt">
+    <div class="form-group h-dtc h-pr10 h-w100p">
+      <%= f.hidden_field :question_id %>
+      <%= f.hidden_field :user_id %>
+      <%= f.text_area :content, class: 'form-control', placeholder: '回答を入力してください', rows: 1 %>
+    </div>
+
+    <div class="form-group h-dtc h-vat">
+      <%= f.submit submit_str, class: 'btn btn-primary' %>
+    </div>
+  </div>
+<% end %>

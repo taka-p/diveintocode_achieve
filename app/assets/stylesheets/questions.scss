@@ -1,0 +1,66 @@
+/**
+ * Questions.scss
+ * Questions関連ページ（ログイン周りはdevise.scss）
+ **/
+
+.questions-wrap {
+  width: 800px;
+  margin: 0 auto;
+  padding: 10px;
+  .question-list,
+  .question-detail {
+    .content-text p {
+      text-align: left;
+    }
+  }
+  .question-list {
+    width: 530px;
+    margin: 0 auto;
+    .img-thumbnail {
+      width: 100px;
+    }
+  }
+  .question-item:not(:last-child) {
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #ddd;
+  }
+  .question-detail {
+    .profile-img {
+      width: 150px;
+    }
+    .content-text {
+      font-size: 20px;
+    }
+  }
+  .radio-field {
+    label {
+      padding: 0 5px 0;
+    }
+  }
+  .answer-wrap {
+    margin: 0 auto;
+    padding: 0 10px 10px;
+    .answer-item:not(:last-child) {
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #ddd;
+    }
+    .content-text {
+      font-size: 14px;
+    }
+    .profile-img {
+      width: 100px;
+    }
+  }
+  .answers-edit {
+    .fm-answer {
+      width: auto;
+      margin: 0;
+    }
+  }
+  .fm-answer {
+    width: 520px;
+    margin: 0 auto;
+  }
+}

@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  resources :comments
-
   get 'users/index'
 
   get 'users/show'
@@ -23,9 +21,16 @@ Rails.application.routes.draw do
   post 'inquiry/confirm' => 'inquiry#confirm'
   post 'inquiry/thanks' => 'inquiry#thanks'
 
+
   resources :blogs do
     resources :comments
   end
+  resources :comments
+
+  resources :questions do
+    resources :answers
+  end
+  resources :answers
 
   resources :users, only: [:index, :show, :edit, :update]
 

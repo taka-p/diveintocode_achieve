@@ -1,0 +1,7 @@
+<div class="questions-wrap">
+  <h2 class="page-header">新規質問投稿</h2>
+
+  <%= render partial: 'questions/form', locals: { question: @question, local: 'new' } %>
+
+  <%= link_to '質問一覧に戻る', questions_path %>
+</div>

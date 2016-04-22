@@ -1,0 +1,62 @@
+<%
+  if local === 'edit'
+    submit_str = '質問を編集する'
+  else
+    submit_str = '質問を投稿する'
+  end
+%>
+
+<%= form_for(question) do |f| %>
+  <% if question.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(question.errors.count, "error") %> prohibited this question from being saved:</h2>
+
+      <ul>
+      <% question.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group radio-field">
+    <div class="h-fwb h-mb5">
+      カテゴリー
+    </div>
+    <%= f.collection_radio_buttons :category_id, @categories, :id, :name  do |b| %>
+      <% if b.value === 1 %>
+        <%= b.radio_button checked: true %>
+      <% else %>
+        <%= b.radio_button checked: false %>
+      <% end %>
+      <%= b.label %>
+    <% end %>
+  </div>
+
+  <div class="form-group radio-field">
+    <div class="h-fwb h-mb5">
+      言語
+    </div>
+    <%= f.collection_radio_buttons :language_id, @languages, :id, :name do |b| %>
+      <% if b.value === 1 %>
+          <%= b.radio_button checked: true %>
+      <% else %>
+          <%= b.radio_button checked: false %>
+      <% end %>
+      <%= b.label %>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :title, '題名' %><br>
+    <%= f.text_field :title, class: 'form-control', placeholder: '題名を入力してください' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :content, '内容' %><br>
+    <%= f.text_area :content, class: 'form-control', placeholder: '質問内容を入力してください' %>
+  </div>
+  <div class="form-group">
+    <%= f.hidden_field :user_id %>
+    <%= f.submit submit_str, class: 'btn btn-primary' %>
+  </div>
+<% end %>

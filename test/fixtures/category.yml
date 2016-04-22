@@ -1,0 +1,14 @@
+<%
+category_arr = [
+  'Web',
+  '業務システム',
+  '組み込み',
+  'その他'
+]
+category_len = category_arr.size
+%>
+<% category_len.times do |index| %>
+categoryuage_<%= index %>:
+  id:   <%= index + 1 %>
+  name: <%= category_arr[index] %>
+<% end %>

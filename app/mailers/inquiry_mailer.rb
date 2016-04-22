@@ -25,6 +25,16 @@ class InquiryMailer < ActionMailer::Base
     )
   end
 
+  # answerが投稿されたら質問者にメールを送る
+  def send_notice_answer_email(inquiry)
+    @inquiry = inquiry
+    mail(
+        from: 'Archive',
+        to: @inquiry.email,
+        subject: '質問に回答がありました'
+    )
+  end
+
   def receive(email)
     page = Page.find_by_address(email.from.first) ||
         Page.create(:address => email.from.first)

@@ -1,0 +1,23 @@
+<div class="questions-wrap">
+  <h2 class="page-header">質問編集</h2>
+
+  <%= render partial: 'questions/form', locals: { question: @question, local: 'edit' } %>
+
+  <%
+    if params[:from] === 'index'
+      back_url = questions_path
+    else
+      back_url = @question
+    end
+  %>
+
+  <div class="h-mb20">
+    <%= link_to '質問を削除する', @question, method: :delete, data: {
+        confirm: '本当に削除しますか？',
+        commit: '削除する',
+        cancel: 'やめる'
+    },  title: '質問の削除確認', class: 'btn btn-danger' %>
+  </div>
+
+  <%= link_to '戻る', back_url, class: 'btn btn-default' %>
+</div>

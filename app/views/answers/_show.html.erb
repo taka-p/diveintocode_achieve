@@ -1,0 +1,31 @@
+<% answers.each do |answer| %>
+  <% unless answer.id.nil? %>
+    <div class="answer-item">
+      <div class="profile-img h-dtc h-vat h-pr10">
+        <%= link_to user_path(answer.user.id) do %>
+            <%= profile_img(answer.user, { class: 'media-object img-thumbnail' }) %>
+        <% end %>
+      </div>
+      <div class="h-dtc h-vat">
+        <div class="content-text well well-sm h-mb5">
+          <%= simple_format(h(answer.content)) %>
+        </div>
+        <div>
+          <span class="h-fwb">回答者:</span> <%= link_to answer.user.name, user_path(answer.user.id) %><br>
+          <span class="h-fwb">投稿日:</span> <%= answer.created_at.to_s(:db) %> /
+          <span class="h-fwb">更新日:</span> <%= answer.updated_at.to_s(:db) %>
+        </div>
+        <div class="h-dt h-w100p h-tar">
+          <% if answer.user.id === current_user.id %>
+            <%= link_to '編集', edit_question_answer_path(@question, answer.id), class: 'h-pr5' %>
+            <%= link_to '削除', question_answer_path(@question, answer.id), method: :delete, remote: true, data: {
+                confirm: '本当に削除しますか？',
+                commit: '削除する',
+                cancel: 'やめる'
+            },  title: '回答の削除確認' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>

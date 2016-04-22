@@ -1,0 +1,16 @@
+<%
+lang_arr = [
+  'Ruby',
+  'Python',
+  'PHP',
+  'Java',
+  'C#',
+  'その他'
+]
+lang_len = lang_arr.size
+%>
+<% lang_len.times do |index| %>
+language_<%= index %>:
+  id:   <%= index + 1 %>
+  name: <%= lang_arr[index] %>
+<% end %>

@@ -1,0 +1,42 @@
+<div class="questions-wrap">
+  <h2 class="page-header">質問一覧</h2>
+
+  <%= link_to '質問を投稿する', new_question_path, class: 'btn btn-primary h-mb20' %>
+
+  <div class="question-list">
+    <% @questions.each do |question| %>
+      <div class="question-item">
+        <div class="h-dtc h-vat h-pr10">
+          <%= link_to user_path(question.user.id) do %>
+            <%= profile_img(question.user, { class: 'media-object img-thumbnail' }) %>
+          <% end %>
+        </div>
+        <div class="h-dtc h-vat">
+          <h4 class="media-heading"><%= link_to question.title, question %></h4>
+          <div class="content-text well well-sm h-mb5">
+            <%= simple_format(h(question.content)) %>
+          </div>
+          <div>
+            <span class="h-fwb">カテゴリー:</span> <%= question.category.name %> /
+            <span class="h-fwb">言語:</span> <%= question.language.name %>
+          </div>
+          <div>
+            <span class="h-fwb">投稿者:</span> <%= link_to question.user.name, user_path(question.user.id) %><br>
+            <span class="h-fwb">投稿日:</span> <%= question.created_at.to_s(:db) %> /
+            <span class="h-fwb">更新日:</span> <%= question.updated_at.to_s(:db) %>
+          </div>
+          <% if question.user.id === current_user.id %>
+            <div class="h-dt h-w100p h-tar">
+              <%= link_to '編集', edit_question_path(question, from: 'index'), class: 'h-pr5' %>
+              <%= link_to '削除', question, method: :delete, data: {
+                  confirm: '本当に削除しますか？',
+                  commit: '削除する',
+                  cancel: 'やめる'
+              },  title: '質問の削除確認' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
