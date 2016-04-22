@@ -5,8 +5,8 @@
 
   <div class="question-list">
     <% @questions.each do |question| %>
-      <div class="question-item">
-        <div class="h-dtc h-vat h-pr10">
+      <div class="question-item h-dt h-w100p">
+        <div class="profile-img h-dtc h-vat h-pr10">
           <%= link_to user_path(question.user.id) do %>
             <%= profile_img(question.user, { class: 'media-object img-thumbnail' }) %>
           <% end %>
