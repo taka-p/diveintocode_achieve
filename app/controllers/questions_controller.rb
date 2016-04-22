@@ -11,7 +11,7 @@ class QuestionsController < ApplicationController
   # GET /questions/1
   # GET /questions/1.json
   def show
-    @answers = @question.answers.reverse_order
+    @answers = @question.answers
     @answer = @question.answers.build(user_id: current_user.id)
   end
 
@@ -53,10 +53,11 @@ class QuestionsController < ApplicationController
   # PATCH/PUT /questions/1
   # PATCH/PUT /questions/1.json
   def update
-    @question = Question.new(question_params)
+    tmp = params.require(:question).permit(:user_id)
+    @user = User.find(tmp["user_id"])
 
     # 投稿を操作するユーザがログイン中のユーザか判定
-    if @question.user_id != current_user.id
+    if @question.user_id != current_user.id || @user.id != current_user.id
       redirect_to questions_path, alert: '不正な操作が行われました'
       return
     end

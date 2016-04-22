@@ -55,10 +55,11 @@ class AnswersController < ApplicationController
   # PATCH/PUT /answers/1
   # PATCH/PUT /answers/1.json
   def update
-    @answer = Answer.new(@answer_params)
+    tmp = params.require(:answer).permit(:user_id)
+    @user = User.find(tmp["user_id"])
 
     # 投稿を操作するユーザがログイン中のユーザか判定
-    if @answer.user_id != current_user.id
+    if @answer.user_id != current_user.id || @user.id != current_user.id
       redirect_to questions_path, alert: '不正な操作が行われました'
       return
     end
