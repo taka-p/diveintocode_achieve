@@ -1,6 +1,6 @@
 <% answers.each do |answer| %>
   <% unless answer.id.nil? %>
-    <div class="answer-item">
+    <div class="answer-item h-dt h-w100p">
       <div class="profile-img h-dtc h-vat h-pr10">
         <%= link_to user_path(answer.user.id) do %>
             <%= profile_img(answer.user, { class: 'media-object img-thumbnail' }) %>
