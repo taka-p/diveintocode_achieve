@@ -62,14 +62,9 @@
   .box4-3 {
     display: table-cell;
   }
-  .box5 {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    background-color: #dddddd
-  }
 
   /* 左右に隙間を入れる */
-  .boxA, .box4, .box5 {
+  .boxA, .box4 {
     padding-left: 15px;
     padding-right: 15px
   }

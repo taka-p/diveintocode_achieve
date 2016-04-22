@@ -3,3 +3,22 @@
  * 要素へのスタイル指定を定義
 **/
 
+body {
+  // background-image: image-url('back.jpg?cache=hoge');
+  margin: 0;
+  font-family: "メイリオ", Meiryo,"ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "ＭＳ Ｐゴシック", sans-serif;
+}
+
+html,body { height: 100%; }
+
+h1 {
+  color: white;
+  margin: 250px auto auto auto;
+  text-align: center;
+  font-size: 40px;
+}
+
+p {
+  margin: 0;
+  text-align: center;
+}

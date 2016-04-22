@@ -1,73 +1,87 @@
 /**
  * 共用スタイル
+ * layout/に格納する共用のモジュールは接頭辞にlayoutの「l」を付与
+ * layout/に種類が出てきたらl-app2のように接頭辞を新たに作成
 **/
 
-body {
-  // background-image: image-url('back.jpg?cache=hoge');
-  margin: 0;
-  font-family: "メイリオ", Meiryo,"ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "ＭＳ Ｐゴシック", sans-serif;
+$header-height: 52px;
+$footer-height: 50px;
+
+.l-app-container {
+  position: relative;
+  width: 100%;
+  min-height: 100%;
 }
 
-h1 {
-  color: white;
-  margin: 250px auto auto auto;
-  text-align: center;
-  font-size: 40px;
+.l-app-content {
+  padding-top: $header-height;
+  padding-bottom: $footer-height;
 }
 
-p {
-  margin: 0;
-  text-align: center;
+.l-app-header {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  width: 100%;
+  height: $header-height;
+  /* サイト名 */
+  .site h1 a {
+    color: #FFFFFF;
+    text-decoration: none
+  }
+  .site h1 {
+    margin: 0;
+    font-size: 30px
+  }
+
+  /* ナビゲーション */
+  .menu ul {
+    margin: 0;
+    padding: 0;
+    list-style: none
+  }
+  .menu li a {
+    display: block;
+    padding: 10px 15px;
+    color: #FFFFFF;
+    font-size: 14px;
+    text-decoration: none
+  }
+  .menu li a:hover {
+    background-color: #eeeeee
+  }
+  .menu ul:after {
+    content: "";
+    display: block;
+    clear: both
+  }
+  .menu li {
+    float: left;
+    width: auto
+  }
 }
 
-/* サイト名 */
-.site h1 a {
-  color: #FFFFFF;
-  text-decoration: none
-}
-.site h1 {
-  margin: 0;
-  font-size: 30px
+.l-app-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: $footer-height;
+  line-height: $footer-height;
+  padding: 0 15px;
+  background-color: #dddddd;
+  .copyright p {
+    margin: 0;
+    text-align:center;
+    color: #666666;
+    font-size: 14px
+  }
+
+  .simple-text-l p {
+    text-align: left;
+  }
 }
 
-/* ナビゲーション */
-.menu ul {
-  margin: 0;
-  padding: 0;
-  list-style: none
-}
-.menu li a {
-  display: block;
-  padding: 10px 15px;
-  color: #FFFFFF;
-  font-size: 14px;
-  text-decoration: none
-}
-.menu li a:hover {
-  background-color: #eeeeee
-}
-.menu ul:after {
-  content: "";
-  display: block;
-  clear: both
-}
-.menu li {
-  float: left;
-  width: auto
-}
-
-.copyright p {
-  margin: 0;
-  text-align:center;
-  color: #666666;
-  font-size: 14px
-}
-
-.simple-text-l p {
-  text-align: left;
-}
-
-//.app-container { display: none; }
+//.l-app-container { display: none; }
 //
 //.loading {
 //  position: absolute;
