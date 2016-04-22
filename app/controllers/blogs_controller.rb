@@ -24,7 +24,7 @@ class BlogsController < ApplicationController
   # GET /blogs/1.json
   def show
     @comments = @blog.comments
-    @comment = @blog.comments.build
+    @comment = @blog.comments.build(user_id: current_user.id)
   end
 
   # GET /blogs/new
@@ -72,7 +72,7 @@ class BlogsController < ApplicationController
 
     respond_to do |format|
       if @blog.update(blog_params)
-        format.html { redirect_to @blog, notice: 'Blog was successfully updated.' }
+        format.html { redirect_to @blog, notice: 'コメントを編集しました' }
         format.json { render :show, status: :ok, location: @blog }
       else
         format.html { render :edit }

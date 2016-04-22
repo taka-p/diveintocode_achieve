@@ -3,6 +3,8 @@
  **/
 
 .blogs-wrap {
+  width: 800px;
+  margin: 0 auto;
   padding: 10px;
   .index-content {
     padding: 0 10px 10px;
@@ -23,5 +25,13 @@
   .show-content {
     padding: 0 10px 10px;
     font-size: 20px;
+  }
+  .fm-comment {
+    width: 520px;
+  }
+  .comment-item:not(:last-child) {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
   }
 }

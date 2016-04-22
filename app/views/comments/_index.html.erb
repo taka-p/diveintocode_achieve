@@ -1,11 +1,15 @@
 <ul>
   <% comments.each do |comment| %>
       <% unless comment.id.nil? %>
-        <li>
-          <%= comment.user %>
-          <%= comment.content %>
-          <%= link_to 'Edit', edit_blog_comment_path(@blog.id, comment) %>
-          <%= link_to 'Destroy', blog_comment_path(@blog.id, comment), method: :delete, remote: true, data: {
+        <li class="comment-item">
+          <div class="h-mb5">
+            <span class="h-fwb">回答者:</span> <%= comment.user.name %>
+          </div>
+          <div class="well well-sm h-mb5">
+            <%= comment.content %>
+          </div>
+          <%= link_to '編集', edit_blog_comment_path(@blog.id, comment) %>
+          <%= link_to '削除', blog_comment_path(@blog.id, comment), method: :delete, remote: true, data: {
               confirm: '本当にコメントを削除しますか？',
               commit: '削除',
               cancel: 'やめる'

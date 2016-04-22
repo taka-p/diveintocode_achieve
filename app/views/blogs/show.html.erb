@@ -1,24 +1,25 @@
 <div class="blogs-wrap">
   <h2 class="page-header"><%= @blog.title %></h2>
 
-  <div class="show-content simple-text-l">
+  <div class="show-content simple-text-l well">
     <%= simple_format(h(@blog.content)) %>
   </div>
-
-  <div id="js_comments_area">
-    <%= render partial: 'comments/index', locals: { comments: @comments } %>
-  </div>
-  
-  <%= render partial: 'comments/form', locals: { comment: @comment } %>
-
   <div class="h-tar">
     <div>
       <strong>投稿者:</strong>
       <%= @blog.user.name %>
     </div>
     <% if @blog.user.id == current_user.id %>
-      <%= link_to '編集する', edit_blog_path(@blog) %> |
+        <%= link_to '編集する', edit_blog_path(@blog) %> |
     <% end %>
     <%= link_to '一覧に戻る', blogs_path %>
-    </div>
+  </div>
+
+
+  <%= render partial: 'comments/form', locals: { comment: @comment, local: 'show' } %>
+
+  <h3>コメント一覧</h3>
+  <div id="js_comments_area">
+    <%= render partial: 'comments/index', locals: { comments: @comments } %>
+  </div>
 </div>
