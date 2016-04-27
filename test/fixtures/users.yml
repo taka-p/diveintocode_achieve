@@ -34,7 +34,7 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-<% 15.times do |n| %>
+<% 25.times do |n| %>
 <% n += 1 %>
 user_<%= n %>:
   id:         <%= n %>

@@ -12,13 +12,24 @@
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-<% 15.times do |n| %>
+<% 25.times do |n| %>
 <% n += 1 %>
 blog_<%= n %>:
   id:         <%= n %>
   user_id:    <%= n %>
   title:      <%= "タイトル#{n}" %>
   content:    <%= "本文#{n}" %>
+  created_at: <%= Time.now %>
+  updated_at: <%= Time.now %>
+<% end %>
+
+<% 25.times do |n| %>
+<% n += 1 %>
+blog_<%= n %>:
+  id:         <%= n %>
+  user_id:    <%= n %>
+  title:      <%= "タイトル#{n + 25}" %>
+  content:    <%= "本文#{n + 25}" %>
   created_at: <%= Time.now %>
   updated_at: <%= Time.now %>
 <% end %>

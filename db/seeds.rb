@@ -27,7 +27,7 @@
   name     = Faker::Name.name
   email    = SecureRandom.uuid + "@railstutorial.org"
   password = "password123456"
-  user = User.create!(uid: n
+  user = User.create!(uid: "#{n}",
                name: name,
                email: email,
                password:              password,
