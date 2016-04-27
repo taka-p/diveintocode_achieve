@@ -21,14 +21,14 @@
 # end
 
 # fakerを利用したユーザデータ
-1000.times do |n|
+100.times do |n|
   n += 1
 
   name     = Faker::Name.name
   email    = SecureRandom.uuid + "@railstutorial.org"
-  password = "password"
-  # blogデータ生成時にuser_idを取得するためにuserに代入
-  user = User.create!(name:  name,
+  password = "password123456"
+  user = User.create!(uid: n
+               name: name,
                email: email,
                password:              password,
                password_confirmation: password)
