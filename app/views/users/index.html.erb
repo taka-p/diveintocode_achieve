@@ -13,15 +13,16 @@
       </div>
     </div>
   <% end %>
-
   <% if @users.count > 0 %>
     <div class="h-dt h-w100p h-pl15 h-pr15">
       <div class="h-dtc h-w50p h-vat h-pr15">
         <%= render partial: 'users/user', locals: { users: @users_left } %>
       </div>
-      <div class="h-dtc h-w50p h-vat">
-        <%= render partial: 'users/user', locals: { users: @users_right } %>
-      </div>
+      <% if @users.count > 10 %>
+        <div class="h-dtc h-w50p h-vat">
+          <%= render partial: 'users/user', locals: { users: @users_right } %>
+        </div>
+      <% end %>
     </div>
   <% else %>
     <div>ユーザーが見つかりませんでした</div>

@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   def index
     @users_total = User.all
     @users = User.page(params[:page]).reverse_order
-    @users_left = User.page(params[:page]).limit(10).reverse_order
+    @users_left  = User.page(params[:page]).limit(10).reverse_order
     @users_right = User.page(params[:page]).limit(10).offset(10).reverse_order
   end
 
