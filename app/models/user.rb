@@ -40,6 +40,9 @@ class User < ActiveRecord::Base
     where("id IN (#{followed_user_ids})", user_id: user.id)
   end
 
+  # kaminari用
+  paginates_per 20
+
   # currierwave用
   mount_uploader :image, ImageUploader
 

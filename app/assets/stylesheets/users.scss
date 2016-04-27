@@ -4,9 +4,12 @@
  **/
 
 .users-wrap {
+  width: 800px;
+  margin: 0 auto;
   padding: 10px;
   .users-content {
-    padding: 10px;
+    min-height: 108px;
+    h3 { margin-top: 10px; }
   }
   .thumbnail {
     width: 100%;
@@ -14,4 +17,5 @@
   .profile-img {
     width: 100px;
   }
+  .pagination { margin: 0; }
 }

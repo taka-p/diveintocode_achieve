@@ -5,5 +5,34 @@
 <div class="users-wrap">
   <h2 class="page-header">ユーザー一覧</h2>
 
-  <%= render @users %>
+  <% if @users.count >= 20 %>
+    <div class="h-tac h-mt0 h-mb10">
+      <%= paginate @users %>
+      <div>
+        <%= page_entries_info @users %>
+      </div>
+    </div>
+  <% end %>
+
+  <% if @users.count > 0 %>
+    <div class="h-dt h-w100p h-pl15 h-pr15">
+      <div class="h-dtc h-w50p h-vat h-pr15">
+        <%= render partial: 'users/user', locals: { users: @users_left } %>
+      </div>
+      <div class="h-dtc h-w50p h-vat">
+        <%= render partial: 'users/user', locals: { users: @users_right } %>
+      </div>
+    </div>
+  <% else %>
+    <div>ユーザーが見つかりませんでした</div>
+  <% end %>
+
+  <% if @users.count >= 20 %>
+    <div class="h-tac">
+      <%= paginate @users %>
+      <div>
+        <%= page_entries_info @users %>
+      </div>
+    </div>
+  <% end %>
 </div>

@@ -3,10 +3,6 @@
 <div class="users-wrap">
   <h2 class="page-header"><%= @user.name %></h2>
 
-  <%= render partial: 'follow_form', locals: { user: @user } if signed_in? %>
-  <%= link_to '友達', following_user_path(@friend_users) %>
-  <%= link_to 'Back', user_path %>
-
   <div class="users-content">
     <div class="h-mb20">
       <h4>プロフィール画像</h4>
@@ -21,7 +17,25 @@
     <% end %>
 
     <% if current_user && current_user.id === @user.id %>
-     <%= link_to '編集', edit_user_registration_path(current_user.id) %>
+      <div class="h-mb10">
+        <%= link_to 'アカウント情報の変更', edit_user_registration_path(current_user.id), class: 'btn btn-primary' %>
+      </div>
     <% end %>
+
+    <div class="h-mb10">
+      <%= render partial: 'follow_form', locals: { user: @user } if signed_in? %>
+    </div>
+
+    <div class="h-mb10">
+      <%= link_to 'フォローしているユーザ', following_user_path(@user), class: 'btn btn-default' %>
+    </div>
+
+    <div class="h-mb10">
+      <%= link_to 'フォローされているユーザ', followers_user_path(@user), class: 'btn btn-default' %>
+    </div>
+
+    <div class="h-mb10">
+      <%= link_to 'ユーザ一覧に戻る', users_path, class: 'btn btn-default' %>
+    </div>
   </div>
 </div>

@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   def index
-    @users = User.all.reverse_order
+    @users = User.page(params[:page]).reverse_order
+    @users_left = User.page(params[:page]).limit(10).reverse_order
+    @users_right = User.page(params[:page]).limit(10).offset(10).reverse_order
   end
 
   def show
@@ -16,13 +18,17 @@ class UsersController < ApplicationController
 
   def following
     @user = User.find(params[:id])
-    @users = @user.followed_users # .paginate(page: params[:page])
+    @users = @user.followed_users
+    @users_left = @user.followed_users.limit(10)
+    @users_right = @user.followed_users.limit(10).offset(10)
     render 'users/index'
   end
 
   def followers
     @user = User.find(params[:id])
-    @users = @user.followers # .paginate(page: params[:page])
+    @users = @user.followers
+    @users_left = @user.followers.limit(10)
+    @users_right = @user.followers.limit(10).offset(10)
     render 'users/index'
   end
 
