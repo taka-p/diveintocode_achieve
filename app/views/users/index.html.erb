@@ -1,5 +1,11 @@
+<% provide(:title, 'All users') %>
+
 <div class="users-wrap">
   <h2 class="page-header">ユーザー一覧</h2>
+
+  <ul class="users">
+    <%= render @users %>
+  </ul>
 
   <div class="users-content">
     <% @users.each do |user| %>
