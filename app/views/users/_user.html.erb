@@ -1,4 +1,20 @@
-<li>
-  <%= link_to user.name, user %>
-</li>
-<%= render partial: 'follow_from', locals: { user: user } if signed_in? %>
+<div class="users-content">
+  <div class="row">
+    <div class="col-sm-6 col-md-4">
+      <div class="thumbnail h-dt">
+        <div class="profile-img h-dtc h-vam">
+          <%= profile_img(user, { class: 'img-thumbnail' }) %>
+        </div>
+        <div class="caption h-dtc h-vam h-pl15">
+          <h3>
+            <%= link_to user.name, user_path(user.id) %>
+          </h3>
+          <% if user.profile %>
+              <div class="simple-text-l h-mb15"><%= simple_format(h(user.profile)) %></div>
+          <% end %>
+          <%= render partial: 'follow_form', locals: {user: user } if signed_in? %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,15 +1,3 @@
-# == Schema Information
-#
-# Table name: blogs
-#
-#  id         :integer          not null, primary key
-#  title      :string
-#  content    :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  user_id    :integer
-#
-
 class BlogsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
@@ -17,7 +5,9 @@ class BlogsController < ApplicationController
   # GET /blogs
   # GET /blogs.json
   def index
-    @blogs = Blog.all.reverse_order
+    # フォローし合っているユーザを抽出
+    ids = current_user.friend.map { |user| user.id }
+    @blogs = Blog.where(user_id: ids).reverse_order
   end
 
   # GET /blogs/1
