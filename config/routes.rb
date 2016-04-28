@@ -1,20 +1,12 @@
 Rails.application.routes.draw do
-  resources :tasks
-
-  get 'relationships/create'
-
-  get 'relationships/destroy'
-
-  get 'users/index'
-
-  get 'users/show'
-
   devise_for :users, controllers: {
       sessions: "users/sessions",
       registrations: "users/registrations",
       passwords: "users/passwords",
       omniauth_callbacks: "users/omniauth_callbacks"
   }
+  get 'users/index'
+  get 'users/show'
 
   get 'company/show' => 'company#show'
   get 'about' => 'about#company_overview'
@@ -27,11 +19,13 @@ Rails.application.routes.draw do
   post 'inquiry/confirm' => 'inquiry#confirm'
   post 'inquiry/thanks' => 'inquiry#thanks'
 
-
   resources :blogs do
     resources :comments
   end
   resources :comments
+  resources :relationships, only: [:create, :destroy]
+  get 'relationships/create'
+  get 'relationships/destroy'
 
   resources :questions do
     resources :answers
@@ -45,7 +39,14 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :relationships, only: [:create, :destroy]
+  namespace :taskline do
+    resources :tasks do
+      resources :comment
+      post 'goodjob'
+      post 'ungoodjob'
+    end
+  end
+  resources :tasks
 
   root 'top#index'
 end
