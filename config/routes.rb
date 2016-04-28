@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  namespace :taskline do
+    resources :task_comments
+  end
+
   devise_for :users, controllers: {
       sessions: "users/sessions",
       registrations: "users/registrations",
