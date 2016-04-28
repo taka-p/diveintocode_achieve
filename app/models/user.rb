@@ -1,18 +1,23 @@
 class User < ActiveRecord::Base
+  # blog
   has_many :blogs, dependent: :destroy
+  # blog > comment
   has_many :comments, dependent: :destroy
 
-  # 中間テーブルrelationshipsとの関係を定義
+  # follow - 中間テーブルrelationshipsとの関係を定義
   has_many :relationships,
            foreign_key: "follower_id", dependent: :destroy
   has_many :reverce_relationships,
            foreign_key: "followed_id", class_name: 'Relationship', dependent: :destroy
 
-  # 相対的な参照関係を定義
+  # follow - 相対的な参照関係を定義
   has_many :followed_users,
            through: :relationships, source: :followed
   has_many :followers,
            through: :reverce_relationships, source: :follower
+
+  # task
+  has_many :tasks, dependent: :destroy
 
   # フォロー登録
   def follow!(other_user)
@@ -38,6 +43,12 @@ class User < ActiveRecord::Base
   def self.from_users_followed_by(user)
     followed_user_ids = "SELECT X.id FROM (SELECT users.* FROM users INNER JOIN relationships ON users.id = relationships.followed_id WHERE relationships.follower_id = :user_id) X INNER JOIN (SELECT users.* FROM users INNER JOIN relationships ON users.id = relationships.follower_id WHERE relationships.followed_id = :user_id) Y ON X.id = Y.id"
     where("id IN (#{followed_user_ids})", user_id: user.id)
+  end
+
+  # フォローし合っているユーザのタスクフィードを取得
+  def taskfeed
+    tasks = Task.where(user_id: self)
+    Task.from_users_followed_by(self).order("updated_at DESC")
   end
 
   # kaminari用
