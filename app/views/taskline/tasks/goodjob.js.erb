@@ -1,0 +1,3 @@
+render_str = "<%= escape_javascript(render partial: 'taskline/tasks/gjbcount', locals: { gdj_count: @gdj_all_cnt }) %>";
+
+$("#goodjob_<%= @gdj.task_id %>").html(render_str);

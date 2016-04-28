@@ -1,0 +1,5 @@
+render_str = "<%= escape_javascript(render partial: 'taskline/task_comments/index', locals: { task_comments: @task.task_comments }) %>";
+
+$("#feed_task_<%= @task.id %>").html(render_str);
+
+$(":text").val('');

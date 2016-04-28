@@ -6,18 +6,23 @@
       <table>
         <tbody>
         <% @feed_tasks.each do |feedtask| %>
-        <tr class="feedtask_list">
-          <%= feedtask.title %>
-          <%= feedtask.content %>
-          <%= feedtask.user.name %>
-        </tr>
+          <tr class="feedtask_list">
+            <%= feedtask.title %>
+            <%= feedtask.content %>
+            <%= feedtask.user.name %>
+          </tr>
+          <div id="goodjob_<%= feedtask.id %>">
+            <%= render partial: 'taskline/tasks/gjbcount', locals: { gdj_count: feedtask.goodjobs.sum(:number) } %>
+          </div>
+          <%= render partial: 'taskline/tasks/goodjob', locals: {goodjob: feedtask.goodjobs.build } %>
+
+          <div id="feedask_<%= feedtask.id %>">
+            <%= render partial: 'taskline/task_comments/index', locals: { task_comments: feedtask.task_comments } %>
+          </div>
+          <%= render partial: 'taskline/task_comments/form', locals: { task_comment: feedtask.task_comments.build } %>
         <% end %>
         </tbody>
       </table>
     </div>
-    <div id="feedask_<%= feedtask.id %>">
-      <%= render partial: 'taskline/task_comments/index', locals: { task_comments: feedtask.task_comments } %>
-    </div>
-    <%= render partial: 'taskline/task_comments/form', locals: { task_comment: feedtask.task_comments.build } %>
 <% end %>
 </div>
