@@ -1,39 +1,135 @@
-                  Prefix Verb     URI Pattern                            Controller#Action
-             users_index GET      /users/index(.:format)                 users#index
-              users_show GET      /users/show(.:format)                  users#show
-        new_user_session GET      /users/sign_in(.:format)               devise/sessions#new
-            user_session POST     /users/sign_in(.:format)               devise/sessions#create
-    destroy_user_session DELETE   /users/sign_out(.:format)              devise/sessions#destroy
- user_omniauth_authorize GET|POST /users/auth/:provider(.:format)        devise/omniauth_callbacks#passthru {:provider=>/facebook|twitter/}
-  user_omniauth_callback GET|POST /users/auth/:action/callback(.:format) devise/omniauth_callbacks#:action
-           user_password POST     /users/password(.:format)              devise/passwords#create
-       new_user_password GET      /users/password/new(.:format)          devise/passwords#new
-      edit_user_password GET      /users/password/edit(.:format)         devise/passwords#edit
-                         PATCH    /users/password(.:format)              devise/passwords#update
-                         PUT      /users/password(.:format)              devise/passwords#update
-cancel_user_registration GET      /users/cancel(.:format)                devise/registrations#cancel
-       user_registration POST     /users(.:format)                       devise/registrations#create
-   new_user_registration GET      /users/sign_up(.:format)               devise/registrations#new
-  edit_user_registration GET      /users/edit(.:format)                  devise/registrations#edit
-                         PATCH    /users(.:format)                       devise/registrations#update
-                         PUT      /users(.:format)                       devise/registrations#update
-                         DELETE   /users(.:format)                       devise/registrations#destroy
-       user_confirmation POST     /users/confirmation(.:format)          devise/confirmations#create
-   new_user_confirmation GET      /users/confirmation/new(.:format)      devise/confirmations#new
-                         GET      /users/confirmation(.:format)          devise/confirmations#show
-            company_show GET      /company/show(.:format)                company#show
-           inquiry_index GET      /inquiry/index(.:format)               inquiry#index
-                         POST     /inquiry/index(.:format)               inquiry#index
-         inquiry_confirm POST     /inquiry/confirm(.:format)             inquiry#confirm
-          inquiry_thanks POST     /inquiry/thanks(.:format)              inquiry#thanks
-                   blogs GET      /blogs(.:format)                       blogs#index
-                         POST     /blogs(.:format)                       blogs#create
-                new_blog GET      /blogs/new(.:format)                   blogs#new
-               edit_blog GET      /blogs/:id/edit(.:format)              blogs#edit
-                    blog GET      /blogs/:id(.:format)                   blogs#show
-                         PATCH    /blogs/:id(.:format)                   blogs#update
-                         PUT      /blogs/:id(.:format)                   blogs#update
-                         DELETE   /blogs/:id(.:format)                   blogs#destroy
-                   users GET      /users(.:format)                       users#index
-                    user GET      /users/:id(.:format)                   users#show
-                    root GET      /                                      top#index
+                     Prefix Verb     URI Pattern                                         Controller#Action
+           new_user_session GET      /users/sign_in(.:format)                            users/sessions#new
+               user_session POST     /users/sign_in(.:format)                            users/sessions#create
+       destroy_user_session DELETE   /users/sign_out(.:format)                           users/sessions#destroy
+    user_omniauth_authorize GET|POST /users/auth/:provider(.:format)                     users/omniauth_callbacks#passthru {:provider=>/facebook|twitter/}
+     user_omniauth_callback GET|POST /users/auth/:action/callback(.:format)              users/omniauth_callbacks#:action
+              user_password POST     /users/password(.:format)                           users/passwords#create
+          new_user_password GET      /users/password/new(.:format)                       users/passwords#new
+         edit_user_password GET      /users/password/edit(.:format)                      users/passwords#edit
+                            PATCH    /users/password(.:format)                           users/passwords#update
+                            PUT      /users/password(.:format)                           users/passwords#update
+   cancel_user_registration GET      /users/cancel(.:format)                             users/registrations#cancel
+          user_registration POST     /users(.:format)                                    users/registrations#create
+      new_user_registration GET      /users/sign_up(.:format)                            users/registrations#new
+     edit_user_registration GET      /users/edit(.:format)                               users/registrations#edit
+                            PATCH    /users(.:format)                                    users/registrations#update
+                            PUT      /users(.:format)                                    users/registrations#update
+                            DELETE   /users(.:format)                                    users/registrations#destroy
+          user_confirmation POST     /users/confirmation(.:format)                       devise/confirmations#create
+      new_user_confirmation GET      /users/confirmation/new(.:format)                   devise/confirmations#new
+                            GET      /users/confirmation(.:format)                       devise/confirmations#show
+                users_index GET      /users/index(.:format)                              users#index
+                 users_show GET      /users/show(.:format)                               users#show
+               company_show GET      /company/show(.:format)                             company#show
+                      about GET      /about(.:format)                                    about#company_overview
+              inquiry_index GET      /inquiry/index(.:format)                            inquiry#index
+               inquiry_list GET      /inquiry/list(.:format)                             inquiry#list
+               inquiry_show GET      /inquiry/show(.:format)                             inquiry#show
+      inquiry_receive_email GET      /inquiry/receive_email(.:format)                    inquiry#receive_email
+                            POST     /inquiry/index(.:format)                            inquiry#index
+            inquiry_confirm POST     /inquiry/confirm(.:format)                          inquiry#confirm
+             inquiry_thanks POST     /inquiry/thanks(.:format)                           inquiry#thanks
+              blog_comments GET      /blogs/:blog_id/comments(.:format)                  comments#index
+                            POST     /blogs/:blog_id/comments(.:format)                  comments#create
+           new_blog_comment GET      /blogs/:blog_id/comments/new(.:format)              comments#new
+          edit_blog_comment GET      /blogs/:blog_id/comments/:id/edit(.:format)         comments#edit
+               blog_comment GET      /blogs/:blog_id/comments/:id(.:format)              comments#show
+                            PATCH    /blogs/:blog_id/comments/:id(.:format)              comments#update
+                            PUT      /blogs/:blog_id/comments/:id(.:format)              comments#update
+                            DELETE   /blogs/:blog_id/comments/:id(.:format)              comments#destroy
+                      blogs GET      /blogs(.:format)                                    blogs#index
+                            POST     /blogs(.:format)                                    blogs#create
+                   new_blog GET      /blogs/new(.:format)                                blogs#new
+                  edit_blog GET      /blogs/:id/edit(.:format)                           blogs#edit
+                       blog GET      /blogs/:id(.:format)                                blogs#show
+                            PATCH    /blogs/:id(.:format)                                blogs#update
+                            PUT      /blogs/:id(.:format)                                blogs#update
+                            DELETE   /blogs/:id(.:format)                                blogs#destroy
+                   comments GET      /comments(.:format)                                 comments#index
+                            POST     /comments(.:format)                                 comments#create
+                new_comment GET      /comments/new(.:format)                             comments#new
+               edit_comment GET      /comments/:id/edit(.:format)                        comments#edit
+                    comment GET      /comments/:id(.:format)                             comments#show
+                            PATCH    /comments/:id(.:format)                             comments#update
+                            PUT      /comments/:id(.:format)                             comments#update
+                            DELETE   /comments/:id(.:format)                             comments#destroy
+              relationships POST     /relationships(.:format)                            relationships#create
+               relationship DELETE   /relationships/:id(.:format)                        relationships#destroy
+       relationships_create GET      /relationships/create(.:format)                     relationships#create
+      relationships_destroy GET      /relationships/destroy(.:format)                    relationships#destroy
+           question_answers GET      /questions/:question_id/answers(.:format)           answers#index
+                            POST     /questions/:question_id/answers(.:format)           answers#create
+        new_question_answer GET      /questions/:question_id/answers/new(.:format)       answers#new
+       edit_question_answer GET      /questions/:question_id/answers/:id/edit(.:format)  answers#edit
+            question_answer GET      /questions/:question_id/answers/:id(.:format)       answers#show
+                            PATCH    /questions/:question_id/answers/:id(.:format)       answers#update
+                            PUT      /questions/:question_id/answers/:id(.:format)       answers#update
+                            DELETE   /questions/:question_id/answers/:id(.:format)       answers#destroy
+                  questions GET      /questions(.:format)                                questions#index
+                            POST     /questions(.:format)                                questions#create
+               new_question GET      /questions/new(.:format)                            questions#new
+              edit_question GET      /questions/:id/edit(.:format)                       questions#edit
+                   question GET      /questions/:id(.:format)                            questions#show
+                            PATCH    /questions/:id(.:format)                            questions#update
+                            PUT      /questions/:id(.:format)                            questions#update
+                            DELETE   /questions/:id(.:format)                            questions#destroy
+                    answers GET      /answers(.:format)                                  answers#index
+                            POST     /answers(.:format)                                  answers#create
+                 new_answer GET      /answers/new(.:format)                              answers#new
+                edit_answer GET      /answers/:id/edit(.:format)                         answers#edit
+                     answer GET      /answers/:id(.:format)                              answers#show
+                            PATCH    /answers/:id(.:format)                              answers#update
+                            PUT      /answers/:id(.:format)                              answers#update
+                            DELETE   /answers/:id(.:format)                              answers#destroy
+                 user_tasks GET      /users/:user_id/tasks(.:format)                     tasks#index
+                            POST     /users/:user_id/tasks(.:format)                     tasks#create
+              new_user_task GET      /users/:user_id/tasks/new(.:format)                 tasks#new
+             edit_user_task GET      /users/:user_id/tasks/:id/edit(.:format)            tasks#edit
+                  user_task GET      /users/:user_id/tasks/:id(.:format)                 tasks#show
+                            PATCH    /users/:user_id/tasks/:id(.:format)                 tasks#update
+                            PUT      /users/:user_id/tasks/:id(.:format)                 tasks#update
+                            DELETE   /users/:user_id/tasks/:id(.:format)                 tasks#destroy
+             following_user GET      /users/:id/following(.:format)                      users#following
+             followers_user GET      /users/:id/followers(.:format)                      users#followers
+                      users GET      /users(.:format)                                    users#index
+                  edit_user GET      /users/:id/edit(.:format)                           users#edit
+                       user GET      /users/:id(.:format)                                users#show
+                            PATCH    /users/:id(.:format)                                users#update
+                            PUT      /users/:id(.:format)                                users#update
+taskline_task_comment_index GET      /taskline/tasks/:task_id/comment(.:format)          taskline/comment#index
+                            POST     /taskline/tasks/:task_id/comment(.:format)          taskline/comment#create
+  new_taskline_task_comment GET      /taskline/tasks/:task_id/comment/new(.:format)      taskline/comment#new
+ edit_taskline_task_comment GET      /taskline/tasks/:task_id/comment/:id/edit(.:format) taskline/comment#edit
+      taskline_task_comment GET      /taskline/tasks/:task_id/comment/:id(.:format)      taskline/comment#show
+                            PATCH    /taskline/tasks/:task_id/comment/:id(.:format)      taskline/comment#update
+                            PUT      /taskline/tasks/:task_id/comment/:id(.:format)      taskline/comment#update
+                            DELETE   /taskline/tasks/:task_id/comment/:id(.:format)      taskline/comment#destroy
+      taskline_task_goodjob POST     /taskline/tasks/:task_id/goodjob(.:format)          taskline/tasks#goodjob
+    taskline_task_ungoodjob POST     /taskline/tasks/:task_id/ungoodjob(.:format)        taskline/tasks#ungoodjob
+             taskline_tasks GET      /taskline/tasks(.:format)                           taskline/tasks#index
+                            POST     /taskline/tasks(.:format)                           taskline/tasks#create
+          new_taskline_task GET      /taskline/tasks/new(.:format)                       taskline/tasks#new
+         edit_taskline_task GET      /taskline/tasks/:id/edit(.:format)                  taskline/tasks#edit
+              taskline_task GET      /taskline/tasks/:id(.:format)                       taskline/tasks#show
+                            PATCH    /taskline/tasks/:id(.:format)                       taskline/tasks#update
+                            PUT      /taskline/tasks/:id(.:format)                       taskline/tasks#update
+                            DELETE   /taskline/tasks/:id(.:format)                       taskline/tasks#destroy
+                      tasks GET      /tasks(.:format)                                    tasks#index
+                            POST     /tasks(.:format)                                    tasks#create
+                   new_task GET      /tasks/new(.:format)                                tasks#new
+                  edit_task GET      /tasks/:id/edit(.:format)                           tasks#edit
+                       task GET      /tasks/:id(.:format)                                tasks#show
+                            PATCH    /tasks/:id(.:format)                                tasks#update
+                            PUT      /tasks/:id(.:format)                                tasks#update
+                            DELETE   /tasks/:id(.:format)                                tasks#destroy
+     taskline_task_comments GET      /taskline/task_comments(.:format)                   taskline/task_comments#index
+                            POST     /taskline/task_comments(.:format)                   taskline/task_comments#create
+                            GET      /taskline/task_comments/new(.:format)               taskline/task_comments#new
+                            GET      /taskline/task_comments/:id/edit(.:format)          taskline/task_comments#edit
+                            GET      /taskline/task_comments/:id(.:format)               taskline/task_comments#show
+                            PATCH    /taskline/task_comments/:id(.:format)               taskline/task_comments#update
+                            PUT      /taskline/task_comments/:id(.:format)               taskline/task_comments#update
+                            DELETE   /taskline/task_comments/:id(.:format)               taskline/task_comments#destroy
+                       root GET      /                                                   top#index
+  rambulance_exceptions_app          /rambulance                                         Rambulance::ExceptionsApp
