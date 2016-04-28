@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :tasks
+
   get 'relationships/create'
 
   get 'relationships/destroy'
@@ -37,6 +39,7 @@ Rails.application.routes.draw do
   resources :answers
 
   resources :users, only: [:index, :show, :edit, :update] do
+    resources :tasks
     member do
       get :following, :followers
     end
