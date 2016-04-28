@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160428025458) do
+ActiveRecord::Schema.define(version: 20160428093055) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,6 +72,17 @@ ActiveRecord::Schema.define(version: 20160428025458) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "goodjobs", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "task_id"
+    t.integer  "number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "goodjobs", ["task_id"], name: "index_goodjobs_on_task_id", using: :btree
+  add_index "goodjobs", ["user_id"], name: "index_goodjobs_on_user_id", using: :btree
+
   create_table "inquiries", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
@@ -116,6 +127,17 @@ ActiveRecord::Schema.define(version: 20160428025458) do
   add_index "relationships", ["followed_id"], name: "index_relationships_on_followed_id", using: :btree
   add_index "relationships", ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true, using: :btree
   add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id", using: :btree
+
+  create_table "task_comments", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "task_id"
+    t.string   "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "task_comments", ["task_id"], name: "index_task_comments_on_task_id", using: :btree
+  add_index "task_comments", ["user_id"], name: "index_task_comments_on_user_id", using: :btree
 
   create_table "tasks", force: :cascade do |t|
     t.integer  "user_id",                    null: false
@@ -164,8 +186,12 @@ ActiveRecord::Schema.define(version: 20160428025458) do
   add_foreign_key "answers", "users"
   add_foreign_key "comments", "blogs"
   add_foreign_key "comments", "users"
+  add_foreign_key "goodjobs", "tasks"
+  add_foreign_key "goodjobs", "users"
   add_foreign_key "questions", "categories"
   add_foreign_key "questions", "languages"
   add_foreign_key "questions", "users"
+  add_foreign_key "task_comments", "tasks"
+  add_foreign_key "task_comments", "users"
   add_foreign_key "tasks", "users"
 end

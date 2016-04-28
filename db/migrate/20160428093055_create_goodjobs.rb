@@ -3,8 +3,7 @@ class CreateGoodjobs < ActiveRecord::Migration
     create_table :goodjobs do |t|
       t.references :user, index: true
       t.references :task, index: true
-      t.string :number
-      t.string :integer
+      t.integer :number
 
       t.timestamps null: false
     end
