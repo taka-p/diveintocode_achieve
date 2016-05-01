@@ -46,11 +46,17 @@ Rails.application.routes.draw do
       post 'ungoodjob'
     end
   end
-  resources :tasks
+
+  resources :projects do
+    resource :tasks
+    resource :members
+  end
 
   namespace :taskline do
     resources :task_comments
   end
+
+  resources :tasks
 
   root 'top#index'
 end
