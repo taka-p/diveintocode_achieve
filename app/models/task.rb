@@ -1,6 +1,7 @@
 class Task < ActiveRecord::Base
   belongs_to :user
   belongs_to :charge, class_name: 'User', foreign_key: 'charge_id'
+  belongs_to :project
   has_many :task_comments, dependent: :destroy
   has_many :goodjobs, dependent: :destroy
 

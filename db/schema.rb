@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160428093055) do
+ActiveRecord::Schema.define(version: 20160501093042) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,12 @@ ActiveRecord::Schema.define(version: 20160428093055) do
   add_index "comments", ["blog_id"], name: "index_comments_on_blog_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
+  create_table "customers", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "emails", force: :cascade do |t|
     t.integer  "page_id"
     t.string   "subject"
@@ -97,11 +103,33 @@ ActiveRecord::Schema.define(version: 20160428093055) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "members", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "members", ["project_id"], name: "index_members_on_project_id", using: :btree
+  add_index "members", ["user_id"], name: "index_members_on_user_id", using: :btree
+
   create_table "pages", force: :cascade do |t|
     t.string   "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "projects", force: :cascade do |t|
+    t.string   "name"
+    t.string   "content"
+    t.integer  "user_id"
+    t.integer  "customer_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "projects", ["customer_id"], name: "index_projects_on_customer_id", using: :btree
+  add_index "projects", ["user_id"], name: "index_projects_on_user_id", using: :btree
 
   create_table "questions", force: :cascade do |t|
     t.integer  "user_id"
@@ -149,6 +177,7 @@ ActiveRecord::Schema.define(version: 20160428093055) do
     t.integer  "status",     default: 0
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.integer  "project_id"
   end
 
   add_index "tasks", ["user_id"], name: "index_tasks_on_user_id", using: :btree
@@ -188,6 +217,10 @@ ActiveRecord::Schema.define(version: 20160428093055) do
   add_foreign_key "comments", "users"
   add_foreign_key "goodjobs", "tasks"
   add_foreign_key "goodjobs", "users"
+  add_foreign_key "members", "projects"
+  add_foreign_key "members", "users"
+  add_foreign_key "projects", "customers"
+  add_foreign_key "projects", "users"
   add_foreign_key "questions", "categories"
   add_foreign_key "questions", "languages"
   add_foreign_key "questions", "users"
