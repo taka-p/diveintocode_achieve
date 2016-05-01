@@ -1,39 +1,41 @@
-<p id="notice"><%= notice %></p>
+<div class="tasks-wrap">
+  <h2 class="page-header">タスク詳細</h2>
 
-<p>
-  <strong>User:</strong>
-  <%= @task.user.name %>
-</p>
+  <p>
+    <strong>作成者:</strong>
+    <%= @task.user.name %>
+  </p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @task.title %>
-</p>
+  <p>
+    <strong>題名:</strong>
+    <%= @task.title %>
+  </p>
 
-<p>
-  <strong>Content:</strong>
-  <%= @task.content %>
-</p>
+  <p>
+    <strong>内容:</strong>
+    <%= @task.content %>
+  </p>
 
-<p>
-  <strong>Deadline:</strong>
-  <%= @task.deadline %>
-</p>
+  <p>
+    <strong>期日:</strong>
+    <%= @task.deadline.strftime("%Y-%m-%d %H:%M:%S") %>
+  </p>
 
-<p>
-  <strong>Charge:</strong>
-  <%= @task.charge.name %>
-</p>
+  <p>
+    <strong>担当者:</strong>
+    <%= @task.charge.name %>
+  </p>
 
-<p>
-  <strong>Done:</strong>
-  <%= if @task.done? then '完了' else '未完了' end %>
-</p>
+  <p>
+    <strong>完了/未完了:</strong>
+    <%= if @task.done? then '完了' else '未完了' end %>
+  </p>
 
-<p>
-  <strong>Status:</strong>
-  <%= if @task.status == 1 then '対応中' elsif @task.status == 0 then '未着手' end %>
-</p>
+  <p>
+    <strong>状態:</strong>
+    <%= if @task.status == 1 then '対応中' elsif @task.status == 0 then '未着手' end %>
+  </p>
 
-<%= link_to 'Edit', edit_user_task_path(@task.user, @task) %> |
-<%= link_to 'Back', user_tasks_path(@task.user) %>
+  <%= link_to 'タスク編集', edit_user_task_path(@task.user, @task) %> |
+  <%= link_to 'マイタスク一覧', user_tasks_path(@task.user) %>
+</div>

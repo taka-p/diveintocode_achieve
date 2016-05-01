@@ -1,6 +1,14 @@
-<h1>Editing Task</h1>
+<div class="tasks-wrap">
+  <h2 class="page-header">タスク登録</h2>
 
-<%= render 'form' %>
+  <div class="h-mb15">
+    <%= render 'form' %>
+  </div>
 
-<%= link_to 'Show', user_task_path(@task.user, @task) %> |
-<%= link_to 'Back', user_tasks_path(@task.user) %>
+  <div class="h-mb15">
+    <%= link_to 'タスク詳細', user_task_path(@task.user, @task), class: 'btn btn-default' %>
+  </div>
+
+  <%= link_to 'マイタスク一覧に戻る', user_tasks_path(@task.user_id), class: 'btn btn-default' %>
+</div>
+
