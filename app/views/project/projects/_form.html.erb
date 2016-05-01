@@ -1,0 +1,39 @@
+<%= form_for([@project]) do |f| %>
+    <% if @project.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+          <ul>
+            <% @project.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label :name, '題名' %><br>
+      <%= f.text_field :name, class: 'form-control', placeholder: 'プロジェクト名を入力してください' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :content, '内容' %><br>
+      <%= f.text_area :content, class: 'form-control', placeholder: '内容を入力してください' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :customer_id, '顧客' %><br>
+      <%= f.select :customer_id, @customers.map{|t| [t.name, t.id]}, prompt: "選択してください", class: 'form-control' %>
+    </div>
+
+    <%
+      if params['action'] == 'edit'
+        submit_str = 'プロジェクト情報を変更する'
+      else
+        submit_str = 'プロジェクトを作成する'
+      end
+    %>
+    <div class="form-group">
+      <%= f.hidden_field :user_id %>
+      <%= f.submit submit_str, class: 'btn btn-primary' %>
+    </div>
+<% end %>
+

@@ -3,7 +3,7 @@ class Project::CustomersController < ApplicationController
   before_action :set_customer, only: [:edit, :update]
 
   def index
-    @customers = Customer.all
+    @customers = Customer.all.reverse_order
     @customer  = Customer.new
   end
 
@@ -12,7 +12,11 @@ class Project::CustomersController < ApplicationController
 
     respond_to do |format|
       if @customer.save
-        format.js { render :index, notice: '顧客を追加しました' }
+        format.html { redirect_to customers_path, notice: '顧客を登録しました' }
+        format.json { render :index, status: :created, location: @customer }
+      else
+        format.html { render :index }
+        format.json { render json: @customer.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -22,12 +26,12 @@ class Project::CustomersController < ApplicationController
 
   def update
     respond_to do |format|
-      if @@customer.update(@customer_params)
-        format.html { redirect_to @@customer, notice: '顧客情報を編集しました' }
-        format.json { render :show, status: :ok, location: @@customer }
+      if @customer.update(customer_params)
+        format.html { redirect_to customers_path, notice: '顧客情報を編集しました' }
+        format.json { render :show, status: :ok, location: @customer }
       else
         format.html { render :edit }
-        format.json { render json: @@customer.errors, status: :unprocessable_entity }
+        format.json { render json: @customer.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -38,7 +42,7 @@ class Project::CustomersController < ApplicationController
 
   private
   def set_customer
-    @customer = Blog.find(params[:id])
+    @customer = Customer.find(params[:id])
   end
 
   def customer_params

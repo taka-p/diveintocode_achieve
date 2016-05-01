@@ -47,9 +47,14 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :projects do
-    resource :tasks
-    resource :members
+  namespace :project do
+    resource  :tasks
+    resources :members
+  end
+
+  scope module: :project do
+    resources :projects
+    resources :customers
   end
 
   namespace :taskline do

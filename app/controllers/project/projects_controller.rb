@@ -14,6 +14,7 @@ class Project::ProjectsController < ApplicationController
 
   def new
     @project = Project.new
+    @customers = Customer.all
   end
 
   def create
@@ -37,6 +38,7 @@ class Project::ProjectsController < ApplicationController
   end
 
   def edit
+    @customers = Customer.all
   end
 
   def update

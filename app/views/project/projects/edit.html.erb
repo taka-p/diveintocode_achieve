@@ -1,0 +1,16 @@
+<div class="projects-wrap">
+  <h2 class="page-header">プロジェクト編集</h2>
+
+  <div class="h-mb15">
+    <%= render 'form' %>
+  </div>
+
+  <div class="h-mb15">
+    <%= link_to 'プロジェクトを削除する', project_path(@project), method: :delete,
+                data: { confirm: '本当に削除しますか？',
+                        commit: '削除する',
+                        cancel: 'やめる'
+                }, title: 'プロジェクトの削除確認', class: 'btn btn-danger' %>
+  </div>
+  <%= link_to 'プロジェクト一覧に戻る', projects_path, class: 'btn btn-default' %>
+</div>

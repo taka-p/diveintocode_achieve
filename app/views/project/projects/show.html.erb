@@ -1,0 +1,101 @@
+<%
+  if @project.customer_id.nil?
+    customer_name = '顧客無し'
+  else
+    customer_name = @project.customer.name
+  end
+%>
+
+<div class="projects-wrap">
+  <h2 class="page-header"><%= @project.name %></h2>
+
+  <div class="project-detail-content">
+    <div class="h-dt h-w100p">
+      <div class="h-dtc h-vam h-tal">
+        <div class="h-mb10"><b>作成者:</b> <%= @project.user.name %></div>
+        <div class="h-mb10"><b>顧客名:</b> <%= customer_name %></div>
+      </div>
+      <div class="h-dtc h-vam h-tar">
+        <div class="h-mb15">
+          <%= link_to 'プロジェクトを編集する', edit_project_path(@project), class: 'btn btn-default' %>
+        </div>
+        <div class="h-mb15">
+          <%= link_to 'プロジェクト一覧に戻る', projects_path, class: 'btn btn-default' %>
+        </div>
+      </div>
+    </div>
+
+    <div class="h-mb10"><b>概要</b></div>
+    <div class="well well-sm simple-text-l">
+      <%= simple_format(h(@project.content)) %>
+    </div>
+
+    <h4 class="page-header">プロジェクトタスク</h4>
+    <div class="h-pl10 h-pr10">
+      <%= link_to 'タスク登録', new_project_tasks_path, class: 'btn btn-default h-mb15' %>
+
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>作成者</th>
+          <th>題名</th>
+          <th>内容</th>
+          <th>期日</th>
+          <th>担当者</th>
+          <th>完了/未完了</th>
+          <th>状態</th>
+          <th colspan="3"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <% unless @tasks.empty? %>
+          <% @tasks.each do |task| %>
+            <tr>
+              <td><%= task.user.name %></td>
+              <td><%= task.title %></td>
+              <td><%= task.content %></td>
+              <td><%= task.deadline.strftime("%Y-%m-%d %H:%M:%S") %></td>
+              <td><%= task.charge.name %></td>
+              <td><%= if task.done? then '完了' else '未完了' end %></td>
+              <td><%= if task.status == 1 then '対応中' elsif task.status == 0 then '未着手' end %></td>
+              <td><%= link_to '詳細', project_task_path(task) %></td>
+              <td><%= link_to '編集', edit_project_task_path(task) %></td>
+              <td><%= link_to '削除', project_task_path(task), method: :delete,
+                              data: { confirm: '本当に削除しますか？',
+                                      commit: '削除する',
+                                      cancel: 'やめる'
+                              }, title: 'タスクの削除確認'  %></td>
+            </tr>
+          <% end %>
+        <% else %>
+          <tr>
+            <td colspan="10"><div class="text-muted">タスクが登録されていません</div></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <h4 class="page-header">プロジェクトメンバー</h4>
+    <div class="h-pl10 h-pr10">
+      <div class="h-mb15">
+       <%= link_to 'メンバー追加・削除', project_members_path, class: 'btn btn-default' %>
+      </div>
+
+      <% unless @members.empty? %>
+        <% @members.each do |member| %>
+          <%= link_to user_path(member.user), class: 'user-item' do %>
+            <%= profile_img(member.user, { class: 'img-thumbnail' }) %>
+            <div class="name h-tac">
+              <b><%= member.user.name %></b>
+            </div>
+          <% end %>
+        <% end %>
+      <% else %>
+        <div class="text-muted">
+          メンバーが登録されていません
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

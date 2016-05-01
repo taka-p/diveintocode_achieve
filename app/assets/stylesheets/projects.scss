@@ -1,0 +1,25 @@
+/**
+ * Projects.scss
+ * Project関連ページ(タスクラインもこちら)
+ **/
+
+.projects-wrap {
+  width: 800px;
+  margin: 0 auto;
+  padding: 10px 10px 30px;
+  .project-detail-content {
+    padding: 0 10px;
+  }
+  .simple-text-l p {
+    font-size: 20px;
+  }
+  .user-item {
+    width: 100px;
+    display: inline-block;
+    .img-thumbnail {
+      width : 100px;
+      height: 100px;
+    }
+    .name { font-size: 18px; }
+  }
+}
