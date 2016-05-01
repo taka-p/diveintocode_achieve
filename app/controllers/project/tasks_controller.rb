@@ -1,4 +1,6 @@
-class Project::TasksController < ApplicationController
+class Project::TasksController < TasksController
+  # ベースはTasksControllerから継承して、リダイレクト処理のみこちらで制御
+
   def show
   end
 
