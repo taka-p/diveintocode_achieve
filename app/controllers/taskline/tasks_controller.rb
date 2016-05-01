@@ -26,9 +26,9 @@ class Taskline::TasksController < ApplicationController
 
   def index
     # 自分とフォローユーザのタスクを取得
-    @feed_tasks = current_user.taskfeed
-    # コメントモデルオブジェクト
-    @taskline_task_comment = TaskComment.new
+    @feed_tasks = current_user.taskfeed.page(params[:page])
+    # コメントモデルオブジェクト(必要？)
+    @taskline_task_comment = TaskComment.new(user_id: current_user.id)
     # Goodjobモデルオブジェクト
     @goodjob = Goodjob.new
   end

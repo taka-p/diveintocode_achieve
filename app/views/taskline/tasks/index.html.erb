@@ -1,6 +1,15 @@
 <div class="tasks-wrap">
   <h2 class="page-header">タスクライン</h2>
 
+  <% if @feed_tasks.count > 0 %>
+      <div class="h-tac h-mt0 h-mb10">
+        <%= paginate @feed_tasks %>
+        <div>
+          <%= page_entries_info @feed_tasks %>
+        </div>
+      </div>
+  <% end %>
+
   <% if @feed_tasks.any? %>
     <div class="feedtask">
       <table>
@@ -19,10 +28,21 @@
           <div id="feedask_<%= feedtask.id %>">
             <%= render partial: 'taskline/task_comments/index', locals: { task_comments: feedtask.task_comments } %>
           </div>
-          <%= render partial: 'taskline/task_comments/form', locals: { task_comment: feedtask.task_comments.build } %>
+          <%= render partial: 'taskline/task_comments/form', locals: { task_comment: feedtask.task_comments.build(user_id: current_user.id) } %>
         <% end %>
         </tbody>
       </table>
     </div>
-<% end %>
+  <% else %>
+      <div>タスクが見つかりませんでした</div>
+  <% end %>
+
+  <% if @feed_tasks.count > 0 %>
+      <div class="h-tac h-mt0 h-mb10">
+        <%= paginate @feed_tasks %>
+        <div>
+          <%= page_entries_info @feed_tasks %>
+        </div>
+      </div>
+  <% end %>
 </div>

@@ -11,4 +11,7 @@ class Task < ActiveRecord::Base
     followed_user_ids = "SELECT X.id FROM (SELECT users.* FROM users INNER JOIN relationships ON users.id = relationships.followed_id WHERE relationships.follower_id = :user_id) X INNER JOIN (SELECT users.* FROM users INNER JOIN relationships ON users.id = relationships.follower_id WHERE relationships.followed_id = :user_id) Y ON X.id = Y.id"
     where("user_id IN (#{followed_user_ids}) OR user_id = :user_id", user_id: user.id)
   end
+
+  # kaminari用
+  paginates_per 20
 end
