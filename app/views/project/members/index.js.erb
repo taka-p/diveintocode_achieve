@@ -1,0 +1,3 @@
+render_str = "<%= escape_javascript(render partial: 'mambers/form', locals: { user: @user }) %>";
+
+$('#js_members_ctrl_from_' + "<%= @user.id %>").html(render_str);

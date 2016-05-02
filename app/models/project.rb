@@ -1,7 +1,7 @@
 class Project < ActiveRecord::Base
   belongs_to :user
   belongs_to :customer
-  has_many :members
+  has_many :members, dependent: :destroy
   has_many :tasks, dependent: :destroy
 
   # projectのメンバーか判定
@@ -14,5 +14,11 @@ class Project < ActiveRecord::Base
   def manager?(user)
     project = Project.find(self.id)
     project.user == user
+  end
+
+  # projectのメンバーか判定
+  def project_members?(user)
+    project_members = self.members.find_by(user_id: user.id)
+    ! project_members.nil?
   end
 end

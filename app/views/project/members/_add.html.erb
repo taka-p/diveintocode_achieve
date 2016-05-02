@@ -1,0 +1,5 @@
+<%= form_for([@project, @project.members.build(user_id: user.id)]) do |f| %>
+    <%= f.hidden_field :project_id %>
+    <%= f.hidden_field :user_id %>
+    <%= f.submit 'プロジェクトメンバーに追加する', class: 'btn btn-primary' %>
+<% end %>

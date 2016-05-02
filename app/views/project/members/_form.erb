@@ -1,0 +1,5 @@
+<% if @project.project_members?(user) %>
+   <%= render partial: 'remove', locals: { user: user } %>
+<% else %>
+  <%= render partial: 'add', locals: { user: user } %>
+<% end %>

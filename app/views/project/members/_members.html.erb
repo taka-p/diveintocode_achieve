@@ -1,0 +1,13 @@
+<% @users.each do |user| %>
+    <li class="list-group-item user-item h-dt h-w100p">
+      <div class="user-img h-dtc h-vam h-pr10">
+        <%= profile_img(user, { class: 'img-thumbnail' }) %>
+      </div>
+      <div class="user-name h-dtc h-vam h-tal">
+        <%= user.name %>
+      </div>
+      <div id="js_members_ctrl_from_<%= user.id %>" class="user-ctrl h-dtc h-vam h-tar">
+        <%= render partial: 'form', locals: { user: user } %>
+      </div>
+    </li>
+<% end %>
