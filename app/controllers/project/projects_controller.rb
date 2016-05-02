@@ -13,18 +13,12 @@ class Project::ProjectsController < ApplicationController
   end
 
   def new
-    @project = Project.new
+    @project = Project.new(user_id: current_user.id)
     @customers = Customer.all
   end
 
   def create
     @project = Project.new(project_params)
-
-    # 投稿を操作するユーザがログイン中のユーザか判定
-    if @project.user_id != current_user.id
-      redirect_to projects_path, alert: '不正な操作が行われました'
-      return
-    end
 
     respond_to do |format|
       if @project.save

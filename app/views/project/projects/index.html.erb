@@ -19,30 +19,38 @@
     </thead>
 
     <tbody>
-    <% @projects.each do |project| %>
+    <% unless @projects.empty? %>
+      <% @projects.each do |project| %>
+          <tr>
+            <td><%= project.name %></td>
+            <td><%= project.user.name %></td>
+            <%
+              if project.customer_id.nil?
+                customer_name = '顧客無し'
+              else
+                customer_name = project.customer.name
+              end
+            %>
+            <td><%= customer_name %></td>
+            <td class="h-tar">
+              <% if project.members? || project.manager?(current_user) %>
+                <%= link_to '詳細', project_path(project) %> /
+                <%= link_to '編集', edit_project_path(project) %> /
+                <%= link_to '削除', project_path(project), method: :delete,
+                              data: { confirm: '本当に削除しますか？',
+                                      commit: '削除する',
+                                      cancel: 'やめる'
+                              }, title: 'プロジェクトの削除確認'  %>
+              <% else %>
+                閲覧権限がありません
+              <% end %>
+            </td>
+          </tr>
+      <% end %>
+    <% else %>
         <tr>
-          <td><%= project.name %></td>
-          <td><%= project.user.name %></td>
-          <%
-            if project.customer_id.nil?
-              customer_name = '顧客無し'
-            else
-              customer_name = project.customer.name
-            end
-          %>
-          <td><%= customer_name %></td>
-          <td class="h-tar">
-            <% if project.members? || project.manager?(current_user) %>
-              <%= link_to '詳細', project_path(project) %> /
-              <%= link_to '編集', edit_project_path(project) %> /
-              <%= link_to '削除', project_path(project), method: :delete,
-                            data: { confirm: '本当に削除しますか？',
-                                    commit: '削除する',
-                                    cancel: 'やめる'
-                            }, title: 'プロジェクトの削除確認'  %>
-            <% else %>
-              閲覧権限がありません
-            <% end %>
+          <td colspan="4">
+            <div class="text-muted">プロジェクトが登録されていません</div>
           </td>
         </tr>
     <% end %>
