@@ -32,7 +32,7 @@
 
     <h4 class="page-header">プロジェクトタスク</h4>
     <div class="h-pl10 h-pr10">
-      <%= link_to 'タスク登録', new_project_tasks_path, class: 'btn btn-default h-mb15' %>
+      <%= link_to 'タスク登録', new_project_task_path(@project), class: 'btn btn-default h-mb15' %>
 
       <table class="table table-striped">
         <thead>
@@ -58,9 +58,9 @@
               <td><%= task.charge.name %></td>
               <td><%= if task.done? then '完了' else '未完了' end %></td>
               <td><%= if task.status == 1 then '対応中' elsif task.status == 0 then '未着手' end %></td>
-              <td><%= link_to '詳細', project_task_path(task) %></td>
-              <td><%= link_to '編集', edit_project_task_path(task) %></td>
-              <td><%= link_to '削除', project_task_path(task), method: :delete,
+              <td><%= link_to '詳細', project_task_path(@project, task) %></td>
+              <td><%= link_to '編集', edit_project_task_path(@project, task) %></td>
+              <td><%= link_to '削除', project_task_path(@project, task), method: :delete,
                               data: { confirm: '本当に削除しますか？',
                                       commit: '削除する',
                                       cancel: 'やめる'
@@ -79,7 +79,7 @@
     <h4 class="page-header">プロジェクトメンバー</h4>
     <div class="h-pl10 h-pr10">
       <div class="h-mb15">
-       <%= link_to 'メンバー追加・削除', project_members_path, class: 'btn btn-default' %>
+       <%= link_to 'メンバー追加・削除', project_members_path(@project), class: 'btn btn-default' %>
       </div>
 
       <% unless @members.empty? %>

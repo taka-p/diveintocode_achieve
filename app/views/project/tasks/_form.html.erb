@@ -1,0 +1,48 @@
+<%= form_for([@project, @project_task]) do |f| %>
+    <% if @project_task.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@project_task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+          <ul>
+            <% @project_task.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label :title, '題名' %><br>
+      <%= f.text_field :title, class: 'form-control', placeholder: '題名を入力してください' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :content, '内容' %><br>
+      <%= f.text_area :content, class: 'form-control', placeholder: '内容を入力してください' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :deadline, '期日' %><br>
+      <%= f.datetime_select :deadline, class: 'form-control', placeholder: '期日を入力してください' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :done, '完了チェック' %><br>
+      <%= f.check_box :done %>
+    </div>
+    <div class="form-group">
+      <%= f.label :status, '状態' %><br>
+      <%= f.select :status, [['未着手', 0], ['対応中', 1]] %>
+    </div>
+
+    <%
+      if params['action'] == 'edit'
+        submit_str = 'タスクを変更する'
+      else
+        submit_str = 'タスクを登録する'
+      end
+    %>
+    <div class="form-group">
+      <%= f.hidden_field :user_id %>
+      <%= f.hidden_field :charge_id %>
+      <%= f.hidden_field :project_id %>
+      <%= f.submit submit_str, class: 'btn btn-primary' %>
+    </div>
+<% end %>

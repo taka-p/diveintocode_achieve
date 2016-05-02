@@ -1,2 +1,9 @@
-<h1>Project::Tasks#edit</h1>
-<p>Find me in app/views/project/tasks/edit.html.erb</p>
+<div class="tasks-wrap">
+  <h2 class="page-header">タスク編集</h2>
+
+  <div class="h-mb15">
+    <%= render 'form' %>
+  </div>
+
+  <%= link_to 'プロジェクトに戻る', project_path(@project), class: 'btn btn-default' %>
+</div>

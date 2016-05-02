@@ -47,13 +47,12 @@ Rails.application.routes.draw do
     end
   end
 
-  namespace :project do
-    resource  :tasks
-    resources :members
-  end
-
   scope module: :project do
-    resources :projects
+    resources :projects do
+      resources :tasks, except: :destroy
+      delete 'tasks/:id' => 'tasks#sub_destroy'
+      resources :members
+    end
     resources :customers
   end
 

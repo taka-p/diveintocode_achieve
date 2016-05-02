@@ -1,2 +1,46 @@
-<h1>Project::Tasks#show</h1>
-<p>Find me in app/views/project/tasks/show.html.erb</p>
+<div class="tasks-wrap">
+  <h2 class="page-header">タスク詳細</h2>
+
+  <p>
+    <strong>プロジェクト名:</strong>
+    <%= @task.project.name %>
+  </p>
+
+  <p>
+    <strong>作成者:</strong>
+    <%= @task.user.name %>
+  </p>
+
+  <p>
+    <strong>題名:</strong>
+    <%= @task.title %>
+  </p>
+
+  <p>
+    <strong>内容:</strong>
+    <%= @task.content %>
+  </p>
+
+  <p>
+    <strong>期日:</strong>
+    <%= @task.deadline.strftime("%Y-%m-%d %H:%M:%S") %>
+  </p>
+
+  <p>
+    <strong>担当者:</strong>
+    <%= @task.charge.name %>
+  </p>
+
+  <p>
+    <strong>完了/未完了:</strong>
+    <%= if @task.done? then '完了' else '未完了' end %>
+  </p>
+
+  <p>
+    <strong>状態:</strong>
+    <%= if @task.status == 1 then '対応中' elsif @task.status == 0 then '未着手' end %>
+  </p>
+
+  <%= link_to 'タスク編集', edit_project_task_path(@task.project, @task) %> |
+  <%= link_to 'プロジェクトに戻る', project_path(@task.project) %>
+</div>
