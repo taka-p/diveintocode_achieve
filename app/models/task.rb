@@ -4,6 +4,7 @@ class Task < ActiveRecord::Base
   belongs_to :project
   has_many :task_comments, dependent: :destroy
   has_many :goodjobs, dependent: :destroy
+  has_many :submit_requests, dependent: :destroy
 
   validates :title, presence: true
 
