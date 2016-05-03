@@ -7,6 +7,7 @@ class BlogsController < ApplicationController
   def index
     # フォローし合っているユーザを抽出
     ids = current_user.friend.map { |user| user.id }
+    ids.push(current_user.id)
     @blogs = Blog.where(user_id: ids).reverse_order
   end
 
