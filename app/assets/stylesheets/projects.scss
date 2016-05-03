@@ -16,10 +16,14 @@
   .user-item {
     width: 100px;
     display: inline-block;
+    vertical-align: top;
     .img-thumbnail {
       width : 100px;
       height: 100px;
     }
-    .name { font-size: 18px; }
+    .name {
+      word-break: break-word;
+      font-size: 18px;
+    }
   }
 }
