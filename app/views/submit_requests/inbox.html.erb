@@ -1,2 +1,9 @@
-<h1>SubmitRequests#inbox</h1>
-<p>Find me in app/views/submit_requests/inbox.html.erb</p>
+<div class="submit-requests-wrap">
+  <h2 class="page-header">依頼されているタスク一覧</h2>
+
+  <div id="submit_requests_<%= current_user.id %>">
+    <%= render partial: 'submit_requests_list', locals: { submit_requests: @submit_requests } %>
+  </div>
+
+  <%= link_to '依頼一覧', user_submit_requests_path(@submit_request.user_id), class: 'btn btn-default' %>
+</div>

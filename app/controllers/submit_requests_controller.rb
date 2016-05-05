@@ -7,7 +7,7 @@ class SubmitRequestsController < ApplicationController
 
   def new
     ids = current_user.friend.map { |user| user.id }
-    @users = User.where(user_id: ids)
+    @users = User.where(id: ids)
     @tasks = Task.where.not(id: SubmitRequest.select(:task_id))
                  .where(user_id: current_user.id, done: false)
     @submit_request = current_user.submit_requests.build(status: 1)
@@ -32,7 +32,7 @@ class SubmitRequestsController < ApplicationController
 
   def edit
     ids = current_user.friend.map { |user| user.id }
-    @users = User.where(user_id: ids)
+    @users = User.where(id: ids)
     @tasks = Task.where.not(id: SubmitRequest.select(:task_id))
                  .where(user_id: current_user.id, done: false)
   end
@@ -82,7 +82,7 @@ class SubmitRequestsController < ApplicationController
 
   private
 
-    def submit_reqest_params
+    def submit_request_params
       params.require(:submit_request).permit(:task_id, :user_id, :charge_id, :status, :message)
     end
 

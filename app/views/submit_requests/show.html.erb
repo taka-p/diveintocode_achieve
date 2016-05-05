@@ -1,2 +1,40 @@
-<h1>SubmitRequests#show</h1>
-<p>Find me in app/views/submit_requests/show.html.erb</p>
+<div class="submit-requests-wrap">
+  <h2 class="page-header">依頼詳細</h2>
+
+  <div>
+    <b>User:</b>
+    <%= @submit_request.user.name if @submit_request.user.present? %>
+  </div>
+
+  <div>
+    <b>Task:</b>
+    <%= @submit_request.task.title %>
+  </div>
+
+  <div>
+    <b>Charge:</b>
+    <%= @submit_request.charger.name if @submit_request.user.present? %>
+  </div>
+
+  <div>
+    <b>Status:</b>
+    <%= case @submit_request.status
+        when 0 then "未依頼"
+        when 1 then "依頼中"
+        when 2 then "承認済み"
+        when 8 then "取消済み"
+        when 9 then "却下済み"
+        end
+    %>
+  </div>
+
+  <div>
+    <b>Message:</b>
+    <%= simple_format(h(@submit_request.message)) %>
+  </div>
+
+  <div class="h-mb15">
+    <%= link_to '依頼を編集する', edit_submit_request_path(@submit_request) %>
+  </div>
+  <%= link_to '依頼一覧に戻る', user_submit_requests_path(@submit_request.user_id), class: 'btn btn-default' %>
+</div>

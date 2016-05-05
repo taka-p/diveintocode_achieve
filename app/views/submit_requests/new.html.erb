@@ -1,2 +1,18 @@
-<h1>SubmitRequests#new</h1>
-<p>Find me in app/views/submit_requests/new.html.erb</p>
+<div class="submit-requests-wrap">
+  <h2 class="page-header">新規依頼作成</h2>
+
+  <div>
+    <h4>依頼する内容</h4>
+    <div>
+      <% if @tasks.present? %>
+        <%= render 'form' %>
+      <% else %>
+          <div class="text-danger">
+            依頼できるタスクがありません
+          </div>
+      <% end %>
+    </div>
+  </div>
+
+  <%= link_to '依頼一覧に戻る', user_submit_requests_path(@submit_request.user_id), class: 'btn btn-default' %>
+</div>

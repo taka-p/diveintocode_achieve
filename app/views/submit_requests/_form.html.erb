@@ -1,0 +1,19 @@
+<%= form_for([@user, @submit_request]) do |f| %>
+  <div class="form-group">
+    <%= f.collection_select :task_id, @tasks, :id, :title %>
+  </div>
+
+  <div class="form-group">
+    <%= f.collection_select :charge_id, @users, :id, :name %>
+  </div>
+
+  <div class="form-group">
+    <%= f.text_area :message, placeholder: '依頼メッセージを入力してください', size: '50*100', class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.hidden_field :user_id %>
+    <%= f.hidden_field :status %>
+    <%= f.submit '依頼する', class: 'btn btn-primary' %>
+  </div>
+<% end %>
