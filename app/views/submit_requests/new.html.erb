@@ -1,9 +1,9 @@
 <div class="submit-requests-wrap">
-  <h2 class="page-header">新規依頼作成</h2>
+  <h2 class="page-header">新規依頼</h2>
 
   <div>
-    <h4>依頼する内容</h4>
-    <div>
+    <h4>依頼するタスク</h4>
+    <div class="h-mb15">
       <% if @tasks.present? %>
         <%= render 'form' %>
       <% else %>
@@ -14,5 +14,5 @@
     </div>
   </div>
 
-  <%= link_to '依頼一覧に戻る', user_submit_requests_path(@submit_request.user_id), class: 'btn btn-default' %>
+  <%= link_to '依頼タスク一覧に戻る', user_submit_requests_path(@submit_request.user_id), class: 'btn btn-default' %>
 </div>

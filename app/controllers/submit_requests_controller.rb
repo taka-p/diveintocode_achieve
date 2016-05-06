@@ -1,5 +1,6 @@
 class SubmitRequestsController < ApplicationController
-  before_action :set_submit_request, only: [:show, :edit, :update, :destroy, :approve, :unapprove]
+  before_action :set_submit_request, only: [:show, :edit, :update, :destroy]
+  before_action :sub_set_submit_request, only: [:approve, :unapprove, :reject]
 
   def index
     @submit_requests = SubmitRequest.where(user_id: current_user.id).order(updated_at: :desc)
@@ -62,7 +63,7 @@ class SubmitRequestsController < ApplicationController
   end
 
   def unapprove
-    @submit_request.update(stauts: 9, charge_id: @submit_request.user_id)
+    @submit_request.update(status: 9, charge_id: @submit_request.user_id)
     @submit_request = SubmitRequest.where(charge_id: current_user.id).reverse_order
 
     respond_to do |format|
@@ -88,5 +89,9 @@ class SubmitRequestsController < ApplicationController
 
     def set_submit_request
       @submit_request = SubmitRequest.find(params[:id])
+    end
+
+    def sub_set_submit_request
+      @submit_request = SubmitRequest.find(params[:submit_request_id])
     end
 end

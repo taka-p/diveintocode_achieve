@@ -11,6 +11,7 @@
         <th>担当者</th>
         <th>依頼日</th>
         <th>タスク・ステータス</th>
+        <th></th>
       </thead>
       <tbody>
         <% submit_requests.each do |sr| %>
@@ -26,12 +27,20 @@
               <td><%= sr.task.user.name %></td>
             <% end %>
 
-            <td><%= link_to sr.task.title, task_path(sr.task) %></td>
+            <td>
+              <%= link_to sr.task.title, user_task_path(sr.task.user_id, sr.task) %>
+            </td>
 
-            <% if sr.charge_id == current_user.id %>
+            <% if sr.user_id == current_user.id %>
               <td>(自分)</td>
             <% else %>
-              <td><%= sr.charger.name %></td>
+              <td><%= sr.user.name %></td>
+            <% end %>
+
+            <% if sr.charge_id == current_user.id %>
+                <td>(自分)</td>
+            <% else %>
+                <td><%= sr.charger.name %></td>
             <% end %>
 
             <td><%= sr.created_at.strftime("%y/%m/%d") %></td>
@@ -41,12 +50,18 @@
             <% else %>
               <td>未完了</td>
             <% end %>
-
-            <td><%= link_to '詳細', submit_request_path(sr) %></td>
-            <td><%= link_to '編集', edit_submit_request_path(sr) %></td>
-            <td><%= link_to '承認', submit_request_approve_path(sr) %></td>
-            <td><%= link_to '却下', submit_request_unapprove_path(sr) %></td>
-            <td><%= link_to_if sr.status == 1, '取消', submit_request_reject_path(sr), data: sr.id, remote: true %></td>
+            <td>
+              <%= link_to '詳細', submit_request_path(sr) %>
+              <% unless sr.user_id == current_user.id %>
+                / <%= link_to '承認', submit_request_approve_path(sr), remote: true %>
+                / <%= link_to '却下', submit_request_unapprove_path(sr), remote: true %>
+              <% else %>
+                  <% unless sr.status == 2 %>
+                    / <%= link_to_if sr.status == 1, '編集', edit_submit_request_path(sr) %>
+                    / <%= link_to_if sr.status == 1, '取消', submit_request_reject_path(sr), data: sr.id, remote: true %>
+                  <% end %>
+              <% end %>
+            </td>
           </tr>
         <% end %>
       </tbody>

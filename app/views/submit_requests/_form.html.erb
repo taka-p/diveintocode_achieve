@@ -1,9 +1,11 @@
 <%= form_for([@user, @submit_request]) do |f| %>
   <div class="form-group">
+    <%= f.label :task_id, 'タスク名' %><br />
     <%= f.collection_select :task_id, @tasks, :id, :title %>
   </div>
 
   <div class="form-group">
+    <%= f.label :task_id, '担当者' %><br />
     <%= f.collection_select :charge_id, @users, :id, :name %>
   </div>
 
