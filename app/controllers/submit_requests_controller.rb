@@ -20,7 +20,7 @@ class SubmitRequestsController < ApplicationController
 
     respond_to do |format|
       if @submit_request.save
-        @submit_request.task.update(status: 1)
+        @submit_request.task.update(status: 0)
         format.html { redirect_to @submit_request, notice: '依頼を作成しました' }
       else
         format.html { rendeer :new }

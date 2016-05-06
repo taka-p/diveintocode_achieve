@@ -12,7 +12,7 @@ class TasksController < ApplicationController
       redirect_to user_tasks_path(current_user.id), alert: '不正な操作が行われました'
     end
 
-    @tasks = Task.where(charge_id: current_user.id).where.not(status: 1)
+    @tasks = Task.where(charge_id: current_user.id).where.not(done: true)
     @user = User.find(params[:user_id])
   end
 
