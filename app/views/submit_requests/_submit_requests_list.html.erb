@@ -59,7 +59,7 @@
                     <% unless sr.status == 2 %>
                       / <%= link_to '編集', edit_submit_request_path(sr) %>
                     <% end %>
-                      
+
                     / <%= link_to '取消', submit_request_reject_path(sr), data: sr.id, remote: true %>
                   <% end %>
               <% end %>
