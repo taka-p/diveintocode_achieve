@@ -23,6 +23,9 @@ class User < ActiveRecord::Base
   has_many :projects, dependent: :destroy
   has_many :members, dependent: :destroy
 
+  # submit_request
+  has_many :submit_requests, dependent: :destroy
+
   # フォロー登録
   def follow!(other_user)
     relationships.create!(followed_id: other_user.id)

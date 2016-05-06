@@ -1,0 +1,14 @@
+<div class="submit-requests-wrap">
+  <h2 class="page-header">依頼タスク一覧</h2>
+
+  <div class="h-mb15">
+    <%= link_to '新規タスク依頼', new_user_submit_request_path, class: 'btn btn-default' %>
+  </div>
+  <div class="h-mb15">
+    <%= link_to '依頼されているタスク一覧', inbox_user_submit_requests_path, class: 'btn btn-default' %>
+  </div>
+
+  <div id="js_submit_requests_<%= current_user.id %>">
+    <%= render partial: 'submit_requests_list', locals: { submit_requests: @submit_requests } %>
+  </div>
+</div>

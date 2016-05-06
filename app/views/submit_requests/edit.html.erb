@@ -1,0 +1,10 @@
+<div class="submit-requests-wrap">
+  <h2 class="page-header">依頼編集</h2>
+
+  <%= render 'form' %>
+
+  <div class="h-mb15">
+    <%= link_to '依頼詳細', submit_request_path(@submit_request), class: 'btn btn-default' %>
+  </div>
+  <%= link_to '依頼一覧', user_submit_requests_path(@submit_request), class: 'btn btn-default' %>
+</div>

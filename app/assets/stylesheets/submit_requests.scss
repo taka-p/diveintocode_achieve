@@ -1,0 +1,16 @@
+/**
+ * SubmitRequests.scss
+ * SubmitRequests関連ページ
+ **/
+
+.submit-requests-wrap {
+  width: 900px;
+  margin: 0 auto;
+  padding: 10px 10px 30px;
+  .simple-text-l p {
+    font-size: 20px;
+  }
+  textarea {
+    width: 500px;
+  }
+}

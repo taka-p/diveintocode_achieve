@@ -1,0 +1,9 @@
+<div class="submit-requests-wrap">
+  <h2 class="page-header">依頼されているタスク一覧</h2>
+
+  <div id="submit_requests_<%= current_user.id %>">
+    <%= render partial: 'submit_requests_list', locals: { submit_requests: @submit_requests } %>
+  </div>
+
+  <%= link_to '依頼タスク一覧', user_submit_requests_path(current_user.id), class: 'btn btn-default' %>
+</div>

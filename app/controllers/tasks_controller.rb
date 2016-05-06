@@ -6,7 +6,7 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.where(user_id: params[:user_id])
+    @tasks = Task.where(user_id: params[:user_id]).where.not(status: 1)
     @user = User.find(params[:user_id])
   end
 
@@ -78,6 +78,6 @@ class TasksController < ApplicationController
     # 自分のタスク以外は見れないようにする
     def correct_user
       @user = User.find(params[:user_id])
-      redirect_to(user_task_path(current_user)) unless current_user == @user
+      redirect_to(user_tasks_path(current_user.id)) unless current_user == @user
     end
 end
