@@ -34,9 +34,9 @@
             <td><%= customer_name %></td>
             <td class="h-tar">
               <% if project.members?(current_user) || project.manager?(current_user) %>
-                <%= link_to '詳細', project_path(project) %> /
-                <%= link_to '編集', edit_project_path(project) %> /
-                <%= link_to '削除', project_path(project), method: :delete,
+                <%= link_to '詳細', project_path(project) %>
+                / <%= link_to '編集', edit_project_path(project) %>
+                / <%= link_to_if project.manager?(current_user), '削除', project_path(project), method: :delete,
                               data: { confirm: '本当に削除しますか？',
                                       commit: '削除する',
                                       cancel: 'やめる'
