@@ -5,9 +5,9 @@ class Project < ActiveRecord::Base
   has_many :tasks, dependent: :destroy
 
   # projectのメンバーか判定
-  def members?
-    member = Member.find_by(user_id: self.user.id)
-    ! member.nil?
+  def members?(user)
+    members = Member.where(project_id: self.id).where(user_id: user.id)
+    ! members[0].nil?
   end
 
   # projectの作成者か判定

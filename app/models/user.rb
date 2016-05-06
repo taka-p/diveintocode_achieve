@@ -20,7 +20,8 @@ class User < ActiveRecord::Base
   has_many :tasks, dependent: :destroy
 
   # project member
-  has_many :members
+  has_many :projects, dependent: :destroy
+  has_many :members, dependent: :destroy
 
   # フォロー登録
   def follow!(other_user)
