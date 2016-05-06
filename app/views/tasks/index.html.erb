@@ -19,32 +19,38 @@
     </thead>
 
     <tbody>
-    <% @tasks.each do |task| %>
+    <% unless @tasks.first.nil? %>
+      <% @tasks.each do |task| %>
+          <tr>
+            <td><%= task.user.name %></td>
+            <td><%= task.title %></td>
+            <td><%= task.content %></td>
+            <td><%= task.deadline.strftime("%Y/%m/%d") %></td>
+            <td><%= task.charge.name %></td>
+            <td><%= if task.done? then '完了' else '未完了' end %></td>
+            <td><%= if task.status == 1 then '対応中' elsif task.status == 0 then '未着手' end %></td>
+            <%
+              if task.project.nil?
+                project_name = 'プロジェクト無し'
+              else
+                project_name = task.project.name
+              end
+            %>
+            <td><%= project_name %></td>
+            <td>
+              <%= link_to '詳細', user_task_path(task.user, task) %> /
+              <%= link_to '編集', edit_user_task_path(task.user, task) %> /
+              <%= link_to '削除', user_task_path(task.user, task), method: :delete,
+                            data: { confirm: '本当に削除しますか？',
+                                    commit: '削除する',
+                                    cancel: 'やめる'
+                            }, title: 'タスクの削除確認'  %>
+            </td>
+          </tr>
+      <% end %>
+    <% else %>
         <tr>
-          <td><%= task.user.name %></td>
-          <td><%= task.title %></td>
-          <td><%= task.content %></td>
-          <td><%= task.deadline.strftime("%Y-%m-%d %H:%M:%S") %></td>
-          <td><%= task.charge.name %></td>
-          <td><%= if task.done? then '完了' else '未完了' end %></td>
-          <td><%= if task.status == 1 then '対応中' elsif task.status == 0 then '未着手' end %></td>
-          <%
-            if task.project.nil?
-              project_name = 'プロジェクト無し'
-            else
-              project_name = task.project.name
-            end
-          %>
-          <td><%= project_name %></td>
-          <td>
-            <%= link_to '詳細', user_task_path(task.user, task) %> /
-            <%= link_to '編集', edit_user_task_path(task.user, task) %> /
-            <%= link_to '削除', user_task_path(task.user, task), method: :delete,
-                          data: { confirm: '本当に削除しますか？',
-                                  commit: '削除する',
-                                  cancel: 'やめる'
-                          }, title: 'タスクの削除確認'  %>
-          </td>
+          <td colspan="9">タスクが登録されていません</td>
         </tr>
     <% end %>
     </tbody>

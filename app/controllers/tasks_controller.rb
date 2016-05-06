@@ -1,12 +1,18 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
   before_action :set_task, only: [:show, :edit, :update, :destroy]
-  before_action :correct_user
+  before_action :correct_user, only: [:show, :edit, :update, :destroy]
 
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.where(user_id: params[:user_id]).where.not(status: 1)
+    @user = User.find(params[:user_id])
+
+    unless @user == current_user
+      redirect_to user_tasks_path(current_user.id), alert: '不正な操作が行われました'
+    end
+
+    @tasks = Task.where(charge_id: params[:user_id]).where.not(status: 1)
     @user = User.find(params[:user_id])
   end
 
@@ -78,6 +84,10 @@ class TasksController < ApplicationController
     # 自分のタスク以外は見れないようにする
     def correct_user
       @user = User.find(params[:user_id])
-      redirect_to(user_tasks_path(current_user.id)) unless current_user == @user
+      @task = Task.find(params[:id])
+
+      if @user != current_user && @task.charge_id != current_user.id
+        redirect_to user_tasks_path(current_user.id), alert: '他人のタスクのため、閲覧・操作権限がありません'
+      end
     end
 end

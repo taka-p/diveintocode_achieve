@@ -5,12 +5,12 @@
   <div>
     <table class="table table-striped">
       <thead>
-        <th>ステータス</th>
-        <th>タスク・タイトル</th>
+        <th>状態</th>
+        <th>タスク題名</th>
         <th>依頼者</th>
         <th>担当者</th>
         <th>依頼日</th>
-        <th>タスク・ステータス</th>
+        <th>タスクの状態</th>
         <th></th>
       </thead>
       <tbody>
@@ -24,7 +24,6 @@
               <td>取消済</td>
             <% elsif sr.status == 9 %>
               <td>却下</td>
-              <td><%= sr.task.user.name %></td>
             <% end %>
 
             <td>
@@ -43,7 +42,7 @@
                 <td><%= sr.charger.name %></td>
             <% end %>
 
-            <td><%= sr.created_at.strftime("%y/%m/%d") %></td>
+            <td><%= sr.created_at.strftime("%Y/%m/%d") %></td>
 
             <% if sr.task.done == true %>
               <td>完了</td>
@@ -56,9 +55,12 @@
                 / <%= link_to '承認', submit_request_approve_path(sr), remote: true %>
                 / <%= link_to '却下', submit_request_unapprove_path(sr), remote: true %>
               <% else %>
-                  <% unless sr.status == 2 %>
-                    / <%= link_to_if sr.status == 1, '編集', edit_submit_request_path(sr) %>
-                    / <%= link_to_if sr.status == 1, '取消', submit_request_reject_path(sr), data: sr.id, remote: true %>
+                  <% unless sr.status == 1 %>
+                    <% unless sr.status == 2 %>
+                      / <%= link_to '編集', edit_submit_request_path(sr) %>
+                    <% end %>
+                      
+                    / <%= link_to '取消', submit_request_reject_path(sr), data: sr.id, remote: true %>
                   <% end %>
               <% end %>
             </td>

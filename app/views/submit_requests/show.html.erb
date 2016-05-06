@@ -1,40 +1,44 @@
 <div class="submit-requests-wrap">
   <h2 class="page-header">依頼詳細</h2>
 
-  <div>
-    <b>User:</b>
-    <%= @submit_request.user.name if @submit_request.user.present? %>
-  </div>
+  <div class="submit-requests-content">
+    <div>
+      <b>依頼作成者:</b>
+      <%= @submit_request.user.name if @submit_request.user.present? %>
+    </div>
 
-  <div>
-    <b>Task:</b>
-    <%= @submit_request.task.title %>
-  </div>
+    <div>
+      <b>タスク題名:</b>
+      <%= @submit_request.task.title %>
+    </div>
 
-  <div>
-    <b>Charge:</b>
-    <%= @submit_request.charger.name if @submit_request.user.present? %>
-  </div>
+    <div>
+      <b>担当者:</b>
+      <%= @submit_request.charger.name if @submit_request.user.present? %>
+    </div>
 
-  <div>
-    <b>Status:</b>
-    <%= case @submit_request.status
-        when 0 then "未依頼"
-        when 1 then "依頼中"
-        when 2 then "承認済み"
-        when 8 then "取消済み"
-        when 9 then "却下済み"
-        end
-    %>
-  </div>
+    <div>
+      <b>状態:</b>
+      <%= case @submit_request.status
+          when 0 then "未依頼"
+          when 1 then "依頼中"
+          when 2 then "承認済み"
+          when 8 then "取消済み"
+          when 9 then "却下済み"
+          end
+      %>
+    </div>
 
-  <div>
-    <b>Message:</b>
-    <%= simple_format(h(@submit_request.message)) %>
+    <div class="simple-text-l h-mb15">
+      <b>メッセージ:</b>
+      <div class="">
+        <%= simple_format(h(@submit_request.message)) %>
+      </div>
+    </div>
   </div>
 
   <div class="h-mb15">
-    <%= link_to '依頼を編集する', edit_submit_request_path(@submit_request) %>
+    <%= link_to '依頼編集', edit_submit_request_path(@submit_request), class: 'btn btn-default' %>
   </div>
-  <%= link_to '依頼一覧に戻る', user_submit_requests_path(@submit_request.user_id), class: 'btn btn-default' %>
+  <%= link_to '依頼一覧', user_submit_requests_path(@submit_request.user_id), class: 'btn btn-default' %>
 </div>

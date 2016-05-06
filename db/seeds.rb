@@ -21,14 +21,13 @@
 # end
 
 # fakerを利用したユーザデータ
-100.times do |n|
+10.times do |n|
   n += 1
 
   name     = Faker::Name.name
   email    = SecureRandom.uuid + "@railstutorial.org"
   password = "password123456"
-  user = User.create!(uid: "#{n}",
-               name: name,
+  user = User.create!(name: name,
                email: email,
                password:              password,
                password_confirmation: password)
@@ -38,4 +37,11 @@
   Blog.create!(title:  title_base,
                content: content_base,
                user_id: user.id)
+
+  title_base   = "タスク#{n}"
+  content_base = "#{name}のタスク"
+  Task.create(title: title_base,
+              content: content_base,
+              user_id: user.id,
+              charge_id: user.id)
 end

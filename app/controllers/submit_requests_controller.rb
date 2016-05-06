@@ -34,14 +34,14 @@ class SubmitRequestsController < ApplicationController
   def edit
     ids = current_user.friend.map { |user| user.id }
     @users = User.where(id: ids)
-    @tasks = Task.where.not(id: SubmitRequest.select(:task_id))
-                 .where(user_id: current_user.id, done: false)
+    @tasks = Task.where(user_id: current_user.id, done: false)
+                 .where.not(id: SubmitRequest.select(:task_id))
   end
 
   def update
     respond_to do |format|
-      if @submit_request.update(submit_reqest_params)
-        @submit_request.task.update(charge_id: submit_reqest_params[':charge_id'])
+      if @submit_request.update(submit_request_params)
+        @submit_request.task.update(charge_id: submit_request_params[:charge_id])
         format.html { redirect_to @submit_request, notice: '依頼を更新しました' }
       else
         format.html { rendeer :edit }
@@ -54,7 +54,7 @@ class SubmitRequestsController < ApplicationController
 
   def approve
     @submit_request.update(status: 2)
-    @submit_request.task.update(status: 2)
+    @submit_request.task.update(charge_id: current_user.id)
     @submit_requests = SubmitRequest.where(charge_id: current_user.id).reverse_order
 
     respond_to do |format|
@@ -64,7 +64,8 @@ class SubmitRequestsController < ApplicationController
 
   def unapprove
     @submit_request.update(status: 9, charge_id: @submit_request.user_id)
-    @submit_request = SubmitRequest.where(charge_id: current_user.id).reverse_order
+    @submit_request.task.update(charge_id: @submit_request.user_id)
+    @submit_requests = SubmitRequest.where(charge_id: current_user.id).reverse_order
 
     respond_to do |format|
       format.js
@@ -73,12 +74,16 @@ class SubmitRequestsController < ApplicationController
 
   def reject
     @submit_request.update(status: 8)
-    @submit_request.task.update(status: 8, charge_id: current_user.id)
-    @submit_requests = SubmitRequest.where(user_id: current_user.id).reverse_order
+    @submit_request.task.update(charge_id: current_user.id)
+    @submit_requests = SubmitRequest.where(charge_id: current_user.id).reverse_order
+
+    respond_to do |format|
+      format.js
+    end
   end
 
   def inbox
-    @submit_requests = SubmitRequest.where(charge_id: current_user.id).order("updated_at DESC")
+    @submit_requests = SubmitRequest.where(charge_id: current_user.id).reverse_order
   end
 
   private

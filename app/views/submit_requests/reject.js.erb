@@ -1,3 +1,27 @@
-render_str = "<%= escape_javascript(render partial: 'submit_requests_list', locals: { submit_requests: @submit_requests }) %>";
+var renderStr = "<%= escape_javascript(render partial: 'submit_requests_list', locals: { submit_requests: @submit_requests }) %>";
+var $renderTarget = $("#js_submit_requests_<%= current_user.id %>");
+var $alert_target = $('#js_alert_target');
+var dfd = new $.Deferred();
+var dfd2 = new $.Deferred();
 
-$('#submits_requests_<%= current_user.id %>').html(render_str);
+render($renderTarget, renderStr);
+
+function render(target, dom) {
+  $renderTarget.html(dom);
+  dfd.resolve();
+}
+
+dfd.promise().then(function(){
+  $alert_target.html('<div class="alert alert-info">依頼を取消しました</div>')
+      .fadeIn('normal', dfd2.resolve);
+  $('tbody').addClass('flash animated');
+});
+
+dfd2.promise().then(function () {
+  setTimeout(function () {
+    $alert_target.fadeOut('normal', function () {
+      $alert_target.html('');
+      $('tbody').removeClass('flash animated');
+    });
+  }, 800);
+});
