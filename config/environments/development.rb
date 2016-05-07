@@ -52,9 +52,4 @@ Rails.application.configure do
   }
 
   BetterErrors::Middleware.allow_ip! '127.0.0.1'
-
-  require 'pusher'
-  Pusher.app_id = ENV['PUSHER_APP_ID']
-  Pusher.key    = ENV['PUSHER_KEY']
-  Pusher.secret = ENV['PUSHER_SECRET']
 end

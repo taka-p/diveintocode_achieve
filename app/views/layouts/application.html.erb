@@ -15,7 +15,7 @@
       var channel = pusher.subscribe('notifications' + <%= current_user.id.to_s %>);
 
       channel.bind('message', function(data) {
-        alert(data.messaging);
+        $('#unreadcount').html(data.unread_count);
       });
     </script>
   <% end %>
