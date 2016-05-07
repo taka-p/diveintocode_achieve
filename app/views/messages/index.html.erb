@@ -1,2 +1,44 @@
-<h1>Messages#index</h1>
-<p>Find me in app/views/messages/index.html.erb</p>
+<div class="conversations-wrap">
+  <h2 class="page-header">メッセージ</h2>
+
+  <div class="h-mb15">
+    <%= form_for [:conversation, @message], html: { class: 'fm-message-reply' } do |f| %>
+        <div class="form-group">
+          <%= f.label :body, 'メッセージ内容' %>
+          <%= f.text_area :body, class: 'form-control', placeholder: 'メッセージの内容を入力して下さい' %>
+        </div>
+        <div class="form-group">
+          <%= f.hidden_field :user_id %>
+          <%= f.submit 'メッセージを送る', class: 'btn btn-primary' %>
+        </div>
+    <% end %>
+  </div>
+
+  <% if @over_ten %>
+      <div class="h-mb15">
+        <%= link_to '以前のメッセージ', '?m=all', class: 'btn btn-default' %>
+      </div>
+  <% end %>
+
+  <div class="messages-content">
+    <ul class="messages-list">
+      <% @messages.each do |message| %>
+        <% if message.body %>
+          <% user = User.find(message.user_id) %>
+          <li class="message-item">
+            <div class="content">
+              <div class="header">
+                <b><%= user.name %></b>
+                <%= message.message_time %>
+              </div>
+              <div class="">
+                <i class="triangle icon right"></i>
+                <%= message.body %>
+              </div>
+            </div>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+</div>

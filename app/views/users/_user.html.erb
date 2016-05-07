@@ -10,7 +10,16 @@
       <% if user.profile %>
           <div class="simple-text-l h-mb15"><%= simple_format(h(user.profile)) %></div>
       <% end %>
-      <%= render partial: 'follow_form', locals: { user: user } if signed_in? %>
+
+      <div class="h-mb10">
+        <%= render partial: 'follow_form', locals: { user: user } if signed_in? %>
+      </div>
+
+      <% unless user.id == current_user.id %>
+          <div class="">
+            <%= link_to 'メッセージ', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post' %>
+          </div>
+      <% end %>
     </div>
   </div>
 <% end %>

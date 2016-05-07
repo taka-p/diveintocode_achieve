@@ -1,3 +1,26 @@
-// Place all the styles related to the Conversations controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+/**
+ * Conversations.scss
+ * Conversation関連ページ(messagesもこちら)
+ **/
+
+.conversations-wrap {
+  width: 800px;
+  margin: 0 auto;
+  padding: 10px 10px 30px;
+  .conversations-content {
+    padding: 0 10px;
+  }
+  .conversations-list {
+    .conversation-item {
+
+    }
+  }
+  .messages-content {
+    padding: 0 10px;
+  }
+  .messages-list {
+    .message-item {
+
+    }
+  }
+}

@@ -7,7 +7,7 @@ class MessagesController < ApplicationController
     @messages = @conversation.messages
     if @messages.length > 10
       @over_ten = true
-      @messages = [-10..-1]
+      @messages = @messages[-10..-1]
     end
 
     if params[:m]
@@ -19,11 +19,11 @@ class MessagesController < ApplicationController
       @messages.last.read = true
     end
 
-    @message = @conversation.messages.new
+    @message = @conversation.messages.build(user_id: current_user.id)
   end
 
   def new
-    @message = @conversation.messages.new
+    @message = @conversation.messages.build(user_id: current_user.id)
   end
 
   def create
