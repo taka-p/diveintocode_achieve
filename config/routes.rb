@@ -74,5 +74,7 @@ Rails.application.routes.draw do
     resources :messages
   end
 
+  resources :notifications, only: [:index]
+
   root 'top#index'
 end
