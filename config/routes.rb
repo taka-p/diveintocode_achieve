@@ -70,5 +70,9 @@ Rails.application.routes.draw do
 
   resources :tasks
 
+  resources :conversations do
+    resources :messages
+  end
+
   root 'top#index'
 end
