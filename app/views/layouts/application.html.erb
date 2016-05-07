@@ -7,7 +7,16 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <script type="text/javascript" charset="utf-8" src="https://js.pusher.com/3.0/pusher.min.js"></script>
   <%= csrf_meta_tags %>
+  <% if user_signed_in? %>
+    var pusher  = new Pusher("<%= Pusher.key %>");
+    var channel = pusher.subscribe('notifications' + <%= current_user.id.to_s %>);
+
+    channel.bind('message', function(data) {
+      alert(data.messaging);
+    });
+  <% end %>
 </head>
 <body>
   <div id="js_loading_container" class="l-app-container">

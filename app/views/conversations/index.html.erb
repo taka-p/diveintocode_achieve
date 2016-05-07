@@ -1,14 +1,14 @@
 <div class="conversations-wrap">
-  <h2 class="page-header">メッセージ一覧</h2>
+  <h2 class="page-header">会話一覧</h2>
 
   <div class="conversations-content">
     <ul class="conversations-list">
       <% @conversations.each do |conversation| %>
         <li class="conversation-item">
-          <% if @conversation.sender_id == current_user.id ||
-                @conversation.recipient_id == current_user.id %>
+          <% if conversation.sender_id == current_user.id ||
+                conversation.recipient_id == current_user.id %>
             <%
-              if @conversation.sender_id == current_user.id
+              if conversation.sender_id == current_user.id
                 recipient = User.find(conversation.recipient_id)
               else
                 recipient = User.find(conversation.sender_id)
