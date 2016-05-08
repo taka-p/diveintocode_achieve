@@ -10,4 +10,9 @@
   top: 50px;
   margin-bottom: 0;
 }
-
+.navbar-right {
+  .dropdown-menu {
+    left: 0;
+    right: auto;
+  }
+}

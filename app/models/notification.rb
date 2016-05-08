@@ -7,6 +7,26 @@ class Notification < ActiveRecord::Base
   scope :unread, -> { where(read: false) }
   scope :unread_count, -> (user_id) { where(recipient_id: user_id).unread.count }
 
+  def sender_user
+    User.find(self.sender_id)
+  end
+
+  def receive_user
+    User.find(self.recipient_id)
+  end
+
+  def posted_time
+    self.created_at.strftime("%Y-%m-%d %H:%M:%S")
+  end
+
+  def display_read_status
+    if self.read
+      return '既読'
+    else
+      return '未読'
+    end
+  end
+
   def self.sending_pusher(channel_user_id)
     Pusher.trigger("notifications#{channel_user_id}", 'message', {
         unread_count: Notification.unread_count(channel_user_id)

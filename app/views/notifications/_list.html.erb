@@ -1,0 +1,13 @@
+<div>
+  <% if notice_count > 0 %>
+      <% link_str = '全て見る' %>
+      <%= render 'notifications/index', notifications: notices %>
+  <% else %>
+      <% link_str = '過去のお知らせを見る' %>
+      <div class="text-danger h-tac">新着情報はありません</div>
+  <% end %>
+</div>
+<li>
+  <hr class="h-mt5 h-mb5">
+  <%= link_to link_str, user_notifications_path(current_user) %>
+</li>

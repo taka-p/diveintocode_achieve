@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'notifications/index'
-
   devise_for :users, controllers: {
       sessions: "users/sessions",
       registrations: "users/registrations",
@@ -48,6 +46,7 @@ Rails.application.routes.draw do
       end
     end
     resources :notifications, only: [:index]
+    get 'notifications/list' => 'notifications#list'
   end
 
   namespace :taskline do

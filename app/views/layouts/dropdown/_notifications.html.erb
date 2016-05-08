@@ -1,16 +1,16 @@
-<%= link_to user_notifications_path(current_user),
-  class: 'dropdown-toggle', data: { toggle: 'dropdown' }, role: 'button', aria: { haspopup: 'true', expanded: 'false' } do %>
-  <div id="unreadcount"><%= @notifications_count %></div>
-  <i class="fa fa-bell fa-1x">
-    <div id="messageog"></div>
-  </i>
-  <span class="caret"></span>
-<% end %>
-<ul class="dropdown-menu">
-  <div class="notification">
-    <%= render 'notifications/index', notifications: @notifications %>
+<% @notifications_count ||= 0 %>
+
+<a href="javascript:return false;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+  <div id="js_notice_count" class="<%= 'text-primary' if @notifications_count > 0 %>">
+    <i class="fa fa-bell fa-1x">
+      <div id="messaging"></div>
+    </i>
+    <span id="js_unread_count"><%= @notifications_count %></span>
+    <span class="caret"></span>
   </div>
-  <li>
-    <%= link_to '全て見る', user_notifications_path(current_user) %>
-  </li>
+</a>
+<%# link_to user_notifications_path(current_user) %>
+
+<ul id="js_notifications_list" class="notifications-navbar dropdown-menu">
+  <%= render partial: 'notifications/list', locals: { notices: @notifications, notice_count: @notifications_count } %>
 </ul>

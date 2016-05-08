@@ -1,13 +1,11 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :current_notificatins
+  before_action :current_notificatins, if: :user_signed_in?
   protect_from_forgery with: :exception
 
   def current_notificatins
-    @notifications = Notification.where(recipient_id: current_user.id)
-                         .reverse_order.includes({ comment: [:blog] })
-    @notifications_count =  Notification.where(recipient_id: current_user.id)
-                                .reverse_order.unread.count
+    @notifications = Notification.where(recipient_id: current_user.id).reverse_order.includes({ comment: [:blog] })
+    @notifications_count =  Notification.where(recipient_id: current_user.id).unread.count
   end
 
   # 他のエラーハンドリングでキャッチできなかった場合に

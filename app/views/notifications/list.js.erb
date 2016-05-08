@@ -1,0 +1,6 @@
+var render_target = $('#js_notifications_list'),
+    render_str = "<%= escape_javascript(render partial: 'notifications/list', locals: { notices: @notifications_replace, notice_count: @notifications_count_replace }) %>",
+    count_target = $('#js_notice_count');
+
+render_target.html(render_str);
+count_target.addClass('text-primary');

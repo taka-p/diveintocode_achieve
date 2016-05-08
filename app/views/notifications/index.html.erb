@@ -1,24 +1,32 @@
+<script type="text/javascript" charset="utf-8">
+  var replace_dom = "<div class='text-danger h-tac'>新着情報はありません</div>";
+
+  $('title').html('Dive into Code');
+  $('#js_notice_count').removeClass('text-primary');
+  $('#js_unread_count').html('0');
+  $('#js_notifications_list').html(replace_dom);
+</script>
+
 <div class="notifications-wrap">
   <h2 class="page-header">お知らせ一覧</h2>
-  <hr>
 
   <div class="notifications-content">
     <ul class="notifications-list">
       <% @notifications.each do |noti| %>
         <li class="notifications-item">
-          <span class="label label-pill label-default">
-            <%= display_read_status(noti.read) %>
+          <span class="label label-pill label-default h-mr5 h-vam">
+            <%= noti.display_read_status %>
           </span>
-          <div>
-            <%= receive_user(noti) %>さんが
+          <span class="h-vam">
+            <%= link_to noti.sender_user.name, user_path(noti.sender_user) %>さんが
             <small class="dropdown">
-              ブログ「<%= noti.comment.blog.title %>」にコメントしました
+              ブログ「<%= link_to noti.comment.blog.title, blog_path(noti.comment.blog) %>」にコメントしました
             </small>
-          </div>
+          </span>
           <div class="palette-paragraph h-tar">
             <small class="dropdown">
               <i class="fa fa-clock-o"></i>
-              <%= posted_time(noti.created_at) %>
+              <%= noti.posted_time %>
             </small>
           </div>
         </li>
