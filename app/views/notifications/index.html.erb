@@ -1,0 +1,28 @@
+<div class="notifications-wrap">
+  <h2 class="page-header">お知らせ一覧</h2>
+  <hr>
+
+  <div class="notifications-content">
+    <ul class="notifications-list">
+      <% @notifications.each do |noti| %>
+        <li class="notifications-item">
+          <span class="label label-pill label-default">
+            <%= display_read_status(noti.read) %>
+          </span>
+          <div>
+            <%= receive_user(noti) %>さんが
+            <small class="dropdown">
+              ブログ「<%= noti.comment.blog.title %>」にコメントしました
+            </small>
+          </div>
+          <div class="palette-paragraph h-tar">
+            <small class="dropdown">
+              <i class="fa fa-clock-o"></i>
+              <%= posted_time(noti.created_at) %>
+            </small>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

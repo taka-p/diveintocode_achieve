@@ -35,6 +35,8 @@ gem 'autoprefixer-rails'
 gem 'bootstrap-social-rails'
 gem 'data-confirm-modal', github: 'ifad/data-confirm-modal'
 
+gem 'font-awesome-rails'
+
 gem 'carrierwave'
 gem 'rmagick'
 

@@ -1,0 +1,20 @@
+<div class="notifications-index">
+  <li>
+    <% if notifications.present? %>
+      <% notifications.each do |noti| %>
+        <% unless noti.read %>
+          <span class="label label-pill label-warning">未読</span>
+          <small class="dropdown">
+            ブログ「<%= noti.comment.blog.title %>」に<%= sender_user(noti) %>さんがコメントしました。
+          </small>
+          <div class="palette-paragraph h-tar">
+            <small class="dropdown">
+              <i class="fa fa-clock-o"></i>
+              <%= posted_time(noti.created_at) %>
+            </small>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </li>
+</div>
