@@ -1,0 +1,20 @@
+var render_target = $('#js_notifications_index'),
+    render_str = "<%= escape_javascript(render partial: 'notifications/index', locals: { notifications: @notifications }) %>";
+
+var dfd = new $.Deferred();
+
+render_target.html(render_str).hide()
+             .slideDown('normal', function () {
+               dfd.resolve();
+             });
+
+dfd.promise().then(function () {
+  $('body').animate({
+    scrollTop: $(document).height()
+  }, 300);
+});
+
+<% if @notifications.count == @notifications_all_count %>
+  var more_btn = $('#js_more_btn');
+  more_btn.hide();
+<% end %>

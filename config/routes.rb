@@ -47,6 +47,7 @@ Rails.application.routes.draw do
     end
     resources :notifications, only: [:index]
     get 'notifications/list' => 'notifications#list'
+    get 'notifications/more' => 'notifications#more'
   end
 
   namespace :taskline do

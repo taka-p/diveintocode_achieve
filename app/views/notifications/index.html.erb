@@ -5,32 +5,35 @@
   $('#js_notice_count').removeClass('text-primary');
   $('#js_unread_count').html('0');
   $('#js_notifications_list').html(replace_dom);
+
+  var count = 0;
+  function counter() {
+    return ++count;
+  }
+
+  function more() {
+    $.ajax({
+      url: "<%= user_notifications_more_path(current_user.id) %>",
+      type: 'GET',
+      data: 'count=' + counter()
+    });
+
+    return false;
+  }
 </script>
 
 <div class="notifications-wrap">
   <h2 class="page-header">お知らせ一覧</h2>
 
-  <div class="notifications-content">
-    <ul class="notifications-list">
-      <% @notifications.each do |noti| %>
-        <li class="notifications-item">
-          <span class="label label-pill label-default h-mr5 h-vam">
-            <%= noti.display_read_status %>
-          </span>
-          <span class="h-vam">
-            <%= link_to noti.sender_user.name, user_path(noti.sender_user) %>さんが
-            <small class="dropdown">
-              ブログ「<%= link_to noti.comment.blog.title, blog_path(noti.comment.blog) %>」にコメントしました
-            </small>
-          </span>
-          <div class="palette-paragraph h-tar">
-            <small class="dropdown">
-              <i class="fa fa-clock-o"></i>
-              <%= noti.posted_time %>
-            </small>
-          </div>
-        </li>
-      <% end %>
-    </ul>
+  <div id="js_notifications_index" class="notifications-content">
+    <%= render partial: 'notifications/index', locals: { notifications: @notifications } %>
   </div>
+
+  <% if @notifications.count > 5 %>
+    <div class="h-tac">
+      <button id="js_more_btn" class="btn btn-primary" onclick="more()">
+        もっと見る
+      </button>
+    </div>
+  <% end %>
 </div>

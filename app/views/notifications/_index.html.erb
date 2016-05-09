@@ -1,11 +1,34 @@
 <ul class="notifications-list">
   <% if notifications.present? %>
     <% notifications.each do |noti| %>
+      <% # list用 %>
       <% unless noti.read %>
         <li class="notification-item">
           <span class="label label-pill label-warning">未読</span>
           <small class="dropdown">
-            ブログ「<%= link_to noti.comment.blog.title, blog_path(noti.comment.blog) %>」に<%= link_to noti.sender_user.name, user_path(noti.sender_user) %>さんがコメントしました。
+            <% if noti.comment_id.present? %>
+              ブログ「<%= link_to noti.comment.blog.title, blog_path(noti.comment.blog) %>」に<%= link_to noti.sender_user.name, user_path(noti.sender_user) %>さんがコメントしました。
+            <% else %>
+              <%= link_to noti.submit_request.user.name, user_path(noti.submit_request.user_id) %>さんが、タスク「<%= link_to noti.submit_request.task.title, submit_request_path(noti.submit_request) %>」を依頼しました。
+            <% end %>
+          </small>
+          <div class="palette-paragraph h-tar">
+            <small class="dropdown">
+              <i class="fa fa-clock-o"></i>
+              <%= noti.posted_time %>
+            </small>
+          </div>
+        </li>
+      <% # index用 %>
+      <% else %>
+        <li class="notification-item">
+          <span class="label label-pill label-default h-mr5 h-vam">既読</span>
+          <small class="dropdown">
+            <% if noti.comment_id.present? %>
+                ブログ「<%= link_to noti.comment.blog.title, blog_path(noti.comment.blog) %>」に<%= link_to noti.sender_user.name, user_path(noti.sender_user) %>さんがコメントしました。
+            <% else %>
+                タスク「<%= link_to noti.submit_request.task.title, submit_request_path(noti.submit_request) %>」を<%= link_to noti.submit_request.user.name, user_path(noti.submit_request.user_id) %>さんが依頼しました。
+            <% end %>
           </small>
           <div class="palette-paragraph h-tar">
             <small class="dropdown">

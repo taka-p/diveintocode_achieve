@@ -17,6 +17,7 @@ class SubmitRequestsController < ApplicationController
 
   def create
     @submit_request = SubmitRequest.new(submit_request_params)
+    @notification = @submit_request.notifications.build(recipient_id: @submit_request.charge_id, sender_id: current_user.id, read: false)
 
     respond_to do |format|
       if @submit_request.save
