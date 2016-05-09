@@ -20,8 +20,8 @@ class NotificationsController < ApplicationController
   end
 
   def list
-    @notifications_replace = Notification.where(recipient_id: current_user.id).reverse_order.includes({ comment: [:blog] })
-    @notifications_count_replace =  Notification.where(recipient_id: current_user.id).unread.count
+    @notifications_replace = Notification.where(recipient_id: current_user.id).reverse_order.includes({ comment: [:blog] }).unread
+    @notifications_count_replace =  @notifications_replace.count
 
     respond_to do |format|
       format.js
