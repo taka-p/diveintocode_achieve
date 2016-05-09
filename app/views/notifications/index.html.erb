@@ -25,6 +25,10 @@
 <div class="notifications-wrap">
   <h2 class="page-header">お知らせ一覧</h2>
 
+  <div class="h-mb15 h-ml10">
+    全<%= @notifications_all_count %>件
+  </div>
+
   <div id="js_notifications_index" class="notifications-content">
     <% if @notifications.count > 0 %>
       <%= render partial: 'notifications/index', locals: { notifications: @notifications } %>

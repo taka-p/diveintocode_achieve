@@ -2,6 +2,7 @@ class NotificationsController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    @notifications_all_count = Notification.where(recipient_id: current_user.id).reverse_order.includes({ comment: [:blog] }).count
     @notifications = Notification.where(recipient_id: current_user.id).reverse_order.includes({ comment: [:blog] }).limit(5)
     @notifications.update_all(read: true)
   end
