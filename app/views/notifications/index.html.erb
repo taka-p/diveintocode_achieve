@@ -26,7 +26,13 @@
   <h2 class="page-header">お知らせ一覧</h2>
 
   <div id="js_notifications_index" class="notifications-content">
-    <%= render partial: 'notifications/index', locals: { notifications: @notifications } %>
+    <% if @notifications.count > 0 %>
+      <%= render partial: 'notifications/index', locals: { notifications: @notifications } %>
+    <% else %>
+      <div class="text-danger">
+        お知らせが見つかりませんでした
+      </div>
+    <% end %>
   </div>
 
   <% if @notifications.count > 5 %>
