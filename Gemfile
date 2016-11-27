@@ -5,6 +5,8 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.0'
 # Use postgresql as the database for Active Record
 gem 'pg'
+# Use unicorn as the app server
+gem 'unicorn'
 
 # テストデータ投入用
 gem 'faker', '1.4.2'
@@ -90,11 +92,9 @@ group :development, :test do
   gem 'quiet_assets'
   gem 'tapp'
   gem 'timecop'
-  gem "annotate", github: "ctran/annotate_models"
-  gem "colorize_unpermitted_parameters"
-  gem "guard-rspec", require: false
-  gem "rack-mini-profiler"
-  gem "spring-commands-rspec"
-  gem "xray-rails"
-end
 
+  # capistrano
+  gem 'capistrano'
+  gem 'capistrano-rails'
+  gem 'capistrano-bundler'
+end
