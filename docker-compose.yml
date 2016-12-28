@@ -1,0 +1,37 @@
+version: '2'
+services:
+  db:
+#    container_name: mysql
+#    image: mysql:5.6.32
+#    volumes:
+#      - ./containers_data/mysql:/var/lib/mysql
+#    environment:
+#      RAILS_ENV: development
+#      MYSQL_ROOT_PASSWORD: 'root'
+#      DATABASE_URL: 'mysql2://root:root@mysql:3306'
+#    ports:
+#      - '3306:3306'
+    container_name: postgres
+    image: postgres
+    expose:
+      - '5432'
+  rails:
+    container_name: rails
+    build: .
+    command: bundle exec unicorn -p 3000 -c config/unicorn.rb
+    volumes:
+      - .:/achieve
+    ports:
+      - '3000:3000'
+    links:
+      - db
+  nginx:
+    container_name: nginx
+    build: containers/nginx
+    volumes:
+      - ./containers_data/nginx:/var/log/nginx
+    ports:
+      - '80:80'
+      - '443:443'
+    links:
+      - rails

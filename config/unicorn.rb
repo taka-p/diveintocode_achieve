@@ -13,3 +13,31 @@ pid "#{rails_root}/tmp/#{rails_env}_unicorn.pid"
 
 stderr_path "#{rails_root}/log/#{rails_env}_unicorn_error.log"
 stdout_path "#{rails_root}/log/#{rails_env}_unicorn.log"
+
+
+# worker_processes Integer(ENV["WEB_CONCURRENCY"] || 2)
+# working_directory "/myapp" # available in 0.94.0+
+# pid "/tmp/unicorn.pid"
+#
+# stderr_path "/myapp/log/unicorn.stderr.log"
+# stdout_path "/myapp/log/unicorn.stdout.log"
+#
+# preload_app true
+#
+# check_client_connection false
+#
+# run_once = true
+#
+# before_fork do |server, worker|
+#   defined?(ActiveRecord::Base) and
+#       ActiveRecord::Base.connection.disconnect!
+#
+#   if run_once
+#     run_once = false # prevent from firing again
+#   end
+# end
+#
+# after_fork do |server, worker|
+#   defined?(ActiveRecord::Base) and
+#       ActiveRecord::Base.establish_connection
+# end

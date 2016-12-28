@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 20160509082408) do
   end
 
   create_table "customers", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -136,11 +136,11 @@ ActiveRecord::Schema.define(version: 20160509082408) do
     t.integer  "sender_id"
     t.integer  "recipient_id"
     t.integer  "comment_id"
-    t.boolean  "read"
+    t.boolean  "read",              default: false
     t.integer  "conversation_id"
     t.integer  "message_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.integer  "submit_request_id"
   end
 
@@ -153,9 +153,9 @@ ActiveRecord::Schema.define(version: 20160509082408) do
   end
 
   create_table "projects", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",        null: false
     t.string   "content"
-    t.integer  "user_id"
+    t.integer  "user_id",     null: false
     t.integer  "customer_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false

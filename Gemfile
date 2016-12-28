@@ -3,7 +3,8 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
-# Use postgresql as the database for Active Record
+# Use MariaDB as the database for Active Record
+# gem 'mysql2'
 gem 'pg'
 # Use unicorn as the app server
 gem 'unicorn'
@@ -96,5 +97,6 @@ group :development, :test do
   # capistrano
   gem 'capistrano'
   gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
   gem 'capistrano-bundler'
 end

@@ -17,10 +17,16 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  username: apple
-  # For details on connection pooling, see rails configuration guide
-  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  username: postgres
+  host: db
+#   username: apple
   pool: 5
+#  adapter: mysql2
+#  encoding: utf8
+#  pool: 5
+#  url: <%= ENV['DATABASE_URL'] %>
+#  socket: /var/lib/mysql/mysql.sock
+#  timeout: 5000
 
 development:
   <<: *default

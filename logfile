@@ -1,0 +1,24 @@
+LOG:  database system was shut down at 2016-12-27 12:42:24 JST
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+LOG:  could not bind IPv6 socket: Address already in use
+HINT:  Is another postmaster already running on port 5432? If not, wait a few seconds and retry.
+LOG:  could not bind IPv6 socket: Address already in use
+HINT:  Is another postmaster already running on port 5432? If not, wait a few seconds and retry.
+LOG:  could not bind IPv4 socket: Address already in use
+HINT:  Is another postmaster already running on port 5432? If not, wait a few seconds and retry.
+WARNING:  could not create listen socket for "localhost"
+FATAL:  could not create any TCP/IP sockets
+LOG:  database system is shut down
+FATAL:  database "apple" does not exist
+ERROR:  role "postgres" does not exist
+STATEMENT:  ALTER USER postgres PASSWORD 'md53175bce1d3201d16594cebf9d7eb3f9d'
+ERROR:  role "postgres" does not exist
+STATEMENT:  ALTER USER postgres PASSWORD 'md53175bce1d3201d16594cebf9d7eb3f9d'
+FATAL:  database "apple" does not exist
+FATAL:  database "apple" does not exist
+LOG:  invalid length of startup packet
+LOG:  invalid length of startup packet
+LOG:  invalid length of startup packet
+LOG:  invalid length of startup packet

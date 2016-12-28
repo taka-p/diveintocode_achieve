@@ -5,17 +5,20 @@ set :application, 'achieve'
 set :repo_url, 'git@github.com:taka-p/diveintocode_achieve.git'
 
 # デプロイ先ディレクトリ - Default /var/www/my_app_name
-set :deploy_to, '/var/www/achieve'
+set :deploy_to, '~/achieve'
 
 # sudoに必要 これをtrueにするとssh -tで実行される
 set :pty, true
 
-# sharedに入るものを指定
-set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets bundle public/system public/assets}
-# set :linked_files, %w{config/database.yml config/secrets.yml}
+# シンボリックリンクを張るディレクトリ/ファイルの指定
+# set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets bundle public/system public/assets}
+# set :linked_files, %w{config/secrets.yml}
 
 # capistrano用bundleするのに必要
 set :default_env, { path: "/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH" }
+
+# rubyのバージョン
+set :rbenv_ruby, '2.3.0'
 
 # Default branch is :master
 # set :branch, 'master'
@@ -40,7 +43,24 @@ namespace :deploy do
     #lib/capustrano/tasks/unicorn.cap内処理を実行
     invoke 'unicorn:restart'
   end
+
+  desc 'Create database'
+  task :db_create do
+    on roles(:db) do |host|
+      with rails_env: fetch(:rails_env) do
+        within current_path do
+          execute :bundle, :exec, :rake, 'db:create'
+        end
+      end
+    end
+  end
+
   # task実行タイミングを指定
   # http://capistranorb.com/documentation/getting-started/flow/
-  after :finishing, 'deploy:cleanup'
+  after :publishing, :restart
+
+  after :restart, :clear_cache do
+    on roles(:web), in: :groups, limit: 3, wait: 10 do
+    end
+  end
 end
