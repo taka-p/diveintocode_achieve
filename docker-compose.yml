@@ -1,20 +1,24 @@
 version: '2'
 services:
   db:
-#    container_name: mysql
-#    image: mysql:5.6.32
-#    volumes:
-#      - ./containers_data/mysql:/var/lib/mysql
-#    environment:
-#      RAILS_ENV: development
-#      MYSQL_ROOT_PASSWORD: 'root'
-#      DATABASE_URL: 'mysql2://root:root@mysql:3306'
-#    ports:
-#      - '3306:3306'
-    container_name: postgres
-    image: postgres
-    expose:
-      - '5432'
+# mariadbバージョン
+# 参考記事 - https://github.com/shinofara/rails_docker_compose/blob/master/docker-compose.yml
+    container_name: mariadb
+    image: mariadb
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      DB_ROOT_USER: 'root'
+      DB_ROOT_PASSWORD: 'mariadb'
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+    ports:
+      - '3306:3306'
+    restart: always
+# postgresqlバージョン
+#    container_name: postgres
+#    image: postgres
+#    expose:
+#      - '5432'
   rails:
     container_name: rails
     build: .
@@ -25,6 +29,7 @@ services:
       - '3000:3000'
     links:
       - db
+    restart: always
   nginx:
     container_name: nginx
     build: containers/nginx
@@ -35,3 +40,4 @@ services:
       - '443:443'
     links:
       - rails
+    restart: always

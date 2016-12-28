@@ -3,9 +3,13 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
-# Use MariaDB as the database for Active Record
-# gem 'mysql2'
-gem 'pg'
+
+# MariaDBバージョン(0.4系はバグがあるため0.3系を利用)
+gem 'mysql2', '~> 0.3.20'
+
+# Postgresqlバージョン
+# gem 'pg'
+
 # Use unicorn as the app server
 gem 'unicorn'
 

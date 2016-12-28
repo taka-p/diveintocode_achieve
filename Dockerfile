@@ -1,12 +1,19 @@
 FROM ruby:2.3.0
 ENV LANG C.UTF-8
 RUN apt-get update && apt-get install -y \
-    build-essential libpq-dev postgresql-client \
-#    mysql-client --no-install-recommends \
+    build-essential \
+    libpq-dev \
+    mysql-client --no-install-recommends \
+#    postgresql-client \
+    vim \
+    sudo \
+    wget \
+    curl \
+    git-core \
     && rm -rf /var/lib/apt/lists/*
 
-# RUN mkdir /var/lib/mysql && touch /var/lib/mysql/mysql.sock
-# ADD ./containers/mysql/my.cnf /etc/
+RUN mkdir /var/lib/mysql && touch /var/lib/mysql/mysql.sock
+ADD ./containers/mysql/my.cnf /etc/
 
 RUN gem install bundler
 
