@@ -24,7 +24,10 @@ services:
     build: .
     command: bundle exec unicorn -p 3000 -c config/unicorn.rb
     volumes:
-      - .:/achieve
+# docker-sync用の設定
+      - rails-sync:/var/www/achieve:rw
+# 通常用の設定
+#      - .:/achieve
     ports:
       - '3000:3000'
     links:
@@ -41,3 +44,7 @@ services:
     links:
       - rails
     restart: always
+# docker-syncで利用されるvolume
+volumes:
+  rails-sync:
+    external: true

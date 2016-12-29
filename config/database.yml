@@ -28,6 +28,7 @@ default: &default
   username: <% ENV['DB_ROOT_USER'] %>
   password: <% ENV['DB_ROOT_PASSWORD'] %>
   pool: 5
+  host: db
   socket: /tmp/mysql.sock
 
 development:

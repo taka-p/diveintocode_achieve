@@ -25,13 +25,11 @@ WORKDIR $GUEST_DIR
 RUN mkdir $APP_NAME
 
 WORKDIR $APP_NAME
-# Host側からDockerにGemfileをコピー
-ADD ./Gemfile ./Gemfile
-ADD ./Gemfile.lock ./Gemfile.lock
-# Docker側でbundle install
-RUN bundle install
 # Host側からDockerにプロジェクトをコピー
 ADD . .
+# Docker側でbundle install
+RUN bundle config git.allow_insecure true
+RUN bundle install
 
 # 3000番を公開
 EXPOSE 3000
