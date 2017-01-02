@@ -13,6 +13,7 @@ require 'capistrano/rails/migrations'
 # Load custom tasks from `lib/capistrano/tasks` if you have any defined
 Dir.glob("lib/capistrano/tasks/*.rake").each { |r| import r }
 
-# デフォルトをproductionに設定
-Rake::Task[:production].invoke
-invoke :production
+# デフォルトをproductionに設定 cap deploy
+# エラーが出るためコメントアウト
+# Rake::Task[:production].invoke
+# invoke :production
