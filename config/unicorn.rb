@@ -33,54 +33,35 @@
 # end
 
 
-# Capistranoでunicornを使ったアプリをデプロイしているとBundler::GemfileNotFoundという例外があがることがあるため設定
-ENV['BUNDLE_GEMFILE'] = rails_root + "/Gemfile"
-
-# Unicornは複数のワーカーで起動するのでワーカー数を定義
-# サーバーのメモリなどによって変更すること。
-worker_processes 2
-
-# 指定しなくても良い。
-# Unicornの起動コマンドを実行するディレクトリを指定します。
-# （記載しておけば他のディレクトリでこのファイルを叩けなくなる。）
-working_directory rails_root
-
-# 接続タイムアウト時間
-timeout 30
-
-# Unicornのエラーログと通常ログの位置を指定。
-stderr_path File.expand_path('../../log/unicorn_stderr.log', __FILE__)
-stdout_path File.expand_path('../../log/unicorn_stdout.log', __FILE__)
-
-# Nginxで使用する場合は以下の設定を行う。
-listen File.expand_path('../../tmp/sockets/unicorn.sock', __FILE__)
-# とりあえず起動して動作確認をしたい場合は以下の設定を行う。
-# listen 3000
-
-# プロセスの停止などに必要なPIDファイルの保存先を指定。
-pid File.expand_path('../../tmp/pids/unicorn.pid', __FILE__)
-
-# 基本的には`true`を指定する。Unicornの再起動時にダウンタイムなしで再起動が行われる。
+# set lets
+$worker  = 2
+$timeout = 30
+$app_dir = "/var/www/rails/achieve/current" #自分のアプリケーション名、currentがつくことに注意。
+$listen  = File.expand_path 'tmp/sockets/.unicorn.sock', $app_dir
+$pid     = File.expand_path 'tmp/pids/unicorn.pid', $app_dir
+$std_log = File.expand_path 'log/unicorn.log', $app_dir
+# set config
+worker_processes  $worker
+working_directory $app_dir
+stderr_path $std_log
+stdout_path $std_log
+timeout $timeout
+listen  $listen
+pid $pid
+# loading booster
 preload_app true
-# 効果なしとの記事を見たので、コメントアウト。
-# GC.respond_to?(:copy_on_write_friendly=) and GC.copy_on_write_friendly = true
-
-# USR2シグナルを受けると古いプロセスを止める。
-# 後述するが、記述しておくとNginxと連携する時に良いことがある。
+# before starting processes
 before_fork do |server, worker|
-  defined?(ActiveRecord::Base) and
-      ActiveRecord::Base.connection.disconnect!
-
+  defined?(ActiveRecord::Base) and ActiveRecord::Base.connection.disconnect!
   old_pid = "#{server.config[:pid]}.oldbin"
   if old_pid != server.pid
     begin
-      sig = (worker.nr + 1) >= server.worker_processes ? :QUIT : :TTOU
-      Process.kill(sig, File.read(old_pid).to_i)
+      Process.kill "QUIT", File.read(old_pid).to_i
     rescue Errno::ENOENT, Errno::ESRCH
     end
   end
 end
-
+# after finishing processes
 after_fork do |server, worker|
   defined?(ActiveRecord::Base) and ActiveRecord::Base.establish_connection
 end
