@@ -1,6 +1,6 @@
 # サーバーのIP、ログインユーザー名、サーバーのロール
 server '150.95.134.240',
-       user: 'rails',
+       user: 'root',
        roles: %w{app db web}
 
 #デプロイするサーバーにsshログインする鍵の情報を記述
