@@ -10,15 +10,15 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: 5
+  socket: /tmp/mysql.sock
+  username: <% ENV['DB_ROOT_USER'] %>
+  password: <% ENV['DB_ROOT_PASSWORD'] %>
   # localはdockerコンテナのdbを参照
   host: db
-  socket: /tmp/mysql.sock
 
 development:
   <<: *default
   # docker-compose.ymlで環境変数を設定
-  username: <% ENV['DB_ROOT_USER'] %>
-  password: <% ENV['DB_ROOT_PASSWORD'] %>
   database: achieve_development
 
 test:
@@ -28,6 +28,6 @@ test:
 production:
   <<: *default
   database: achieve_production
-  username: <% ENV['DB_ROOT_USER_PROD'] %>
-  password: <% ENV['DB_ROOT_PASSWORD_PROD'] %>
+  username: root
+  password: 23571113
   host: localhost
