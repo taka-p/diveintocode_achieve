@@ -12,7 +12,7 @@ set :pty, true
 
 # シンボリックリンクを張るディレクトリ/ファイルの指定
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/assets}
-set :linked_files, %w{config/secrets.yml config/database.yml .env }
+set :linked_files, %w{config/secrets.yml config/database.yml .env}
 
 # capistrano用bundleするのに必要
 set :default_env, { path: "/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH" }
