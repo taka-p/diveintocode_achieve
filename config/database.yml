@@ -9,9 +9,6 @@ default: &default
 # mariadbバージョン
   adapter: mysql2
   encoding: utf8
-  # docker-compose.ymlで環境変数を設定
-  username: <% ENV['DB_ROOT_USER'] %>
-  password: <% ENV['DB_ROOT_PASSWORD'] %>
   pool: 5
   # localはdockerコンテナのdbを参照
   host: db
@@ -19,6 +16,9 @@ default: &default
 
 development:
   <<: *default
+  # docker-compose.ymlで環境変数を設定
+  username: <% ENV['DB_ROOT_USER'] %>
+  password: <% ENV['DB_ROOT_PASSWORD'] %>
   database: achieve_development
 
 test:
