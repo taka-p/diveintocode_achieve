@@ -2,7 +2,7 @@
 lock '3.6.1'
 
 set :application, 'achieve'
-set :repo_url, 'git@github.com:taka-p/diveintocode_achieve.git'
+set :repo_url, 'https://github.com/taka-p/diveintocode_achieve.git'
 
 # デプロイ先ディレクトリ - Default /var/www/my_app_name
 set :deploy_to, '/var/www/achieve'
@@ -36,7 +36,7 @@ namespace :deploy do
     on roles(:db) do |host|
       with rails_env: fetch(:rails_env) do
         within current_path do
-          execute :bundle, :exec, :rake, 'db:create'
+          execute :sudo, :bundle, :exec, :rake, 'db:create'
         end
       end
     end
