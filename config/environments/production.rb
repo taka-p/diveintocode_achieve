@@ -7,8 +7,8 @@ Rails.application.configure do
   config.assets.js_compressor = :uglifier
   config.assets.css_compressor = :scss
   config.assets.digest = true
-  # prpduction用にprecompileを有効に設定
   config.serve_static_files = true
+  # prpductionでのprecompileを有効に設定（処理が重いため代替策が必要）
   config.assets.compile = true
 
   config.log_level = :debug
