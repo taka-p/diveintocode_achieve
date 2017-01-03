@@ -1,7 +1,7 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
-Bundler.require(*Rails.groups)
+Bundler.require(*Rails.groups(:assets => %w(development test)))
 
 module Achieve
   class Application < Rails::Application
@@ -20,6 +20,6 @@ module Achieve
     config.autoload_paths += Dir[Rails.root.join('app', 'uploaders')]
 
     # precompile設定
-    Rails.application.config.assets.precompile += %w( *.eot *.woff *.ttf *.svg *.otf *.png *.jpg *.jpeg *.gif vendor.css vendor.js )
+    Rails.application.config.assets.precompile += %w(*.eot *.woff *.ttf *.svg *.otf *.png *.jpg *.jpeg *.gif vendor.css vendor.js)
   end
 end
