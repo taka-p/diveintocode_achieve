@@ -8,8 +8,6 @@ require 'capistrano/rails/migrations'
 set :rbenv_type, :system
 set :rbenv_ruby, '2.3.0'
 
-load 'deploy/assets'
-
 Dir.glob("lib/capistrano/tasks/*.rake").each { |r| import r }
 
 # デフォルトをproductionに設定 cap deploy
