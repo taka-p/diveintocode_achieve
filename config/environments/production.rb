@@ -4,10 +4,9 @@ Rails.application.configure do
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
+  # prpduction用にprecompileを有効に設定
   config.serve_static_files = ENV['RAILS_SERVE_STATIC_FILES'].present?
   config.assets.js_compressor = :uglifier
-  # prpduction用にprecompileを有効に設定
-  config.serve_static_assets = true
   config.assets.compile = true
   config.assets.digest = true
 
