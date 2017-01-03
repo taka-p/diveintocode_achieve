@@ -2,8 +2,6 @@
  * importの基点ファイル
 **/
 
-@charset "UTF-8";
-
 /* 基盤系 */
 @import "reset";
 @import "base";
@@ -40,3 +38,7 @@
 /* レスポンシブ */
 @import "pc";
 @import "mobile";
+
+.hoge {
+  color: #000;
+}
