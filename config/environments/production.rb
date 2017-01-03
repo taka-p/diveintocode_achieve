@@ -9,7 +9,7 @@ Rails.application.configure do
   config.assets.digest = true
   # prpduction用にprecompileを有効に設定
   config.serve_static_files = true
-  config.assets.compile = false
+  config.assets.compile = true
 
   config.log_level = :debug
   config.i18n.fallbacks = true

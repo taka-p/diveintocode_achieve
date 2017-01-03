@@ -1,6 +1,0 @@
-172.20.0.1 - - [27/Dec/2016:07:11:46 +0000] "GET / HTTP/1.1" 404 199 "http://t.umblr.com/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36" "-"
-172.20.0.1 - - [27/Dec/2016:07:11:47 +0000] "GET /favicon.ico HTTP/1.1" 404 199 "http://127.0.0.1/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36" "-"
-172.20.0.1 - - [27/Dec/2016:07:12:37 +0000] "GET / HTTP/1.1" 499 0 "http://t.umblr.com/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36" "-"
-172.20.0.1 - - [27/Dec/2016:07:12:40 +0000] "GET / HTTP/1.1" 404 199 "http://t.umblr.com/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36" "-"
-172.20.0.1 - - [27/Dec/2016:07:12:58 +0000] "GET / HTTP/1.1" 404 199 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36" "-"
-172.20.0.1 - - [27/Dec/2016:07:21:32 +0000] "GET / HTTP/1.1" 200 92787 "http://t.umblr.com/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36" "-"
