@@ -1,8 +1,10 @@
 /**
- * importの基点ファイル
+ * import only file
 **/
 
-/* 基盤系 */
+@charset "UTF-8";
+
+/* foundation */
 @import "reset";
 @import "base";
 @import "setting";
