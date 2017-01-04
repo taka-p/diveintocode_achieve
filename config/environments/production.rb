@@ -17,6 +17,9 @@ Rails.application.configure do
   config.log_formatter = ::Logger::Formatter.new
   config.active_record.dump_schema_after_migration = false
 
+  # ssl設定（全てのアクセスをhttps://に流す）
+  config.force_ssl = true
+
   # devise用
   config.action_mailer.default_url_options = { host: ENV['MAILER_URL_OPTION_HOST'] }
   config.action_mailer.delivery_method = :smtp
