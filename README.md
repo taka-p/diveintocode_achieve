@@ -2,7 +2,6 @@
 
 ## Dockerコンテナの立ち上げ方
 
-
 #### 1. プロジェクトclone
 ```
 $ git clone git@github.com:taka-p/diveintocode_achieve.git achieve
@@ -23,3 +22,12 @@ $ docker-compose run rails bundle exec rake db:create db:migrate
 $ docker-compose up -d
 $ docker-sync start
 ```
+## 本番環境へのデプロイ
+
+```
+$ bundle exec cap production deploy --trace
+```
+
+## 残タスク
+
+* 各種Dockerコンテナのデータ永続化（logやdbなど）
