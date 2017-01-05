@@ -39,3 +39,8 @@ $ bundle exec cap production deploy --trace
 ## 残タスク
 
 * 各種Dockerコンテナのデータ永続化（logやdbなど）
+* Ansibleでの構成管理（開発/本番環境共に）
+* 本番環境もDockerで動かす
+
+```（）
+```
