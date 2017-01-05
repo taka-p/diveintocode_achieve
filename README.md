@@ -4,7 +4,7 @@
 
 - Ruby: 2.3.0  
 - Rails: 4.2.0  
-- DB: MariaDB（posgresqlでもOK）  
+- DB: MariaDB（PostgreSQLでもOK）  
 - AppServer: unicorn  
 - WebServer: nginx  
 
