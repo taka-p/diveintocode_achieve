@@ -2,11 +2,11 @@
 
 ## 動作環境
 
-Ruby: 2.3.0
-Rails: 4.2.0
-DB: MariaDB（posgresqlでもOK）
-AppServer: unicorn
-WebServer: nginx
+- Ruby: 2.3.0  
+- Rails: 4.2.0  
+- DB: MariaDB（posgresqlでもOK）  
+- AppServer: unicorn  
+- WebServer: nginx  
 
 ## Dockerコンテナの立ち上げ方
 
