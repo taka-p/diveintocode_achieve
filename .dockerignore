@@ -1,0 +1,11 @@
+## Environment normalisation
+.bundle
+vendor/bundle
+.git
+
+## MacOS
+.DS_Store
+
+## Docker
+.dockerignore
+

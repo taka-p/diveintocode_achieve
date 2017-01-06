@@ -1,35 +1,26 @@
 version: '2'
 services:
-  db:
-# mariadbバージョン
-# 参考記事 - https://github.com/shinofara/rails_docker_compose/blob/master/docker-compose.yml
-    container_name: mariadb
-    image: mariadb
-    volumes:
-      - /etc/localtime:/etc/localtime:ro
-    environment:
-      DB_ROOT_USER: 'root'
-      DB_ROOT_PASSWORD: 'mariadb'
-      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
-    ports:
-      - '3306:3306'
-    restart: always
-# postgresqlバージョン
-#    container_name: postgres
-#    image: postgres
-#    expose:
-#      - '5432'
   rails:
     container_name: rails
     build: .
-    command: bundle exec unicorn -p 3000 -c config/unicorn.rb
+    env_file: .env
+    environment:
+      RAILS_ENV: development
+      DB_HOST: db
+      DB_ROOT_USER: root
+      DB_ROOT_PASSWORD: mariadb
+      DB_URL: mysql2://root:mariadb@db:3306
+      DB_SOCKET: /tmp/mysql.sock
+    command: bundle exec unicorn -c config/unicorn/docker_development.rb -p 3000
     volumes:
 # docker-sync用の設定
       - rails-sync:/var/www/achieve:rw
 # 通常用の設定
 #      - .:/achieve
     ports:
-      - '3000:3000'
+      - 3000:3000
+    depends_on:
+      - db
     links:
       - db
     restart: always
@@ -39,11 +30,30 @@ services:
     volumes:
       - ./containers_data/nginx:/var/log/nginx
     ports:
-      - '80:80'
-      - '443:443'
+      - 80:80
+      - 443:443
     links:
       - rails
     restart: always
+  db:
+# postgresqlバージョン
+#    container_name: postgres
+#    image: postgres
+#    expose:
+#      - '5432'
+# mariadbバージョン
+# 参考記事 - https://github.com/shinofara/rails_docker_compose/blob/master/docker-compose.yml
+    container_name: mariadb
+    image: mariadb:latest
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./containers_data/mariadb:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: mariadb
+    ports:
+      - 3306:3306
+    restart: always
+
 # docker-syncで利用されるvolume
 volumes:
   rails-sync:

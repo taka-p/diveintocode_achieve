@@ -1,20 +1,32 @@
+# @Debian (Docker for Mac)
 FROM ruby:2.3.0
 ENV LANG C.UTF-8
-RUN apt-get update && apt-get install -y \
-    build-essential \
-    libpq-dev \
-    mysql-client --no-install-recommends \
+RUN apt-get update && apt-get install -y apt-utils \
+# mariadb and mysqlバージョン
+    libmysqld-dev \
+# PosgreSQLバージョン
 #    postgresql-client \
+#    libpq-dev \
+    # nokogiri用
+    libxml2-dev libxslt1-dev \
+    # rmagic用
+    imagemagick libmagickwand-dev \
+    # js runtime用
+    nodejs \
+    # 開発関連ツール群
+    build-essential \
     vim \
     sudo \
     wget \
     curl \
-    git-core \
+    git-core --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
-RUN mkdir /var/lib/mysql && touch /var/lib/mysql/mysql.sock
-ADD ./containers/mysql/my.cnf /etc/
+# mysql.sockとmy.cnfを設置
+RUN mkdir /var/lib/mysql && touch /tmp/mysql.sock
+ADD ./containers/mariadb/my.cnf /etc/
 
+# 各種gem
 RUN gem install bundler
 
 ENV GUEST_DIR /var/www
@@ -25,11 +37,16 @@ WORKDIR $GUEST_DIR
 RUN mkdir $APP_NAME
 
 WORKDIR $APP_NAME
-# Host側からDockerにプロジェクトをコピー
-ADD . .
+ADD Gemfile Gemfile
+ADD Gemfile.lock Gemfile.lock
+
 # Docker側でbundle install
 RUN bundle config git.allow_insecure true
 RUN bundle install
+
+# Host側からDockerにプロジェクトをコピー
+# .dockerignoreで.bundle, vendorは弾いている
+ADD . .
 
 # 3000番を公開
 EXPOSE 3000
