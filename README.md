@@ -1,7 +1,14 @@
 # Rails学習用アプリケーション
 
-## Dockerコンテナの立ち上げ方
+## 動作環境
 
+- Ruby: 2.3.0  
+- Rails: 4.2.0  
+- DB: MariaDB（PostgreSQLでもOK）  
+- AppServer: unicorn  
+- WebServer: nginx  
+
+## Dockerコンテナの立ち上げ方
 
 #### 1. プロジェクトclone
 ```
@@ -23,3 +30,14 @@ $ docker-compose run rails bundle exec rake db:create db:migrate
 $ docker-compose up -d
 $ docker-sync start
 ```
+## 本番環境へのデプロイ
+
+```
+$ bundle exec cap production deploy --trace
+```
+
+## 残タスク
+
+* 各種Dockerコンテナのデータ永続化（logやdbなど）
+* Ansibleでの構成管理（開発/本番環境共に）
+* 本番環境もDockerで動かす
