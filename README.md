@@ -26,7 +26,7 @@ $ brew install rsync
 #### 4. コンテナ群のビルド、マイグレーション、起動
 ```
 $ docker-compose build
-$ docker-compose run rails bundle exec rake db:create db:migrate
+$ docker-compose run rails sh /bin/bash/init_db_development.sh
 $ docker-compose up -d
 $ docker-sync start
 ```
